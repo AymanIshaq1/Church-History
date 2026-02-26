@@ -69,9 +69,9 @@ export function TeachingsPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl mb-16 text-purple-900 text-center font-bold">العقائد الأساسية</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-stagger">
             {teachings.map((teaching, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 animate-fade-up">
                 <div className={`w-24 h-24 bg-gradient-to-br ${teaching.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}>
                   <div className="text-white">{teaching.icon}</div>
                 </div>

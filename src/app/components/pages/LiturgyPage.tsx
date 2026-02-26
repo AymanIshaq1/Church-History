@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { Clock, BookOpen, Music, Flame } from "lucide-react";
 
 export function LiturgyPage() {
@@ -102,9 +102,9 @@ export function LiturgyPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl mb-16 text-indigo-900 text-center font-bold">القداسات الثلاثة</h2>
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-3 gap-8 mb-12 animate-stagger">
             {liturgies.map((liturgy, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2">
+              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2 animate-fade-up">
                 <div className={`h-4 bg-gradient-to-r ${liturgy.color}`}></div>
                 <div className="p-8">
                   <div className="text-6xl mb-6 text-center">📖</div>

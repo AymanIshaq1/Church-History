@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { BookOpen, Heart, Star, Scroll } from "lucide-react";
 
 export function BiblePage() {
@@ -132,9 +132,9 @@ export function BiblePage() {
           
           <div className="max-w-6xl mx-auto mb-16">
             <h3 className="text-4xl mb-8 text-blue-800 font-bold text-center">أسفار العهد القديم (نماذج)</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 animate-stagger">
               {oldTestament.map((book, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-blue-500">
+                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-blue-500 animate-fade-up">
                   <h4 className="text-xl mb-2 text-gray-800 font-bold">{book.name}</h4>
                   <p className="text-sm text-blue-600 mb-2">{book.category}</p>
                   <p className="text-gray-600">{book.chapters} إصحاح</p>
@@ -145,9 +145,9 @@ export function BiblePage() {
 
           <div className="max-w-6xl mx-auto">
             <h3 className="text-4xl mb-8 text-green-800 font-bold text-center">أسفار العهد الجديد (نماذج)</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 animate-stagger">
               {newTestament.map((book, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-green-500">
+                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-green-500 animate-fade-up">
                   <h4 className="text-xl mb-2 text-gray-800 font-bold">{book.name}</h4>
                   <p className="text-sm text-green-600 mb-2">{book.category}</p>
                   <p className="text-gray-600">{book.chapters} إصحاح</p>

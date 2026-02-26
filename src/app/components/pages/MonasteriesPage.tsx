@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { MapPin, Users, Book, Mountain } from "lucide-react";
 
 export function MonasteriesPage() {
@@ -78,21 +78,7 @@ export function MonasteriesPage() {
       image: "https://images.unsplash.com/photo-1642242737988-028bb19d48ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmNpZW50JTIwZWd5cHQlMjBjaHJpc3RpYW58ZW58MXx8fHwxNzY5MDg3NzA4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       color: "from-red-500 to-red-700"
     },
-    {
-      name: "دير المحرق",
-      location: "أسيوط",
-      founded: "القرن الرابع الميلادي",
-      founder: "الرهبان الأوائل",
-      description: "يقع في المكان الذي استراحت فيه العائلة المقدسة خ��ال رحلتها إلى مصر. يُعتبر من أقدس الأماكن القبطية.",
-      features: [
-        "كنيسة السيدة العذراء الأثرية",
-        "المغارة التي اختبأت فيها العائلة المقدسة",
-        "بئر ماء قديم",
-        "موقع حج مقدس"
-      ],
-      image: "https://images.unsplash.com/photo-1755518346374-8698aef237b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWlybyUyMGVneXB0JTIwaGlzdG9yaWN8ZW58MXx8fHwxNzY5MDg3NzA5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      color: "from-pink-500 to-pink-700"
-    }
+
   ];
 
   const monasticLife = [
@@ -166,9 +152,9 @@ export function MonasteriesPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl mb-16 text-orange-900 text-center font-bold">أشهر الأديرة القبطية</h2>
-          <div className="space-y-16">
+          <div className="space-y-20 animate-stagger">
             {monasteries.map((monastery, index) => (
-              <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
+              <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl animate-fade-up ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
                 <div className="lg:w-1/2">
                   <ImageWithFallback 
                     src={monastery.image}

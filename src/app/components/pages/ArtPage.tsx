@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { Palette, Image as ImageIcon, Church, BookOpen } from "lucide-react";
 
 export function ArtPage() {
@@ -63,9 +63,9 @@ export function ArtPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl mb-16 text-amber-900 text-center font-bold">أشكال الفن القبطي</h2>
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 animate-stagger">
             {artForms.map((art, index) => (
-              <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2">
+              <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2 animate-fade-up">
                 <div className={`h-3 bg-gradient-to-r ${art.color}`}></div>
                 <div className="p-10">
                   <div className={`w-24 h-24 bg-gradient-to-br ${art.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}>

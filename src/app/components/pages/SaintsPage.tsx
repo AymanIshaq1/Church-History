@@ -14,7 +14,7 @@ export function SaintsPage() {
         "إنشاء مدرسة الإسكندرية",
         "رسامة أول أسقف قبطي (أنيانوس)"
       ],
-       imageSrc: "/src/image/download.jpg",
+       imageSrc: "/image/download.jpg",
       color: "from-blue-500 to-blue-700"
     },
     {
@@ -28,7 +28,7 @@ export function SaintsPage() {
         "محاربة الشياطين والتجارب",
         "إرشاد آلاف الرهبان"
       ],
-      imageSrc: "/src/image/download (1).jpg",
+      imageSrc: "/image/download (1).jpg",
       color: "from-orange-500 to-orange-700"
     },
     {
@@ -42,7 +42,7 @@ export function SaintsPage() {
         "كتابة حياة القديس أنطونيوس",
         "حضور مجمع نيقية"
       ],
-      imageSrc: "/src/image/download (2).jpg",
+      imageSrc: "/image/download (2).jpg",
       color: "from-red-500 to-red-700"
     },
     {
@@ -56,7 +56,7 @@ export function SaintsPage() {
         "مقاومة بدعة نسطور",
         "كتابة تفاسير كتابية عميقة"
       ],
-      imageSrc: "/src/image/download (3).jpg",
+      imageSrc: "/image/download (3).jpg",
       color: "from-purple-500 to-purple-700"
     },
     {
@@ -70,7 +70,7 @@ export function SaintsPage() {
         "إنشاء 11 ديراً",
         "تنظيم الحياة الرهبانية"
       ],
-        imageSrc: "/src/image/download (4).jpg",
+        imageSrc: "/image/download (4).jpg",
       color: "from-green-500 to-green-700"
     },
     
@@ -137,9 +137,9 @@ export function SaintsPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl mb-16 text-indigo-900 text-center font-bold">قديسون عظماء</h2>
-          <div className="space-y-12">
+          <div className="space-y-12 animate-stagger">
             {saints.map((saint, index) => (
-              <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
+              <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl animate-fade-up ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
                 <div className="lg:w-1/3 flex items-center justify-center p-12" style={{background: `linear-gradient(135deg, ${saint.color.split(' ')[1]}, ${saint.color.split(' ')[3]})`}}>
                   <div className="text-center text-white w-full">
                     {saint.imageSrc && (
@@ -193,7 +193,7 @@ export function SaintsPage() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {martyrs.map((martyr, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20 hover:bg-white/20 transition-all">
+                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20 hover:bg-white/20 transition-all animate-fade-up">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="text-5xl">👑</div>
                     <div className="flex-1">
@@ -239,7 +239,7 @@ export function SaintsPage() {
           <h2 className="text-5xl mb-16 text-indigo-900 text-center font-bold">قديسون معاصرون</h2>
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="text-5xl mb-4"><ImageWithFallback src="/src/image/download (5).jpg" alt="البابا كيرلس السادس" className="w-64 h-100 mx-auto mb-6 object-cover rounded-lg" /></div>
+              <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (5).jpg" alt="البابا كيرلس السادس" className="w-64 h-100 mx-auto mb-6 object-cover rounded-lg" /></div>
               <h3 className="text-3xl mb-3 text-indigo-800 font-bold">البابا كيرلس السادس</h3>
               <p className="text-lg text-gray-600 mb-4">1902 - 1971 م</p>
               <p className="text-lg text-gray-700 leading-relaxed">
@@ -248,7 +248,7 @@ export function SaintsPage() {
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="text-5xl mb-4"><ImageWithFallback src="/src/image/download (6).jpg" alt="البابا شنودة الثالث" className="w-64 h-100 mx-auto mb-6 object-cover rounded-lg" /></div>
+              <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (6).jpg" alt="البابا شنودة الثالث" className="w-64 h-100 mx-auto mb-6 object-cover rounded-lg" /></div>
               <h3 className="text-3xl mb-3 text-indigo-800 font-bold">البابا شنودة الثالث</h3>
               <p className="text-lg text-gray-600 mb-4">1923 - 2012 م</p>
               <p className="text-lg text-gray-700 leading-relaxed">

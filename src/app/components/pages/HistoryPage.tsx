@@ -121,7 +121,7 @@ export function HistoryPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl mb-16 text-red-900 text-center font-bold">العصور التاريخية بالتفصيل</h2>
-          <div className="space-y-12">
+          <div className="space-y-20 animate-stagger">
             {eras.map((era, index) => (
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center bg-white rounded-2xl shadow-2xl overflow-hidden`}>
                 <div className="lg:w-1/2">
