@@ -1,10 +1,11 @@
 import { Cross, Mail, MapPin, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface FooterProps {
-  onNavigate: (page: string) => void;
 }
 
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer({ }: FooterProps) {
+  const navigate = useNavigate();
   const quickLinks = [
     { id: "home", label: "الرئيسية" },
     { id: "history", label: "التاريخ" },
@@ -17,7 +18,7 @@ export function Footer({ onNavigate }: FooterProps) {
   ];
 
   const handleNavigation = (page: string) => {
-    onNavigate(page);
+    navigate(`/${page === "home" ? "" : page}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

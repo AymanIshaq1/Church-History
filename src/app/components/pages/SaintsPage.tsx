@@ -1,7 +1,9 @@
 import { ImageWithFallback } from "../figma/ImageWithFallback";
-import { Crown, Heart, Star } from "lucide-react";
+import { Crown, Heart, Star, Play } from "lucide-react";
+import { useState } from "react";
 
 export function SaintsPage() {
+  const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null);
   const saints = [
     {
       name: "القديس مرقس الرسول",
@@ -15,6 +17,7 @@ export function SaintsPage() {
         "رسامة أول أسقف قبطي (أنيانوس)"
       ],
        imageSrc: "/image/download.jpg",
+     videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video3_ckpyqw.mp4",
       color: "from-blue-500 to-blue-700"
     },
     {
@@ -29,6 +32,7 @@ export function SaintsPage() {
         "إرشاد آلاف الرهبان"
       ],
       imageSrc: "/image/download (1).jpg",
+      videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
       color: "from-orange-500 to-orange-700"
     },
     {
@@ -42,9 +46,11 @@ export function SaintsPage() {
         "كتابة حياة القديس أنطونيوس",
         "حضور مجمع نيقية"
       ],
-      imageSrc: "/image/download (2).jpg",
-      color: "from-red-500 to-red-700"
-    },
+  imageSrc: "/image/download (2).jpg",
+  videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
+  color: "from-red-500 to-red-700"
+},
+    
     {
       name: "القديس كيرلس الكبير",
       title: "عمود الدين وكاتب الإيمان",
@@ -57,6 +63,7 @@ export function SaintsPage() {
         "كتابة تفاسير كتابية عميقة"
       ],
       imageSrc: "/image/download (3).jpg",
+       videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
       color: "from-purple-500 to-purple-700"
     },
     {
@@ -71,6 +78,7 @@ export function SaintsPage() {
         "تنظيم الحياة الرهبانية"
       ],
         imageSrc: "/image/download (4).jpg",
+         videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
       color: "from-green-500 to-green-700"
       
     },
@@ -114,6 +122,7 @@ export function SaintsPage() {
             أعمدة الإيمان ونجوم السماء
           </p>
         </div>
+        
       </section>
 
       {/* Introduction */}
@@ -140,39 +149,68 @@ export function SaintsPage() {
           <h2 className="text-5xl mb-16 text-indigo-900 text-center font-bold">قديسون عظماء</h2>
           <div className="space-y-12 animate-stagger">
             {saints.map((saint, index) => (
-              <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl animate-fade-up ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
-                <div className="lg:w-1/3 flex items-center justify-center p-12" style={{background: `linear-gradient(135deg, ${saint.color.split(' ')[1]}, ${saint.color.split(' ')[3]})`}}>
-                  <div className="text-center text-white w-full">
-                    {saint.imageSrc && (
-                      <ImageWithFallback 
-                        src={saint.imageSrc} 
-                        alt={saint.name}
-                        className="w-64 h-80 mx-auto mb-6 object-cover rounded-lg"
-                      />
+              fullscreenIndex === index ? (
+                // 🎬 فيديو ملء الشاشة - يأخذ مكان البطاقة كلها
+                <div className="max-w-6xl mx-auto h-140 relative bg-black rounded-3xl overflow-hidden">
+                  <video
+                    controls
+                    autoPlay
+                    className="w-full h-full object-cover"
+                  >
+                    <source src={saint.videoSrc} type="video/mp4" />
+                  </video>
+                  <button
+                    onClick={() => setFullscreenIndex(null)}
+                    className="absolute top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg hover:bg-black"
+                  >
+                    ❌ 
+                  </button>
+                </div>
+              ) : (
+                <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl animate-fade-up ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
+                  <div className="lg:w-1/3 flex items-center justify-center p-12" style={{background: `linear-gradient(135deg, ${saint.color.split(' ')[1]}, ${saint.color.split(' ')[3]})`}}>
+                    <div className="text-center text-white w-full">
+                      {saint.imageSrc && (
+                        <ImageWithFallback 
+                          src={saint.imageSrc} 
+                          alt={saint.name}
+                          className="w-64 h-80 mx-auto mb-6 object-cover rounded-lg"
+                        />
+                      )}
+                      <div className="text-3xl font-bold">{saint.period}</div>
+                    </div>
+                  </div>
+                  <div className="lg:w-2/3 p-10">
+                    <h3 className="text-4xl mb-3 text-gray-800 font-bold">{saint.name}</h3>
+                    <p className={`text-2xl mb-6 bg-gradient-to-r ${saint.color} bg-clip-text text-transparent font-bold`}>{saint.title}</p>
+                    <p className="text-xl text-gray-700 mb-6 leading-relaxed">{saint.description}</p>
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6">
+                      <h4 className="text-2xl mb-4 text-indigo-800 font-bold flex items-center gap-2">
+                        <Star size={24} />
+                        إسهاماته:
+                      </h4>
+                      <ul className="space-y-2">
+                        {saint.contributions.map((contribution, idx) => (
+                          <li key={idx} className="text-lg text-gray-700 flex items-center gap-3">
+                            <span className="text-indigo-600 text-2xl">✦</span>
+                            {contribution}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* 🔘 زرار ملء الشاشة تحت الكلام */}
+                    {saint.videoSrc && (
+                      <button
+                        onClick={() => setFullscreenIndex(index)}
+                        className="mx-auto block mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2"
+                      >
+                        <Play size={20} />
+                        عرض الفيديو
+                      </button>
                     )}
-                    <div className="text-3xl font-bold">{saint.period}</div>
                   </div>
                 </div>
-                <div className="lg:w-2/3 p-10">
-                  <h3 className="text-4xl mb-3 text-gray-800 font-bold">{saint.name}</h3>
-                  <p className={`text-2xl mb-6 bg-gradient-to-r ${saint.color} bg-clip-text text-transparent font-bold`}>{saint.title}</p>
-                  <p className="text-xl text-gray-700 mb-6 leading-relaxed">{saint.description}</p>
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6">
-                    <h4 className="text-2xl mb-4 text-indigo-800 font-bold flex items-center gap-2">
-                      <Star size={24} />
-                      إسهاماته:
-                    </h4>
-                    <ul className="space-y-2">
-                      {saint.contributions.map((contribution, idx) => (
-                        <li key={idx} className="text-lg text-gray-700 flex items-center gap-3">
-                          <span className="text-indigo-600 text-2xl">✦</span>
-                          {contribution}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              )
             ))}
           </div>
         </div>
@@ -279,6 +317,7 @@ export function SaintsPage() {
             </div>
           </div>
         </div>
+       
       </section>
     </div>
   );

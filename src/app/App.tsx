@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Header } from "@/app/components/Header";
 import { Hero } from "@/app/components/Hero";
 import { HistoryPage } from "@/app/components/pages/HistoryPage";
@@ -10,37 +11,37 @@ import { SaintsPage } from "@/app/components/pages/SaintsPage";
 import { BiblePage } from "@/app/components/pages/BiblePage";
 import { Footer } from "@/app/components/Footer";
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
   const [currentPage, setCurrentPage] = useState("home");
 
-  const renderPage = () => {
-    switch(currentPage) {
-      case "home":
-        return <Hero onNavigate={setCurrentPage} />;
-      case "history":
-        return <HistoryPage />;
-      case "teachings":
-        return <TeachingsPage />;
-      case "liturgy":
-        return <LiturgyPage />;
-      case "art":
-        return <ArtPage />;
-      case "monasteries":
-        return <MonasteriesPage />;
-      case "saints":
-        return <SaintsPage />;
-      case "bible":
-        return <BiblePage />;
-      default:
-        return <Hero onNavigate={setCurrentPage} />;
-    }
-  };
+  useEffect(() => {
+    const path = location.pathname.slice(1) || "home";
+    setCurrentPage(path);
+  }, [location]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100" dir="rtl" lang="ar">
-      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
-      {renderPage()}
-      <Footer onNavigate={setCurrentPage} />
+      <Header currentPage={currentPage} />
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/teachings" element={<TeachingsPage />} />
+        <Route path="/liturgy" element={<LiturgyPage />} />
+        <Route path="/art" element={<ArtPage />} />
+        <Route path="/monasteries" element={<MonasteriesPage />} />
+        <Route path="/saints" element={<SaintsPage />} />
+        <Route path="/bible" element={<BiblePage />} />
+      </Routes>
+      <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }

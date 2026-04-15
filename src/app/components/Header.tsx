@@ -1,12 +1,13 @@
 import { Menu, X, Cross } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   currentPage: string;
-  onNavigate: (page: string) => void;
 }
 
-export function Header({ currentPage, onNavigate }: HeaderProps) {
+export function Header({ currentPage }: HeaderProps) {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -21,7 +22,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
   ];
 
   const handleClick = (page: string) => {
-    onNavigate(page);
+    navigate(`/${page === "home" ? "" : page}`);
     setIsMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

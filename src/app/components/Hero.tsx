@@ -1,11 +1,12 @@
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { Book, Church, Users, Scroll, Sparkles, Award, Globe, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface HeroProps {
-  onNavigate: (page: string) => void;
 }
 
-export function Hero({ onNavigate }: HeroProps) {
+export function Hero({ }: HeroProps) {
+  const navigate = useNavigate();
   const features = [
     {
       icon: <Book size={40} />,
@@ -89,13 +90,13 @@ export function Hero({ onNavigate }: HeroProps) {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button 
-              onClick={() => onNavigate("history")}
+              onClick={() => navigate("/history")}
               className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               اكتشف التاريخ
             </button>
             <button 
-              onClick={() => onNavigate("saints")}
+              onClick={() => navigate("/saints")}
               className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-red-900 px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               القديسون
@@ -140,7 +141,7 @@ export function Hero({ onNavigate }: HeroProps) {
             {features.map((feature, index) => (
               <button
                 key={index}
-                onClick={() => onNavigate(feature.page)}
+                onClick={() => navigate(`/${feature.page}`)}
                 className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 overflow-hidden"
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.color} opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform`}></div>
