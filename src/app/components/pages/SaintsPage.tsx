@@ -202,7 +202,7 @@ export function SaintsPage() {
                     {saint.videoSrc && (
                       <button
                         onClick={() => setFullscreenIndex(index)}
-                        className="mx-auto block mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2"
+                        className="mx-auto mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2"
                       >
                         <Play size={20} />
                         عرض الفيديو
