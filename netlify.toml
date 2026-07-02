@@ -6,3 +6,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  conditions = { "NOT Path" = ["/assets/*", "*.js", "*.css", "*.json", "*.jpeg", "*.jpg", "*.png", "*.svg", "*.woff*", "*.ttf"] }
