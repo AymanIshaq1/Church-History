@@ -32,12 +32,12 @@ export function SaintsPage() {
         "إرشاد آلاف الرهبان"
       ],
       imageSrc: "/image/download (1).jpg",
-      videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
+      videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783029666/church_video6_rydgce.mp4",
       color: "from-orange-500 to-orange-700"
     },
     {
       name: "القديس أثناسيوس الرسولي",
-      title: "عمود الدين",
+      title: "حامي الايمان ",
       period: "296 - 373 م",
       description: "البطريرك العشرون لكرسي الإسكندرية. دافع عن الإيمان الأرثوذكسي ضد الأريوسية. نُفي خمس مرات بسبب إيمانه. كتب عدة كتب لاهوتية عظيمة.",
       contributions: [
@@ -47,7 +47,7 @@ export function SaintsPage() {
         "حضور مجمع نيقية"
       ],
   imageSrc: "/image/download (2).jpg",
-  videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
+  videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783027646/%D8%A7%D9%84%D8%A8%D8%A7%D8%A8%D8%A7_%D8%A7%D8%AB%D9%86%D8%A7%D8%B3%D9%8A%D9%88%D8%B3_lsrn1n.mp4",
   color: "from-red-500 to-red-700"
 },
     
@@ -63,7 +63,7 @@ export function SaintsPage() {
         "كتابة تفاسير كتابية عميقة"
       ],
       imageSrc: "/image/download (3).jpg",
-       videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
+       videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783029098/chuch_video5_nzrucr.mp4",
       color: "from-purple-500 to-purple-700"
     },
     {
@@ -78,6 +78,22 @@ export function SaintsPage() {
         "تنظيم الحياة الرهبانية"
       ],
         imageSrc: "/image/download (4).jpg",
+         videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783031204/church_video7_a7aa5e.mp4",
+      color: "from-green-500 to-green-700"
+      
+    },
+    {
+      name: "القديس يوحنا الذهبي الفم",
+      title: "فم الذهب ومعلم الكنيسة",
+      period: "292 - 348 م",
+      description: "أحد أعظم آباء الكنيسة في القرن الرابع الميلادي، اشتهر ببلاغته الفريدة وعظاته المؤثرة حتى لُقِّب بذهبي الفم. دافع عن الحق بشجاعة، وخدم الفقراء والمحتاجين، وترك تراثًا روحيًا ولاهوتيًا ما زال يؤثر في الكنيسة حتى اليوم",
+      contributions: [
+        " أعظم واعظ في تاريخ الكنيسة ",
+        " تفسير الكتاب المقدس وتعليم الشعب ",
+        "الدفاع عن العدالة ومساندة الفقراء ",
+        " وضع القداس الإلهي المعروف باسمه"
+      ],
+        imageSrc: "/image/john_chrysostom.jpg",
          videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
       color: "from-green-500 to-green-700"
       
@@ -117,8 +133,8 @@ export function SaintsPage() {
           <div className="inline-block p-6 bg-yellow-500/20 rounded-full backdrop-blur-sm border-2 border-yellow-400 mb-8">
             <Crown size={64} className="text-yellow-400" />
           </div>
-          <h1 className="text-6xl md:text-7xl mb-6 font-bold">القديسون والشهداء</h1>
-          <p className="text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold">القديسون والشهداء</h1>
+          <p className="text-xl sm:text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto">
             أعمدة الإيمان ونجوم السماء
           </p>
         </div>
@@ -129,13 +145,13 @@ export function SaintsPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-10 shadow-2xl">
-              <h2 className="text-4xl mb-6 text-indigo-900 font-bold text-center">سحابة من الشهود</h2>
-              <p className="text-2xl text-gray-700 mb-6 leading-relaxed">
+            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-6 sm:p-10 shadow-2xl">
+              <h2 className="text-3xl sm:text-4xl mb-4 sm:mb-6 text-indigo-900 font-bold text-center">سحابة من الشهود</h2>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                 الكنيسة القبطية غنية بقديسيها وشهدائها الذين سطروا تاريخاً مجيداً من الإيمان والتضحية. 
                 من الرسل والآباء الأوائل إلى الشهداء الذين رووا الأرض بدمائهم، كل واحد منهم نموذج للحياة المسيحية الحقيقية.
               </p>
-              <p className="text-2xl text-gray-700 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed">
                 نحتفل بذكراهم، نطلب شفاعتهم، ونقتدي بسيرتهم العطرة في رحلتنا نحو السماء.
               </p>
             </div>
@@ -168,22 +184,22 @@ export function SaintsPage() {
                 </div>
               ) : (
                 <div key={index} className={`max-w-6xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl animate-fade-up ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
-                  <div className="lg:w-1/3 flex items-center justify-center p-12" style={{background: `linear-gradient(135deg, ${saint.color.split(' ')[1]}, ${saint.color.split(' ')[3]})`}}>
+                  <div className="w-full lg:w-1/3 flex items-center justify-center p-8 lg:p-12" style={{background: `linear-gradient(135deg, ${saint.color.split(' ')[1]}, ${saint.color.split(' ')[3]})`}}>
                     <div className="text-center text-white w-full">
                       {saint.imageSrc && (
                         <ImageWithFallback 
                           src={saint.imageSrc} 
                           alt={saint.name}
-                          className="w-64 h-80 mx-auto mb-6 object-cover rounded-lg"
+                          className="w-full max-w-[200px] sm:max-w-xs h-64 md:h-80 mx-auto mb-4 md:mb-6 object-cover rounded-lg"
                         />
                       )}
-                      <div className="text-3xl font-bold">{saint.period}</div>
+                      <div className="text-2xl sm:text-3xl font-bold">{saint.period}</div>
                     </div>
                   </div>
-                  <div className="lg:w-2/3 p-10">
-                    <h3 className="text-4xl mb-3 text-gray-800 font-bold">{saint.name}</h3>
-                    <p className={`text-2xl mb-6 bg-gradient-to-r ${saint.color} bg-clip-text text-transparent font-bold`}>{saint.title}</p>
-                    <p className="text-xl text-gray-700 mb-6 leading-relaxed">{saint.description}</p>
+                  <div className="w-full lg:w-2/3 p-6 sm:p-10">
+                    <h3 className="text-3xl sm:text-4xl mb-2 sm:mb-3 text-gray-800 font-bold">{saint.name}</h3>
+                    <p className={`text-xl sm:text-2xl mb-4 sm:mb-6 bg-gradient-to-r ${saint.color} bg-clip-text text-transparent font-bold`}>{saint.title}</p>
+                    <p className="text-lg sm:text-xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">{saint.description}</p>
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6">
                       <h4 className="text-2xl mb-4 text-indigo-800 font-bold flex items-center gap-2">
                         <Star size={24} />
@@ -219,13 +235,13 @@ export function SaintsPage() {
       {/* Martyrs */}
       <section className="py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-16 text-center font-bold">شهداء عظماء</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-center font-bold">شهداء عظماء</h2>
           <div className="max-w-6xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-10 border-2 border-white/20 mb-12">
-              <p className="text-2xl mb-6 leading-relaxed">
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border-2 border-white/20 mb-8 md:mb-12">
+              <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 leading-relaxed">
                 "عصر الشهداء" هو أظلم فترة في تاريخ الكنيسة القبطية. استشهد مئات الآلاف من الأقباط، خاصة في عهد الإمبراطور دقلديانوس (284-305 م). 
               </p>
-              <p className="text-2xl leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl leading-relaxed">
                 يبدأ التقويم القبطي من عام 284 م (عام الشهداء) تخليداً لذكرى هؤلاء الأبطال الذين فضّلوا الموت على إنكار إيمانهم.
               </p>
             </div>
@@ -275,22 +291,22 @@ export function SaintsPage() {
       {/* Modern Saints */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-16 text-indigo-900 text-center font-bold">قديسون معاصرون</h2>
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (5).jpg" alt="البابا كيرلس السادس" className="w-64 h-100 mx-auto mb-6 object-cover rounded-lg" /></div>
-              <h3 className="text-3xl mb-3 text-indigo-800 font-bold">البابا كيرلس السادس</h3>
-              <p className="text-lg text-gray-600 mb-4">1902 - 1971 م</p>
-              <p className="text-lg text-gray-700 leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-indigo-900 text-center font-bold">قديسون معاصرون</h2>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl">
+              <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (5).jpg" alt="البابا كيرلس السادس" className="w-full h-80 sm:w-64 sm:h-100 mx-auto mb-4 md:mb-6 object-cover rounded-lg" /></div>
+              <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-indigo-800 font-bold">البابا كيرلس السادس</h3>
+              <p className="text-base sm:text-lg text-gray-600 mb-3 sm:mb-4">1902 - 1971 م</p>
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                 البطريرك الـ116، عُرف بحياته النسكية وصلواته القوية. شهد عصره ظهورات العذراء في الزيتون. 
                 قام بإحياء روحي كبير في الكنيسة.
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (6).jpg" alt="البابا شنودة الثالث" className="w-64 h-100 mx-auto mb-6 object-cover rounded-lg" /></div>
-              <h3 className="text-3xl mb-3 text-indigo-800 font-bold">البابا شنودة الثالث</h3>
-              <p className="text-lg text-gray-600 mb-4">1923 - 2012 م</p>
-              <p className="text-lg text-gray-700 leading-relaxed">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl">
+              <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (6).jpg" alt="البابا شنودة الثالث" className="w-full h-80 sm:w-64 sm:h-100 mx-auto mb-4 md:mb-6 object-cover rounded-lg" /></div>
+              <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-indigo-800 font-bold">البابا شنودة الثالث</h3>
+              <p className="text-base sm:text-lg text-gray-600 mb-3 sm:mb-4">1923 - 2012 م</p>
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                 البطريرك الـ117، معلم الأجيال. خدم لمدة 40 عاماً، نشر التعليم والكرازة في العالم كله. 
                 كاتب وشاعر ومعلم عظيم.
               </p>

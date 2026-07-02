@@ -407,10 +407,10 @@ export function HistoryPage() {
           <div className="hp-global-timeline max-w-4xl mx-auto relative">
             <div className="hidden sm:block absolute right-28 top-0 bottom-0 w-px bg-gradient-to-b from-red-900/0 via-red-800/30 to-orange-900/0" />
             {globalTimeline.map((item, idx) => (
-              <div key={`${item.year}-${item.event}`} className="hp-tl-item flex items-start gap-4 mb-6 hover-scale transition-all" style={{ animationDelay: `${idx * 30}ms` }}>
-                <div className="flex-shrink-0 w-24 text-left text-sm sm:text-base font-bold text-red-700">{item.year}</div>
-                <div className="flex-shrink-0 w-4 h-4 mt-1 rounded-full ring-4 ring-white shadow-lg hover-glow" style={{ backgroundColor: item.color }} />
-                <div className="flex-1 rounded-2xl bg-white p-4 sm:p-5 shadow-lg text-gray-700 leading-relaxed">{item.event}</div>
+              <div key={`${item.year}-${item.event}`} className="hp-tl-item flex items-start gap-3 sm:gap-4 mb-6 hover-scale transition-all" style={{ animationDelay: `${idx * 30}ms` }}>
+                <div className="flex-shrink-0 w-16 sm:w-24 text-left text-xs sm:text-base font-bold text-red-700">{item.year}</div>
+                <div className="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 mt-1 sm:mt-1.5 rounded-full ring-4 ring-white shadow-lg hover-glow" style={{ backgroundColor: item.color }} />
+                <div className="flex-1 rounded-2xl bg-white p-3 sm:p-5 shadow-lg text-sm sm:text-base text-gray-700 leading-relaxed">{item.event}</div>
               </div>
             ))}
           </div>
@@ -431,7 +431,7 @@ export function HistoryPage() {
           <div className="container mx-auto px-4 py-16 sm:py-24 relative z-10">
             <article className={`hp-era-intro-card hp-era-card flex flex-col ${eraIndex % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} bg-white border border-gray-100 rounded-3xl shadow-2xl overflow-hidden hover-lift transition-all`}>
               {era.image && (
-                <div className="hp-image-wrap relative lg:w-4/12 overflow-hidden bg-gray-100 h-56 sm:h-72 lg:h-[34rem]">
+                <div className="hp-image-wrap relative w-full lg:w-4/12 overflow-hidden bg-gray-100 h-56 sm:h-72 lg:h-[34rem]">
                   <ImageWithFallback
                     src={era.image}
                     alt={era.title}
@@ -440,8 +440,8 @@ export function HistoryPage() {
                 </div>
               )}
 
-              <div className="lg:w-8/12 p-6 sm:p-10 lg:p-12 animate-stagger">
-                <div className={`hp-era-intro-motion inline-flex items-center gap-2 rounded-full px-4 py-2 mb-5 text-white bg-gradient-to-br ${era.color} hover-scale`}>
+              <div className="w-full lg:w-8/12 p-5 sm:p-10 lg:p-12 animate-stagger">
+                <div className={`hp-era-intro-motion inline-flex items-center gap-2 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-5 text-white bg-gradient-to-br ${era.color} hover-scale`}>
                   {era.icon}
                   <span className="text-sm font-bold">{era.dates}</span>
                 </div>

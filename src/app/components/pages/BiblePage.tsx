@@ -81,8 +81,8 @@ export function BiblePage() {
           <div className="inline-block p-6 bg-yellow-500/20 rounded-full backdrop-blur-sm border-2 border-yellow-400 mb-8">
             <BookOpen size={64} className="text-yellow-400" />
           </div>
-          <h1 className="text-6xl md:text-7xl mb-6 font-bold">الكتاب المقدس</h1>
-          <p className="text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold">الكتاب المقدس</h1>
+          <p className="text-xl sm:text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto">
             كلمة الله الحية والفعالة
           </p>
         </div>
@@ -92,31 +92,31 @@ export function BiblePage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-10 shadow-2xl mb-12">
-              <h2 className="text-4xl mb-6 text-emerald-900 font-bold text-center">كلام الله المكتوب</h2>
-              <p className="text-2xl text-gray-700 mb-6 leading-relaxed">
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-6 sm:p-10 shadow-2xl mb-8 md:mb-12">
+              <h2 className="text-3xl sm:text-4xl mb-4 sm:mb-6 text-emerald-900 font-bold text-center">كلام الله المكتوب</h2>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                 الكتاب المقدس هو كلمة الله الموحى بها، كُتب بوحي من الروح القدس على مدى 1600 سنة. 
                 يتكون من 66 سفراً مقسمة إلى العهد القديم (39 سفراً) والعهد الجديد (27 سفراً).
               </p>
-              <p className="text-2xl text-gray-700 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed">
                 الكنيسة القبطية تؤمن بقدسية الكتاب المقدس وسلطانه المطلق في مسائل الإيمان والحياة المسيحية.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl p-8 shadow-xl">
-                <div className="text-6xl mb-4 text-center">📖</div>
-                <h3 className="text-3xl mb-4 font-bold text-center">العهد القديم</h3>
-                <p className="text-xl text-center mb-4">39 سفراً</p>
-                <p className="text-lg leading-relaxed">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div className="text-5xl sm:text-6xl mb-3 sm:mb-4 text-center">📖</div>
+                <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 font-bold text-center">العهد القديم</h3>
+                <p className="text-lg sm:text-xl text-center mb-3 sm:mb-4">39 سفراً</p>
+                <p className="text-base sm:text-lg leading-relaxed">
                   كُتب بالعبرية والآرامية، يحكي قصة الخلق والعهد مع إسرائيل والنبوات عن المسيح المنتظر
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-green-500 to-green-700 text-white rounded-2xl p-8 shadow-xl">
-                <div className="text-6xl mb-4 text-center">✝️</div>
-                <h3 className="text-3xl mb-4 font-bold text-center">العهد الجديد</h3>
-                <p className="text-xl text-center mb-4">27 سفراً</p>
-                <p className="text-lg leading-relaxed">
+              <div className="bg-gradient-to-br from-green-500 to-green-700 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div className="text-5xl sm:text-6xl mb-3 sm:mb-4 text-center">✝️</div>
+                <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 font-bold text-center">العهد الجديد</h3>
+                <p className="text-lg sm:text-xl text-center mb-3 sm:mb-4">27 سفراً</p>
+                <p className="text-base sm:text-lg leading-relaxed">
                   كُتب باليونانية، يروي حياة المسيح وتعاليمه وتأسيس الكنيسة وانتشار المسيحية
                 </p>
               </div>
@@ -128,29 +128,29 @@ export function BiblePage() {
       {/* Bible Books */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-16 text-emerald-900 text-center font-bold">أسفار الكتاب المقدس</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-emerald-900 text-center font-bold">أسفار الكتاب المقدس</h2>
           
-          <div className="max-w-6xl mx-auto mb-16">
-            <h3 className="text-4xl mb-8 text-blue-800 font-bold text-center">أسفار العهد القديم (نماذج)</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 animate-stagger">
+          <div className="max-w-6xl mx-auto mb-10 md:mb-16">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 text-blue-800 font-bold text-center">أسفار العهد القديم (نماذج)</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 animate-stagger">
               {oldTestament.map((book, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-blue-500 animate-fade-up">
-                  <h4 className="text-xl mb-2 text-gray-800 font-bold">{book.name}</h4>
-                  <p className="text-sm text-blue-600 mb-2">{book.category}</p>
-                  <p className="text-gray-600">{book.chapters} إصحاح</p>
+                <div key={index} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-blue-500 animate-fade-up">
+                  <h4 className="text-lg sm:text-xl mb-1 sm:mb-2 text-gray-800 font-bold">{book.name}</h4>
+                  <p className="text-xs sm:text-sm text-blue-600 mb-1 sm:mb-2">{book.category}</p>
+                  <p className="text-sm sm:text-base text-gray-600">{book.chapters} إصحاح</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <h3 className="text-4xl mb-8 text-green-800 font-bold text-center">أسفار العهد الجديد (نماذج)</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 animate-stagger">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 text-green-800 font-bold text-center">أسفار العهد الجديد (نماذج)</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 animate-stagger">
               {newTestament.map((book, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-green-500 animate-fade-up">
-                  <h4 className="text-xl mb-2 text-gray-800 font-bold">{book.name}</h4>
-                  <p className="text-sm text-green-600 mb-2">{book.category}</p>
-                  <p className="text-gray-600">{book.chapters} إصحاح</p>
+                <div key={index} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-green-500 animate-fade-up">
+                  <h4 className="text-lg sm:text-xl mb-1 sm:mb-2 text-gray-800 font-bold">{book.name}</h4>
+                  <p className="text-xs sm:text-sm text-green-600 mb-1 sm:mb-2">{book.category}</p>
+                  <p className="text-sm sm:text-base text-gray-600">{book.chapters} إصحاح</p>
                 </div>
               ))}
             </div>
@@ -161,15 +161,15 @@ export function BiblePage() {
       {/* Coptic Contributions */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-16 text-emerald-900 text-center font-bold">إسهامات الكنيسة القبطية</h2>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-emerald-900 text-center font-bold">إسهامات الكنيسة القبطية</h2>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 sm:gap-8">
             {copticContributions.map((contribution, index) => (
               <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden shadow-2xl">
                 <div className={`h-3 bg-gradient-to-r ${contribution.color}`}></div>
-                <div className="p-8">
-                  <div className="text-6xl mb-6 text-center">{contribution.icon}</div>
-                  <h3 className="text-3xl mb-4 text-gray-800 font-bold text-center">{contribution.title}</h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{contribution.description}</p>
+                <div className="p-6 sm:p-8">
+                  <div className="text-5xl sm:text-6xl mb-4 sm:mb-6 text-center">{contribution.icon}</div>
+                  <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-gray-800 font-bold text-center">{contribution.title}</h3>
+                  <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">{contribution.description}</p>
                   <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6">
                     <ul className="space-y-2">
                       {contribution.details.map((detail, idx) => (
@@ -190,30 +190,30 @@ export function BiblePage() {
       {/* Daily Readings */}
       <section className="py-20 bg-gradient-to-r from-emerald-800 to-teal-800 text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-16 text-center font-bold">القراءات اليومية</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-center font-bold">القراءات اليومية</h2>
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-10 border-2 border-white/20 mb-12">
-              <p className="text-2xl leading-relaxed text-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border-2 border-white/20 mb-8 md:mb-12">
+              <p className="text-lg sm:text-xl md:text-2xl leading-relaxed text-center">
                 الكنيسة القبطية تقرأ الكتاب المقدس بشكل منتظم في كل صلواتها اليومية. 
                 كل يوم له قراءاته الخاصة من العهدين القديم والجديد.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
               {dailyReadings.map((reading, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20">
-                  <div className="text-5xl mb-4 text-center text-yellow-400">📖</div>
-                  <h3 className="text-3xl mb-4 text-yellow-300 font-bold text-center">{reading.time}</h3>
-                  <p className="text-lg leading-relaxed text-center">{reading.readings}</p>
+                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border-2 border-white/20">
+                  <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 text-center text-yellow-400">📖</div>
+                  <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-yellow-300 font-bold text-center">{reading.time}</h3>
+                  <p className="text-base sm:text-lg leading-relaxed text-center">{reading.readings}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20">
-              <h3 className="text-3xl mb-6 text-yellow-300 font-bold text-center">القراءات الكنسية</h3>
-              <div className="grid md:grid-cols-2 gap-6 text-lg">
+            <div className="mt-8 md:mt-12 bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border-2 border-white/20">
+              <h3 className="text-2xl sm:text-3xl mb-4 sm:mb-6 text-yellow-300 font-bold text-center">القراءات الكنسية</h3>
+              <div className="grid md:grid-cols-2 gap-4 sm:gap-6 text-base sm:text-lg">
                 <div>
-                  <h4 className="text-2xl mb-3 text-yellow-200 font-bold">القداس الإلهي</h4>
+                  <h4 className="text-xl sm:text-2xl mb-2 sm:mb-3 text-yellow-200 font-bold">القداس الإلهي</h4>
                   <ul className="space-y-2">
                     <li>• البولس (من رسائل بولس)</li>
                     <li>• الكاثوليكون (الرسائل الجامعة)</li>
@@ -223,7 +223,7 @@ export function BiblePage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-2xl mb-3 text-yellow-200 font-bold">الأجبية</h4>
+                  <h4 className="text-xl sm:text-2xl mb-2 sm:mb-3 text-yellow-200 font-bold">الأجبية</h4>
                   <ul className="space-y-2">
                     <li>• 12 مزموراً في كل صلاة</li>
                     <li>• إنجيل الصلاة</li>
@@ -244,10 +244,10 @@ export function BiblePage() {
             <ImageWithFallback 
               src="https://images.unsplash.com/photo-1534289907116-888fe70c4806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmNpZW50JTIwYmlibGUlMjBnb3NwZWx8ZW58MXx8fHwxNzY5MDg3OTM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
               alt="الكتاب المقدس"
-              className="w-full h-[500px] object-cover rounded-3xl shadow-2xl mb-8"
+              className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-3xl shadow-2xl mb-6 md:mb-8"
             />
             <div className="text-center">
-              <p className="text-2xl text-gray-600 italic mb-4">
+              <p className="text-xl sm:text-2xl text-gray-600 italic mb-4">
                 "كل الكتاب هو موحى به من الله، ونافع للتعليم والتوبيخ، للتقويم والتأديب الذي في البر"
               </p>
               <p className="text-xl text-emerald-700 font-bold">- 2 تيموثاوس 3: 16</p>
@@ -259,13 +259,13 @@ export function BiblePage() {
       {/* Memorization */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-16 text-emerald-900 text-center font-bold">أهمية حفظ الكتاب المقدس</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-emerald-900 text-center font-bold">أهمية حفظ الكتاب المقدس</h2>
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl p-10 shadow-2xl">
-              <div className="flex items-center justify-center mb-8">
-                <Heart size={64} className="text-red-500" />
+            <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl">
+              <div className="flex items-center justify-center mb-6 sm:mb-8">
+                <Heart size={64} className="text-red-500 w-12 sm:w-16 h-12 sm:h-16" />
               </div>
-              <p className="text-2xl text-gray-700 mb-8 leading-relaxed text-center">
+              <p className="text-xl sm:text-2xl text-gray-700 mb-6 sm:mb-8 leading-relaxed text-center">
                 "خبأت كلامك في قلبي لكيلا أخطئ إليك" - مزمور 119: 11
               </p>
               <div className="grid md:grid-cols-3 gap-6">
@@ -294,13 +294,13 @@ export function BiblePage() {
       <section className="py-20 bg-gradient-to-r from-emerald-900 to-teal-900 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Scroll size={64} className="mx-auto mb-8 text-yellow-400" />
-            <div className="text-8xl text-yellow-400 mb-6">"</div>
-            <p className="text-4xl mb-8 leading-relaxed font-semibold">
+            <Scroll size={64} className="mx-auto mb-6 sm:mb-8 text-yellow-400 w-12 sm:w-16 h-12 sm:h-16" />
+            <div className="text-6xl sm:text-8xl text-yellow-400 mb-4 sm:mb-6">"</div>
+            <p className="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 leading-relaxed font-semibold">
               السماء والأرض تزولان ولكن كلامي لا يزول
             </p>
-            <div className="w-24 h-1 bg-yellow-400 mx-auto mb-6"></div>
-            <p className="text-2xl text-yellow-200">- متى 24: 35</p>
+            <div className="w-16 sm:w-24 h-1 bg-yellow-400 mx-auto mb-4 sm:mb-6"></div>
+            <p className="text-xl sm:text-2xl text-yellow-200">- متى 24: 35</p>
           </div>
         </div>
       </section>

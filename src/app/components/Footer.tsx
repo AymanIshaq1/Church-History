@@ -14,7 +14,6 @@ export function Footer({ }: FooterProps) {
     { id: "teachings", label: "التعاليم" },
     { id: "liturgy", label: "الطقوس" },
     { id: "art", label: "الفن القبطي" },
-    { id: "monasteries", label: "الأديرة" },
     { id: "saints", label: "القديسون" },
     { id: "bible", label: "الكتاب المقدس" }
   ];
@@ -27,16 +26,16 @@ export function Footer({ }: FooterProps) {
   return (
     <footer className="bg-gradient-to-br from-red-950 via-red-900 to-orange-950 text-white">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 animate-stagger">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12 animate-stagger">
           {/* About Section */}
           <div className="hover-lift">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg hover-scale">
                 <Cross className="text-red-900" size={24} strokeWidth={3} />
               </div>
-              <h3 className="text-2xl font-bold">الكنيسة القبطية</h3>
+              <h3 className="text-xl sm:text-2xl font-bold">الكنيسة القبطية</h3>
             </div>
-            <p className="text-yellow-100 leading-relaxed text-lg">
+            <p className="text-yellow-100 leading-relaxed text-base sm:text-lg">
               كنيسة مصر الرسولية، تأسست على يد القديس مرقس الرسول في القرن الأول الميلادي. 
               كنيسة الشهداء والقديسين، منارة الإيمان الأرثوذكسي.
             </p>
@@ -44,13 +43,13 @@ export function Footer({ }: FooterProps) {
           
           {/* Quick Links */}
           <div className="hover-lift">
-            <h3 className="text-2xl mb-6 font-bold text-yellow-400">روابط سريعة</h3>
+            <h3 className="text-xl sm:text-2xl mb-4 sm:mb-6 font-bold text-yellow-400">روابط سريعة</h3>
             <ul className="space-y-3 animate-stagger">
               {quickLinks.slice(0, 5).map((link, idx) => (
                 <li key={link.id} style={{ animationDelay: `${idx * 50}ms` }}>
                   <button
                     onClick={() => handleNavigation(link.id)}
-                    className="text-yellow-100 hover:text-yellow-300 transition-all text-lg hover:mr-2 transform hover:translate-x-1"
+                    className="text-yellow-100 hover:text-yellow-300 transition-all text-base sm:text-lg hover:mr-2 transform hover:translate-x-1"
                   >
                     ← {link.label}
                   </button>
@@ -61,13 +60,13 @@ export function Footer({ }: FooterProps) {
 
           {/* More Links */}
           <div className="hover-lift">
-            <h3 className="text-2xl mb-6 font-bold text-yellow-400">المزيد</h3>
+            <h3 className="text-xl sm:text-2xl mb-4 sm:mb-6 font-bold text-yellow-400">المزيد</h3>
             <ul className="space-y-3 animate-stagger">
               {quickLinks.slice(5).map((link, idx) => (
                 <li key={link.id} style={{ animationDelay: `${idx * 50}ms` }}>
                   <button
                     onClick={() => handleNavigation(link.id)}
-                    className="text-yellow-100 hover:text-yellow-300 transition-all text-lg hover:mr-2 transform hover:translate-x-1"
+                    className="text-yellow-100 hover:text-yellow-300 transition-all text-base sm:text-lg hover:mr-2 transform hover:translate-x-1"
                   >
                     ← {link.label}
                   </button>
@@ -78,8 +77,8 @@ export function Footer({ }: FooterProps) {
           
           {/* Information */}
           <div className="hover-lift">
-            <h3 className="text-2xl mb-6 font-bold text-yellow-400">معلومات مهمة</h3>
-            <div className="space-y-4 text-yellow-100 text-lg">
+            <h3 className="text-xl sm:text-2xl mb-4 sm:mb-6 font-bold text-yellow-400">معلومات مهمة</h3>
+            <div className="space-y-4 text-yellow-100 text-base sm:text-lg">
               <div className="flex items-start gap-3 hover:translate-x-1 transition-transform">
                 <MapPin size={24} className="flex-shrink-0 mt-1 text-yellow-400" />
                 <p>مصر - مهد المسيحية والرهبنة</p>
@@ -97,23 +96,23 @@ export function Footer({ }: FooterProps) {
         </div>
 
         {/* Stats Bar */}
-        <div className="border-t border-yellow-600/30 pt-12 mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate-stagger">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-500/20 hover-glow hover-scale">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">2000+</div>
-              <div className="text-yellow-100 text-lg">سنة من التاريخ</div>
+        <div className="border-t border-yellow-600/30 pt-8 md:pt-12 mb-8 md:mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center animate-stagger">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">2000+</div>
+              <div className="text-yellow-100 text-sm sm:text-base md:text-lg">سنة من التاريخ</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-500/20 hover-glow hover-scale">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">118</div>
-              <div className="text-yellow-100 text-lg">بطريرك</div>
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">118</div>
+              <div className="text-yellow-100 text-sm sm:text-base md:text-lg">بطريرك</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-500/20 hover-glow hover-scale">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">100+</div>
-              <div className="text-yellow-100 text-lg">دير قبطي</div>
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">100+</div>
+              <div className="text-yellow-100 text-sm sm:text-base md:text-lg">دير قبطي</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-500/20 hover-glow hover-scale">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">20M+</div>
-              <div className="text-yellow-100 text-lg">قبطي حول العالم</div>
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">20M+</div>
+              <div className="text-yellow-100 text-sm sm:text-base md:text-lg">قبطي حول العالم</div>
             </div>
           </div>
         </div>
@@ -121,7 +120,7 @@ export function Footer({ }: FooterProps) {
         {/* Bottom Section */}
         <div className="border-t border-yellow-600/30 pt-8 animate-fade-up">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-yellow-100 text-lg text-center md:text-right">
+            <p className="text-yellow-100 text-base sm:text-lg text-center md:text-right">
               © 2026 تاريخ الكنيسة القبطية الأرثوذكسية. جميع الحقوق محفوظة.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
@@ -134,7 +133,7 @@ export function Footer({ }: FooterProps) {
             </div>
           </div>
           <div className="mt-8 text-center">
-            <p className="text-yellow-200 text-xl italic">
+            <p className="text-yellow-200 text-lg sm:text-xl italic">
               "وأما أنتم فجنس مختار، وكهنوت ملوكي، أمة مقدسة، شعب اقتناء"
             </p>
             <p className="text-yellow-300 mt-2 font-semibold">- 1 بطرس 2:9</p>

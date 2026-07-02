@@ -6,7 +6,6 @@ import { HistoryPage } from "@/app/components/pages/HistoryPage";
 import { TeachingsPage } from "@/app/components/pages/TeachingsPage";
 import { LiturgyPage } from "@/app/components/pages/LiturgyPage";
 import { ArtPage } from "@/app/components/pages/ArtPage";
-import { MonasteriesPage } from "@/app/components/pages/MonasteriesPage";
 import { SaintsPage } from "@/app/components/pages/SaintsPage";
 import { BiblePage } from "@/app/components/pages/BiblePage";
 import { Footer } from "@/app/components/Footer";
@@ -29,7 +28,6 @@ function AppContent() {
         <Route path="/teachings" element={<TeachingsPage />} />
         <Route path="/liturgy" element={<LiturgyPage />} />
         <Route path="/art" element={<ArtPage />} />
-        <Route path="/monasteries" element={<MonasteriesPage />} />
         <Route path="/saints" element={<SaintsPage />} />
         <Route path="/bible" element={<BiblePage />} />
       </Routes>

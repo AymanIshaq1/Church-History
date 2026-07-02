@@ -1,5 +1,5 @@
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Book, Church, Users, Scroll, Sparkles, Award, Globe, Heart } from "lucide-react";
+import { Book, Church, Users, Scroll, Sparkles, Award, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { staggerFadeIn, scrollFadeIn, parallax, pageTransitionIn } from "@/utils/animations";
@@ -31,7 +31,7 @@ export function Hero({ }: HeroProps) {
     }
 
     // Parallax effect on hero background
-    const heroImage = document.querySelector(".hero-bg");
+    const heroImage = document.querySelector<HTMLElement>(".hero-bg");
     if (heroImage) {
       parallax(heroImage, 0.3);
     }
@@ -39,14 +39,14 @@ export function Hero({ }: HeroProps) {
   const features = [
     {
       icon: <Book size={40} />,
-      title: "التاريخ العريق",
+      title: "التاريخ",
       description: "ألفي عام من الإيمان والتراث",
       page: "history",
       color: "from-blue-500 to-blue-700"
     },
     {
       icon: <Church size={40} />,
-      title: "الطقوس المقدسة",
+      title: " الطقس الكنسي",
       description: "احتفالات وصلوات قديمة",
       page: "liturgy",
       color: "from-purple-500 to-purple-700"
@@ -60,7 +60,7 @@ export function Hero({ }: HeroProps) {
     },
     {
       icon: <Scroll size={40} />,
-      title: "التعاليم",
+      title: "اللاهوت",
       description: "عقيدة راسخة ومتوارثة",
       page: "teachings",
       color: "from-red-500 to-red-700"
@@ -71,13 +71,6 @@ export function Hero({ }: HeroProps) {
       description: "إبداع روحاني فريد",
       page: "art",
       color: "from-pink-500 to-pink-700"
-    },
-    {
-      icon: <Globe size={40} />,
-      title: "الأديرة",
-      description: "منارات الرهبنة العالمية",
-      page: "monasteries",
-      color: "from-indigo-500 to-indigo-700"
     },
     {
       icon: <Heart size={40} />,
@@ -91,7 +84,7 @@ export function Hero({ }: HeroProps) {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[700px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[500px] h-screen max-h-[900px] md:h-[700px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 hero-bg">
           <ImageWithFallback 
             src="https://images.unsplash.com/photo-1597212560167-6cf12ea77252?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3B0aWMlMjBjaHVyY2h8ZW58MXx8fHwxNzY5MDg3NzA3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -102,31 +95,31 @@ export function Hero({ }: HeroProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 to-orange-900/30"></div>
         </div>
         
-        <div ref={heroContentRef} className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="mb-8">
-            <div className="inline-block p-4 bg-yellow-500/20 rounded-full backdrop-blur-sm border-2 border-yellow-400 mb-6 hover-scale">
-              <Church size={64} className="text-yellow-400" />
+        <div ref={heroContentRef} className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto py-10">
+          <div className="mb-4 md:mb-8">
+            <div className="inline-block p-3 md:p-4 bg-yellow-500/20 rounded-full backdrop-blur-sm border-2 border-yellow-400 mb-4 md:mb-6 hover-scale">
+              <Church className="text-yellow-400 w-10 h-10 md:w-16 md:h-16" />
             </div>
           </div>
-          <h1 className="text-6xl md:text-7xl mb-6 font-bold leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold leading-tight">
             الكنيسة القبطية الأرثوذكسية
           </h1>
-          <p className="text-2xl md:text-3xl mb-4 text-yellow-200">
+          <p className="text-xl sm:text-2xl md:text-3xl mb-3 md:mb-4 text-yellow-200">
             كنيسة مصر الرسولية
           </p>
-          <p className="text-xl md:text-2xl mb-10 text-gray-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 md:mb-10 text-gray-200 max-w-3xl mx-auto leading-relaxed">
             رحلة عبر ألفي عام من الإيمان والشهادة والتراث المسيحي العريق
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 justify-center">
             <button 
               onClick={() => navigate("/history")}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105 hover-lift"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white w-full sm:w-auto px-8 py-3 md:px-10 md:py-4 rounded-full text-base md:text-lg font-bold shadow-2xl transition-all transform hover:scale-105 hover-lift min-h-[44px]"
             >
               اكتشف التاريخ
             </button>
             <button 
               onClick={() => navigate("/saints")}
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-red-900 px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105 hover-lift"
+              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-red-900 w-full sm:w-auto px-8 py-3 md:px-10 md:py-4 rounded-full text-base md:text-lg font-bold shadow-2xl transition-all transform hover:scale-105 hover-lift min-h-[44px]"
             >
               القديسون
             </button>
@@ -135,53 +128,53 @@ export function Hero({ }: HeroProps) {
       </section>
 
       {/* Stats Section */}
-      <section ref={statsRef} className="py-16 bg-gradient-to-r from-red-900 to-orange-900 text-white animate-stagger">
+      <section ref={statsRef} className="py-12 md:py-16 bg-gradient-to-r from-red-900 to-orange-900 text-white animate-stagger">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div className="p-6 hover-scale">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">2000+</div>
-              <div className="text-xl">سنة من التاريخ</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
+            <div className="p-4 md:p-6 hover-scale">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-400 mb-1 md:mb-2">2000+</div>
+              <div className="text-sm sm:text-base md:text-xl">سنة من التاريخ</div>
             </div>
-            <div className="p-6 hover-scale">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">1000+</div>
-              <div className="text-xl">قديس وشهيد</div>
+            <div className="p-4 md:p-6 hover-scale">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-400 mb-1 md:mb-2">1000+</div>
+              <div className="text-sm sm:text-base md:text-xl">قديس وشهيد</div>
             </div>
-            <div className="p-6 hover-scale">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">20+</div>
-              <div className="text-xl">مليون قبطي</div>
+            <div className="p-4 md:p-6 hover-scale">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-400 mb-1 md:mb-2">20+</div>
+              <div className="text-sm sm:text-base md:text-xl">مليون قبطي</div>
             </div>
-            <div className="p-6">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">100+</div>
-              <div className="text-xl">دير قبطي</div>
+            <div className="p-4 md:p-6 hover-scale">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-400 mb-1 md:mb-2">100+</div>
+              <div className="text-sm sm:text-base md:text-xl">دير قبطي</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section ref={featuresRef} className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
+      <section ref={featuresRef} className="py-16 md:py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-stagger">
-            <h2 className="text-5xl mb-6 text-red-900 font-bold">استكشف الكنيسة القبطية</h2>
-            <p className="text-2xl text-gray-600">تعرف على تاريخنا وتراثنا الروحي الغني</p>
+          <div className="text-center mb-10 md:mb-16 animate-stagger">
+            <h2 className="text-3xl md:text-5xl mb-4 md:mb-6 text-red-900 font-bold">استكشف الكنيسة القبطية</h2>
+            <p className="text-lg md:text-2xl text-gray-600">تعرف على تاريخنا وتراثنا الروحي الغني</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 animate-stagger">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 animate-stagger">
             {features.map((feature, index) => (
               <button
                 key={index}
                 onClick={() => navigate(`/${feature.page}`)}
-                className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 overflow-hidden hover-lift"
+                className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 overflow-hidden hover-lift w-full text-right"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.color} opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform`}></div>
-                <div className={`w-20 h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:rotate-6 transition-transform`}>
-                  <div className="text-white">
+                <div className={`absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br ${feature.color} opacity-10 rounded-full -mr-12 -mt-12 md:-mr-16 md:-mt-16 group-hover:scale-150 transition-transform`}></div>
+                <div className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-lg group-hover:rotate-6 transition-transform`}>
+                  <div className="text-white scale-75 md:scale-100">
                     {feature.icon}
                   </div>
                 </div>
-                <h3 className="text-2xl mb-3 text-gray-800 font-bold">{feature.title}</h3>
-                <p className="text-gray-600 text-lg">{feature.description}</p>
+                <h3 className="text-xl md:text-2xl mb-2 md:mb-3 text-gray-800 font-bold">{feature.title}</h3>
+                <p className="text-gray-600 text-base md:text-lg">{feature.description}</p>
               </button>
             ))}
           </div>
@@ -189,57 +182,21 @@ export function Hero({ }: HeroProps) {
       </section>
 
       {/* Quote Section */}
-      <section ref={quoteRef} className="py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white animate-fade-up">
+      <section ref={quoteRef} className="py-16 md:py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white animate-fade-up">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="text-8xl text-yellow-400 mb-6">"</div>
-            <p className="text-3xl md:text-4xl mb-8 leading-relaxed font-semibold">
+            <div className="text-6xl md:text-8xl text-yellow-400 mb-2 md:mb-6 leading-none">"</div>
+            <p className="text-2xl sm:text-3xl md:text-4xl mb-6 md:mb-8 leading-relaxed font-semibold">
               كنيسة الشهداء التي روت بدمائها أرض مصر، وأنارت بإيمانها العالم أجمع
             </p>
-            <div className="w-24 h-1 bg-yellow-400 mx-auto mb-6"></div>
-            <p className="text-xl text-yellow-200">الكنيسة القبطية الأرثوذكسية</p>
+            <div className="w-16 md:w-24 h-1 bg-yellow-400 mx-auto mb-4 md:mb-6"></div>
+            <p className="text-lg md:text-xl text-yellow-200">الكنيسة القبطية الأرثوذكسية</p>
           </div>
         </div>
       </section>
 
       {/* Image Gallery */}
-      <section ref={galleryRef} className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-12 text-red-900 text-center font-bold animate-slide-up">معرض الصور</h2>
-          <div className="grid md:grid-cols-3 gap-6 animate-stagger">
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group hover-glow">
-              <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1704276864429-9ed5be4cdd25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcnRob2RveCUyMGNodXJjaCUyMGludGVyaW9yfGVufDF8fHx8MTc2OTAyMjgzMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="داخل الكنيسة"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                <p className="text-white text-2xl font-bold">جمال العمارة القبطية</p>
-              </div>
-            </div>
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group hover-glow">
-              <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1666689464584-eaf83dc3ac70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNlcnQlMjBtb25hc3Rlcnl8ZW58MXx8fHwxNzY5MDg3OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="دير في الصحراء"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                <p className="text-white text-2xl font-bold">أديرة الصحراء</p>
-              </div>
-            </div>
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group hover-glow">
-              <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1616428882609-7443facdbe81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHVyY2glMjBjYW5kbGVzJTIwcHJheWVyfGVufDF8fHx8MTc2OTAyMzQwM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="شموع الصلاة"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                <p className="text-white text-2xl font-bold">الصلاة والتأمل</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+       
     </div>
   );
 }
