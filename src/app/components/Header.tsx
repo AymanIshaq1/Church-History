@@ -28,11 +28,11 @@ export function Header({ currentPage }: HeaderProps) {
   };
 
   return (
-    <header className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 shadow-2xl sticky top-0 z-50 border-b-4 border-yellow-600">
+    <header className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 shadow-2xl sticky top-0 z-50 border-b-4 border-yellow-600 animate-slide-down">
       <div className="container mx-auto px-4 py-5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 cursor-pointer" onClick={() => handleClick("home")}>
-            <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-300">
+          <div className="flex items-center gap-4 cursor-pointer hover-scale" onClick={() => handleClick("home")}>
+            <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-300 hover-glow">
               <Cross className="text-red-900" size={28} strokeWidth={3} />
             </div>
             <div>
@@ -43,15 +43,16 @@ export function Header({ currentPage }: HeaderProps) {
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex gap-1">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => handleClick(item.id)}
-                className={`px-4 py-2 rounded-lg transition-all ${
+                className={`px-4 py-2 rounded-lg transition-all transform hover:scale-105 ${
                   currentPage === item.id
                     ? "bg-yellow-500 text-red-900 font-bold shadow-lg"
                     : "text-white hover:bg-red-700 hover:shadow-md"
                 }`}
+                style={{ animationDelay: `${index * 30}ms` }}
               >
                 {item.label}
               </button>
@@ -60,7 +61,7 @@ export function Header({ currentPage }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button 
-            className="lg:hidden text-white bg-red-700 p-2 rounded-lg hover:bg-red-600"
+            className="lg:hidden text-white bg-red-700 p-2 rounded-lg hover:bg-red-600 transition-all hover-scale"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -69,12 +70,12 @@ export function Header({ currentPage }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden mt-6 flex flex-col gap-3 pb-4">
+          <nav className="lg:hidden mt-6 flex flex-col gap-3 pb-4 animate-stagger">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleClick(item.id)}
-                className={`px-4 py-3 rounded-lg transition-all text-right ${
+                className={`px-4 py-3 rounded-lg transition-all text-right transform hover:translate-x-1 ${
                   currentPage === item.id
                     ? "bg-yellow-500 text-red-900 font-bold"
                     : "text-white bg-red-700 hover:bg-red-600"

@@ -1,12 +1,41 @@
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { Book, Church, Users, Scroll, Sparkles, Award, Globe, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { staggerFadeIn, scrollFadeIn, parallax, pageTransitionIn } from "@/utils/animations";
+import { useStaggerFadeIn, useParallax, useAnimationCleanup } from "@/utils/useAnimations";
 
 interface HeroProps {
 }
 
 export function Hero({ }: HeroProps) {
   const navigate = useNavigate();
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const quoteRef = useRef<HTMLDivElement>(null);
+
+  useAnimationCleanup();
+
+  useEffect(() => {
+    // Hero content animation on load
+    if (heroContentRef.current) {
+      const children = heroContentRef.current.children as HTMLCollection;
+      staggerFadeIn(Array.from(children) as HTMLElement[], {
+        stagger: 0.15,
+        delay: 0.2,
+        distance: 30,
+        direction: "up",
+      });
+    }
+
+    // Parallax effect on hero background
+    const heroImage = document.querySelector(".hero-bg");
+    if (heroImage) {
+      parallax(heroImage, 0.3);
+    }
+  }, []);
   const features = [
     {
       icon: <Book size={40} />,
@@ -63,7 +92,7 @@ export function Hero({ }: HeroProps) {
     <div>
       {/* Hero Section */}
       <section className="relative h-[700px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 hero-bg">
           <ImageWithFallback 
             src="https://images.unsplash.com/photo-1597212560167-6cf12ea77252?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3B0aWMlMjBjaHVyY2h8ZW58MXx8fHwxNzY5MDg3NzA3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
             alt="الكنيسة القبطية"
@@ -73,9 +102,9 @@ export function Hero({ }: HeroProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 to-orange-900/30"></div>
         </div>
         
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+        <div ref={heroContentRef} className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="mb-8">
-            <div className="inline-block p-4 bg-yellow-500/20 rounded-full backdrop-blur-sm border-2 border-yellow-400 mb-6">
+            <div className="inline-block p-4 bg-yellow-500/20 rounded-full backdrop-blur-sm border-2 border-yellow-400 mb-6 hover-scale">
               <Church size={64} className="text-yellow-400" />
             </div>
           </div>
@@ -91,13 +120,13 @@ export function Hero({ }: HeroProps) {
           <div className="flex flex-wrap gap-4 justify-center">
             <button 
               onClick={() => navigate("/history")}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105 hover-lift"
             >
               اكتشف التاريخ
             </button>
             <button 
               onClick={() => navigate("/saints")}
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-red-900 px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
+              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-red-900 px-10 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105 hover-lift"
             >
               القديسون
             </button>
@@ -106,18 +135,18 @@ export function Hero({ }: HeroProps) {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-red-900 to-orange-900 text-white">
+      <section ref={statsRef} className="py-16 bg-gradient-to-r from-red-900 to-orange-900 text-white animate-stagger">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div className="p-6">
+            <div className="p-6 hover-scale">
               <div className="text-5xl font-bold text-yellow-400 mb-2">2000+</div>
               <div className="text-xl">سنة من التاريخ</div>
             </div>
-            <div className="p-6">
+            <div className="p-6 hover-scale">
               <div className="text-5xl font-bold text-yellow-400 mb-2">1000+</div>
               <div className="text-xl">قديس وشهيد</div>
             </div>
-            <div className="p-6">
+            <div className="p-6 hover-scale">
               <div className="text-5xl font-bold text-yellow-400 mb-2">20+</div>
               <div className="text-xl">مليون قبطي</div>
             </div>
@@ -130,19 +159,20 @@ export function Hero({ }: HeroProps) {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
+      <section ref={featuresRef} className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-stagger">
             <h2 className="text-5xl mb-6 text-red-900 font-bold">استكشف الكنيسة القبطية</h2>
             <p className="text-2xl text-gray-600">تعرف على تاريخنا وتراثنا الروحي الغني</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 animate-stagger">
             {features.map((feature, index) => (
               <button
                 key={index}
                 onClick={() => navigate(`/${feature.page}`)}
-                className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 overflow-hidden"
+                className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 overflow-hidden hover-lift"
+                style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.color} opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform`}></div>
                 <div className={`w-20 h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:rotate-6 transition-transform`}>
@@ -159,7 +189,7 @@ export function Hero({ }: HeroProps) {
       </section>
 
       {/* Quote Section */}
-      <section className="py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white">
+      <section ref={quoteRef} className="py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white animate-fade-up">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="text-8xl text-yellow-400 mb-6">"</div>
@@ -173,11 +203,11 @@ export function Hero({ }: HeroProps) {
       </section>
 
       {/* Image Gallery */}
-      <section className="py-20 bg-white">
+      <section ref={galleryRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl mb-12 text-red-900 text-center font-bold">معرض الصور</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
+          <h2 className="text-5xl mb-12 text-red-900 text-center font-bold animate-slide-up">معرض الصور</h2>
+          <div className="grid md:grid-cols-3 gap-6 animate-stagger">
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group hover-glow">
               <ImageWithFallback 
                 src="https://images.unsplash.com/photo-1704276864429-9ed5be4cdd25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcnRob2RveCUyMGNodXJjaCUyMGludGVyaW9yfGVufDF8fHx8MTc2OTAyMjgzMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="داخل الكنيسة"
@@ -187,7 +217,7 @@ export function Hero({ }: HeroProps) {
                 <p className="text-white text-2xl font-bold">جمال العمارة القبطية</p>
               </div>
             </div>
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group hover-glow">
               <ImageWithFallback 
                 src="https://images.unsplash.com/photo-1666689464584-eaf83dc3ac70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNlcnQlMjBtb25hc3Rlcnl8ZW58MXx8fHwxNzY5MDg3OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="دير في الصحراء"
@@ -197,7 +227,7 @@ export function Hero({ }: HeroProps) {
                 <p className="text-white text-2xl font-bold">أديرة الصحراء</p>
               </div>
             </div>
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group hover-glow">
               <ImageWithFallback 
                 src="https://images.unsplash.com/photo-1616428882609-7443facdbe81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHVyY2glMjBjYW5kbGVzJTIwcHJheWVyfGVufDF8fHx8MTc2OTAyMzQwM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="شموع الصلاة"
