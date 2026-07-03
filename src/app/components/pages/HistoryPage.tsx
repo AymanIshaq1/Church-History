@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { Calendar, Crown, BookOpen, Sword, Heart, Star, Users, Zap, ChevronLeft } from "lucide-react";
-import { useEffect } from "react";
-import { useScrollFadeIn, useStaggerFadeIn, useAnimationCleanup } from "@/utils/useAnimations";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "motion/react";
+import { PageWrapper } from "@/app/components/ui/PageWrapper";
+import { heroFadeScale, viewportConfig, staggerContainer, staggerItem, fadeUp } from "@/lib/animations";
+
 import apostlesImg from "../../../image/history-apostolic.jpeg";
 import martyrdomImg from "../../../image/history-martyrdom.jpeg";
 import monasticismImg from "../../../image/history-monasticism.jpeg";
@@ -14,7 +14,7 @@ import islamicEntryImg from "../../../image/history-islamic-entry.jpeg";
 import islamicCrusadesImg from "../../../image/history-islamic-crusades.jpeg";
 import modernImg from "../../../image/history-modern.jpeg";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 type Era = {
   id: string;
@@ -263,157 +263,134 @@ const facts = [
 ];
 
 export function HistoryPage() {
-  useAnimationCleanup();
-
-  useEffect(() => {
-    // Scroll trigger animations for era cards
-    const eraCards = document.querySelectorAll(".hp-era-card");
-    eraCards.forEach((card, index) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-          end: "top 50%",
-          toggleActions: "play none none reverse",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        delay: index * 0.1,
-        ease: "power2.out",
-      });
-    });
-
-    // Animate body blocks (events, figures, challenges, etc.)
-    const bodyBlocks = document.querySelectorAll(".hp-body-block");
-    bodyBlocks.forEach((block, index) => {
-      gsap.from(block, {
-        scrollTrigger: {
-          trigger: block,
-          start: "top 85%",
-          end: "top 55%",
-          toggleActions: "play none none reverse",
-        },
-        opacity: 0,
-        y: 40,
-        x: index % 2 === 0 ? -20 : 20,
-        duration: 0.7,
-        ease: "power2.out",
-      });
-    });
-
-    // Animate event and figure rows
-    const rows = document.querySelectorAll(".hp-event-row, .hp-figure-row");
-    rows.forEach((row, index) => {
-      gsap.from(row, {
-        scrollTrigger: {
-          trigger: row,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        x: -20,
-        duration: 0.5,
-        delay: index * 0.05,
-        ease: "power2.out",
-      });
-    });
-
-    // Add hover glow effect to era cards
-    eraCards.forEach((card) => {
-      const element = card as HTMLElement;
-      element.addEventListener("mouseenter", () => {
-        gsap.to(element, {
-          boxShadow: `0 0 30px ${(card.getAttribute("data-glow") || "rgba(59,130,246,0.5)")}`,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-
-      element.addEventListener("mouseleave", () => {
-        gsap.to(element, {
-          boxShadow: "0 0 0px rgba(0,0,0,0)",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-    });
-  }, []);
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden" dir="rtl">
-      <section className="hp-hero relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 animate-fade-up">
+    <PageWrapper className="min-h-screen bg-white overflow-hidden" dir="rtl">
+      <section className="hp-hero relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900">
         <div className="hp-hero-bg absolute inset-0">
-          <ImageWithFallback
-            src={apostlesImg}
-            alt="Hero"
-            className="w-full h-full object-cover opacity-40 mix-blend-overlay"
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+            className="w-full h-full"
+          >
+            <ImageWithFallback
+              src={apostlesImg}
+              alt="Hero"
+              className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+            />
+          </motion.div>
           <div className="hp-depth-soft absolute -top-24 -left-24 w-72 h-72 rounded-full bg-white/10 blur-3xl" />
           <div className="hp-depth-strong absolute bottom-0 right-0 w-96 h-96 rounded-full bg-yellow-200/10 blur-3xl" />
           <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-red-900/60 to-transparent" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center text-white animate-stagger">
-          <div className="hp-hero-kicker inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 mb-8 text-sm sm:text-base text-yellow-200 backdrop-blur-sm">
+        <div className="container mx-auto px-4 relative z-10 text-center text-white">
+          <motion.div
+            variants={heroFadeScale}
+            initial="hidden"
+            animate="show"
+            className="hp-hero-kicker inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 mb-8 text-sm sm:text-base text-yellow-200 backdrop-blur-sm"
+          >
             <Star size={18} />
             رحلة الإيمان عبر التاريخ
-          </div>
-          <h1 className="hp-hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 font-bold leading-tight drop-shadow-2xl">
+          </motion.div>
+          <motion.h1
+            variants={heroFadeScale}
+            initial="hidden"
+            animate="show"
+            transition={{ delay: 0.2 }}
+            className="hp-hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 font-bold leading-tight drop-shadow-2xl"
+          >
             تاريخ الكنيسة القبطية
-          </h1>
-          <p className="hp-hero-copy text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-4xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p
+            variants={heroFadeScale}
+            initial="hidden"
+            animate="show"
+            transition={{ delay: 0.4 }}
+            className="hp-hero-copy text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-4xl mx-auto leading-relaxed"
+          >
             ألفا عام من الإيمان والشهادة والصمود
-          </p>
+          </motion.p>
         </div>
       </section>
 
       <section className="hp-era-overview-section py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="hp-section-head text-center mb-14">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="hp-section-head text-center mb-14"
+          >
             <h2 className="hp-section-title text-3xl sm:text-4xl md:text-5xl mb-4 text-red-900 font-bold">العصور التاريخية</h2>
             <p className="hp-section-copy text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               ثمانية عصور تروي ملحمة إيمان لا تنتهي.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="hp-era-overview-track grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 animate-stagger">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="hp-era-overview-track grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          >
             {eras.map((era, idx) => (
-              <a
+              <motion.a
                 key={era.id}
                 href={`#${era.id}`}
-                data-glow={era.glowColor}
-                className="hp-era-card group rounded-2xl p-5 sm:p-6 bg-white border border-gray-100 shadow-md hover-lift hover-scale transition-all"
-                style={{ animationDelay: `${idx * 50}ms` }}
+                variants={staggerItem}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+                className="hp-era-card group rounded-2xl p-5 sm:p-6 bg-white border border-gray-100 shadow-md transition-all block"
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white bg-gradient-to-br ${era.color} mb-4 group-hover:rotate-6 transition-transform`}>
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white bg-gradient-to-br ${era.color} mb-4 transition-transform`}>
                   {era.icon}
                 </div>
                 <div className="font-bold text-base sm:text-lg text-gray-800 leading-snug">{era.title}</div>
                 <div className="text-xs sm:text-sm text-red-700 mt-2">{era.dates}</div>
-              </a>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       <section className="py-16 sm:py-24 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <div className="hp-section-head text-center mb-16 animate-stagger">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="hp-section-head text-center mb-16"
+          >
             <h2 className="hp-section-title text-3xl sm:text-4xl md:text-5xl mb-4 text-red-900 font-bold">الخط الزمني</h2>
             <p className="hp-section-copy text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">أبرز المحطات عبر التاريخ.</p>
-          </div>
+          </motion.div>
 
-          <div className="hp-global-timeline max-w-4xl mx-auto relative">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="hp-global-timeline max-w-4xl mx-auto relative"
+          >
             <div className="hidden sm:block absolute right-28 top-0 bottom-0 w-px bg-gradient-to-b from-red-900/0 via-red-800/30 to-orange-900/0" />
             {globalTimeline.map((item, idx) => (
-              <div key={`${item.year}-${item.event}`} className="hp-tl-item flex items-start gap-3 sm:gap-4 mb-6 hover-scale transition-all" style={{ animationDelay: `${idx * 30}ms` }}>
+              <motion.div
+                key={`${item.year}-${item.event}`}
+                variants={staggerItem}
+                className="hp-tl-item flex items-start gap-3 sm:gap-4 mb-6 transition-all"
+              >
                 <div className="flex-shrink-0 w-16 sm:w-24 text-left text-xs sm:text-base font-bold text-red-700">{item.year}</div>
-                <div className="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 mt-1 sm:mt-1.5 rounded-full ring-4 ring-white shadow-lg hover-glow" style={{ backgroundColor: item.color }} />
+                <div className="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 mt-1 sm:mt-1.5 rounded-full ring-4 ring-white shadow-lg" style={{ backgroundColor: item.color }} />
                 <div className="flex-1 rounded-2xl bg-white p-3 sm:p-5 shadow-lg text-sm sm:text-base text-gray-700 leading-relaxed">{item.event}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -428,10 +405,19 @@ export function HistoryPage() {
             {eraIndex + 1 < 10 ? `0${eraIndex + 1}` : eraIndex + 1}
           </div>
 
-          <div className="container mx-auto px-4 py-16 sm:py-24 relative z-10">
-            <article className={`hp-era-intro-card hp-era-card flex flex-col ${eraIndex % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} bg-white border border-gray-100 rounded-3xl shadow-2xl overflow-hidden hover-lift transition-all`}>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="container mx-auto px-4 py-16 sm:py-24 relative z-10"
+          >
+            <motion.article
+              variants={staggerItem}
+              className={`hp-era-intro-card hp-era-card flex flex-col ${eraIndex % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} bg-white border border-gray-100 rounded-3xl shadow-2xl overflow-hidden transition-all`}
+            >
               {era.image && (
-                <div className="hp-image-wrap relative w-full lg:w-4/12 overflow-hidden bg-gray-100 h-56 sm:h-72 lg:h-[34rem]">
+                <div className="hp-image-wrap relative w-full lg:w-4/12 overflow-hidden bg-gray-100 aspect-video lg:aspect-auto lg:min-h-[34rem]">
                   <ImageWithFallback
                     src={era.image}
                     alt={era.title}
@@ -440,8 +426,8 @@ export function HistoryPage() {
                 </div>
               )}
 
-              <div className="w-full lg:w-8/12 p-5 sm:p-10 lg:p-12 animate-stagger">
-                <div className={`hp-era-intro-motion inline-flex items-center gap-2 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-5 text-white bg-gradient-to-br ${era.color} hover-scale`}>
+              <div className="w-full lg:w-8/12 p-5 sm:p-10 lg:p-12">
+                <div className={`hp-era-intro-motion inline-flex items-center gap-2 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-5 text-white bg-gradient-to-br ${era.color}`}>
                   {era.icon}
                   <span className="text-sm font-bold">{era.dates}</span>
                 </div>
@@ -449,10 +435,21 @@ export function HistoryPage() {
                 <p className="hp-era-intro-motion text-base sm:text-lg text-gray-700 leading-relaxed mb-4">{era.intro}</p>
                 <p className="hp-era-intro-motion text-sm sm:text-base text-gray-600 leading-relaxed">{era.overview}</p>
               </div>
-            </article>
+            </motion.article>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
-              <div className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportConfig}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10"
+            >
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8"
+              >
                 <h3 className="text-xl sm:text-2xl mb-5 text-red-800 font-bold">أهم الأحداث</h3>
                 <div className="space-y-4">
                   {era.events.map((event) => (
@@ -462,9 +459,14 @@ export function HistoryPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8">
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8"
+              >
                 <h3 className="text-xl sm:text-2xl mb-5 text-red-800 font-bold">الشخصيات المؤثرة</h3>
                 <div className="space-y-4">
                   {era.figures.map((figure) => (
@@ -479,59 +481,97 @@ export function HistoryPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8">
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8"
+              >
                 <h3 className="text-xl sm:text-2xl mb-4 text-red-800 font-bold">التحديات والصراعات</h3>
                 <p className="text-gray-700 leading-relaxed">{era.challenges}</p>
-              </div>
+              </motion.div>
 
-              <div className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8">
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8"
+              >
                 <h3 className="text-xl sm:text-2xl mb-4 text-red-800 font-bold">تأثير العصر على الكنيسة</h3>
                 <p className="text-gray-700 leading-relaxed">{era.impact}</p>
-              </div>
+              </motion.div>
 
-              <div className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8">
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="hp-body-block bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-8"
+              >
                 <h3 className="text-xl sm:text-2xl mb-5 text-red-800 font-bold">أبرز النقاط</h3>
-                <ul className="space-y-3 animate-stagger">
-                  {era.highlights.map((point, idx) => (
-                    <li key={`${era.id}-${point}`} className="hp-highlight-row flex items-start gap-3 text-gray-700 leading-relaxed hover-lift transition-all" style={{ animationDelay: `${idx * 50}ms` }}>
+                <ul className="space-y-3">
+                  {era.highlights.map((point) => (
+                    <li key={`${era.id}-${point}`} className="hp-highlight-row flex items-start gap-3 text-gray-700 leading-relaxed">
                       <ChevronLeft size={18} className="mt-1 flex-shrink-0 text-red-700" />
                       {point}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
-              <div className="hp-body-block hp-quote-card bg-gradient-to-br from-red-900 to-red-700 rounded-3xl shadow-xl p-8 sm:p-10 text-white hover-glow transition-all">
-                <div className="hp-quote-mark text-5xl leading-none mb-4 text-yellow-200 animate-bounce-smooth">"</div>
-                <p className="hp-quote-text text-lg sm:text-xl leading-relaxed text-yellow-100">{era.quote}</p>
-              </div>
-            </div>
-          </div>
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="bg-gradient-to-br from-red-900 to-red-700 rounded-3xl shadow-xl p-8 sm:p-10 text-white"
+              >
+                <div className="text-5xl leading-none mb-4 text-yellow-200">"</div>
+                <p className="text-lg sm:text-xl leading-relaxed text-yellow-100">{era.quote}</p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </section>
       ))}
 
       <section className="py-16 sm:py-24 bg-gradient-to-r from-red-800 to-orange-800 text-white">
         <div className="container mx-auto px-4">
-          <div className="hp-section-head text-center mb-12 animate-stagger">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="hp-section-head text-center mb-12"
+          >
             <h2 className="hp-section-title text-3xl sm:text-4xl md:text-5xl mb-4 font-bold">حقائق تاريخية مهمة</h2>
             <p className="hp-section-copy text-base sm:text-lg text-yellow-100 max-w-2xl mx-auto">
               أرقام ومعان تلخص بعض ملامح الحضور القبطي في التاريخ.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-stagger">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {facts.map((fact, idx) => (
-              <div key={fact.stat} className="hp-fact-card bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover-lift hover-glow transition-all" style={{ animationDelay: `${idx * 80}ms` }}>
+              <motion.div
+                key={fact.stat}
+                variants={staggerItem}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="hp-fact-card bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 group"
+              >
                 <div className="mb-4 text-yellow-400 transform group-hover:scale-110 transition-transform">{fact.icon}</div>
                 <h3 className="text-2xl sm:text-3xl mb-3 font-bold">{fact.stat}</h3>
                 <p className="text-lg text-yellow-100 leading-relaxed">{fact.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </PageWrapper>
   );
 }

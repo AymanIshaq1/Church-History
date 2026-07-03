@@ -1,12 +1,9 @@
 import { Cross, Mail, MapPin, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAnimationCleanup } from "@/utils/useAnimations";
+import { motion } from "motion/react";
+import { staggerContainer, staggerItem, fadeUp, viewportConfig, hoverButton } from "@/lib/animations";
 
-interface FooterProps {
-}
-
-export function Footer({ }: FooterProps) {
-  useAnimationCleanup();
+export function Footer() {
   const navigate = useNavigate();
   const quickLinks = [
     { id: "home", label: "الرئيسية" },
@@ -24,59 +21,68 @@ export function Footer({ }: FooterProps) {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-red-950 via-red-900 to-orange-950 text-white">
+    <footer className="bg-gradient-to-br from-red-950 via-red-900 to-orange-950 text-white overflow-hidden">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12 animate-stagger">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12"
+        >
           {/* About Section */}
-          <div className="hover-lift">
+          <motion.div variants={staggerItem}>
             <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg hover-scale">
+              <motion.div 
+                whileHover={{ scale: 1.1 }}
+                className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
+              >
                 <Cross className="text-red-900" size={24} strokeWidth={3} />
-              </div>
+              </motion.div>
               <h3 className="text-xl sm:text-2xl font-bold">الكنيسة القبطية</h3>
             </div>
             <p className="text-yellow-100 leading-relaxed text-base sm:text-lg">
               كنيسة مصر الرسولية، تأسست على يد القديس مرقس الرسول في القرن الأول الميلادي. 
               كنيسة الشهداء والقديسين، منارة الإيمان الأرثوذكسي.
             </p>
-          </div>
+          </motion.div>
           
           {/* Quick Links */}
-          <div className="hover-lift">
+          <motion.div variants={staggerItem}>
             <h3 className="text-xl sm:text-2xl mb-4 sm:mb-6 font-bold text-yellow-400">روابط سريعة</h3>
-            <ul className="space-y-3 animate-stagger">
-              {quickLinks.slice(0, 5).map((link, idx) => (
-                <li key={link.id} style={{ animationDelay: `${idx * 50}ms` }}>
+            <ul className="space-y-3">
+              {quickLinks.slice(0, 5).map((link) => (
+                <li key={link.id}>
                   <button
                     onClick={() => handleNavigation(link.id)}
-                    className="text-yellow-100 hover:text-yellow-300 transition-all text-base sm:text-lg hover:mr-2 transform hover:translate-x-1"
+                    className="text-yellow-100 hover:text-yellow-300 transition-all text-base sm:text-lg hover:mr-2"
                   >
                     ← {link.label}
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* More Links */}
-          <div className="hover-lift">
+          <motion.div variants={staggerItem}>
             <h3 className="text-xl sm:text-2xl mb-4 sm:mb-6 font-bold text-yellow-400">المزيد</h3>
-            <ul className="space-y-3 animate-stagger">
-              {quickLinks.slice(5).map((link, idx) => (
-                <li key={link.id} style={{ animationDelay: `${idx * 50}ms` }}>
+            <ul className="space-y-3">
+              {quickLinks.slice(5).map((link) => (
+                <li key={link.id}>
                   <button
                     onClick={() => handleNavigation(link.id)}
-                    className="text-yellow-100 hover:text-yellow-300 transition-all text-base sm:text-lg hover:mr-2 transform hover:translate-x-1"
+                    className="text-yellow-100 hover:text-yellow-300 transition-all text-base sm:text-lg hover:mr-2"
                   >
                     ← {link.label}
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
           
           {/* Information */}
-          <div className="hover-lift">
+          <motion.div variants={staggerItem}>
             <h3 className="text-xl sm:text-2xl mb-4 sm:mb-6 font-bold text-yellow-400">معلومات مهمة</h3>
             <div className="space-y-4 text-yellow-100 text-base sm:text-lg">
               <div className="flex items-start gap-3 hover:translate-x-1 transition-transform">
@@ -92,44 +98,59 @@ export function Footer({ }: FooterProps) {
                 <p>اللغة القبطية: آخر مراحل اللغة المصرية القديمة</p>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Stats Bar */}
         <div className="border-t border-yellow-600/30 pt-8 md:pt-12 mb-8 md:mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center animate-stagger">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center"
+          >
+            <motion.div variants={staggerItem} whileHover={{ scale: 1.05 }} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">2000+</div>
               <div className="text-yellow-100 text-sm sm:text-base md:text-lg">سنة من التاريخ</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+            </motion.div>
+            <motion.div variants={staggerItem} whileHover={{ scale: 1.05 }} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">118</div>
               <div className="text-yellow-100 text-sm sm:text-base md:text-lg">بطريرك</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+            </motion.div>
+            <motion.div variants={staggerItem} whileHover={{ scale: 1.05 }} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">100+</div>
               <div className="text-yellow-100 text-sm sm:text-base md:text-lg">دير قبطي</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20 hover-glow hover-scale">
+            </motion.div>
+            <motion.div variants={staggerItem} whileHover={{ scale: 1.05 }} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-500/20">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-2">20M+</div>
               <div className="text-yellow-100 text-sm sm:text-base md:text-lg">قبطي حول العالم</div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-yellow-600/30 pt-8 animate-fade-up">
+        <motion.div 
+          variants={fadeUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="border-t border-yellow-600/30 pt-8"
+        >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-yellow-100 text-base sm:text-lg text-center md:text-right">
               © 2026 تاريخ الكنيسة القبطية الأرثوذكسية. جميع الحقوق محفوظة.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button 
+              <motion.button 
+                whileHover="hover"
+                whileTap="tap"
+                variants={hoverButton}
                 onClick={() => handleNavigation("home")}
-                className="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-red-900 rounded-lg font-bold transition-all transform hover:scale-105"
+                className="px-6 py-2 bg-yellow-500 text-red-900 rounded-lg font-bold"
               >
                 العودة للرئيسية
-              </button>
+              </motion.button>
             </div>
           </div>
           <div className="mt-8 text-center">
@@ -138,7 +159,7 @@ export function Footer({ }: FooterProps) {
             </p>
             <p className="text-yellow-300 mt-2 font-semibold">- 1 بطرس 2:9</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

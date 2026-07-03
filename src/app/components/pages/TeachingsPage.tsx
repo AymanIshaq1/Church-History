@@ -4,6 +4,9 @@ import {
   Zap, Ghost, ScrollText, Quote, Info, ChevronLeft,
   Brain, Star
 } from "lucide-react";
+import { PageWrapper } from "@/app/components/ui/PageWrapper";
+import { motion } from "motion/react";
+import { heroFadeScale, fadeUp, staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
 export function TeachingsPage() {
   // Data for Section 1
@@ -96,15 +99,15 @@ export function TeachingsPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-12 text-center">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-purple-900 mb-4">القسم الأول: مركز المسيح في الثالوث القدوس</h2>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full"></div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-12 mb-16">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section1.map((item, index) => (
-                  <div key={index} className="bg-purple-50 rounded-2xl p-6 shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+                  <motion.div variants={staggerItem} key={index} className="bg-purple-50 rounded-2xl p-6 shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="bg-white p-3 rounded-xl shadow-sm">
                         {item.icon}
@@ -119,12 +122,12 @@ export function TeachingsPage() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-              <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-100 relative group w-full">
+              </motion.div>
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-100 relative group w-full">
                 <img src="/image/page1.jpg" alt="مركز المسيح في الثالوث القدوس" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-purple-100" onError={(e) => e.currentTarget.src = "/image/download.jpg"} />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -134,16 +137,16 @@ export function TeachingsPage() {
       <section className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-12 text-center">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-purple-900 mb-4">القسم الثاني: الصفات الإلهية للسيد المسيح</h2>
               <p className="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">يقدم الكتاب المقدس دلائل قاطعة على أن المسيح يحمل صفات لا تخص سوى الله وحده.</p>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-6"></div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-12 mb-16">
-              <div className="grid sm:grid-cols-2 gap-6">
+              <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 gap-6">
                 {section2.map((item, index) => (
-                  <div key={index} className={`bg-white rounded-2xl p-6 shadow-md border-b-4 border-indigo-500 hover:-translate-y-1 transition-transform ${item.title === "الديان" ? "sm:col-span-2" : ""}`}>
+                  <motion.div variants={staggerItem} key={index} className={`bg-white rounded-2xl p-6 shadow-md border-b-4 border-indigo-500 hover:-translate-y-1 transition-transform ${item.title === "الديان" ? "sm:col-span-2" : ""}`}>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="bg-indigo-50 p-2 rounded-lg">
                         {item.icon}
@@ -151,12 +154,12 @@ export function TeachingsPage() {
                       <h3 className="text-xl font-bold text-indigo-900">{item.title}</h3>
                     </div>
                     <p className="text-gray-700 leading-relaxed">{item.desc}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-              <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-indigo-100 relative group w-full">
+              </motion.div>
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-indigo-100 relative group w-full">
                 <img src="/image/page2.jpg" alt="الصفات الإلهية للسيد المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-indigo-100" onError={(e) => e.currentTarget.src = "/image/download (1).jpg"} />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -166,16 +169,16 @@ export function TeachingsPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-12 text-center">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-purple-900 mb-4">القسم الثالث: السلطان المطلق للسيد المسيح</h2>
               <p className="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">تمتع السيد المسيح بسلطان مطلق يدل على لاهوته بوضوح تام، ويشمل هذا السلطان مجالات متعددة:</p>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-6"></div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-12 mb-16">
-              <div className="grid sm:grid-cols-2 gap-6">
+              <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 gap-6">
                 {section3.map((item, index) => (
-                  <div key={index} className={`flex gap-4 p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:bg-stone-100 transition-colors ${item.title === "سلطانه على الشريعة" ? "sm:col-span-2" : ""}`}>
+                  <motion.div variants={staggerItem} key={index} className={`flex gap-4 p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:bg-stone-100 transition-colors ${item.title === "سلطانه على الشريعة" ? "sm:col-span-2" : ""}`}>
                     <div className="bg-purple-100 text-purple-700 p-3 rounded-xl h-fit">
                       {item.icon}
                     </div>
@@ -183,12 +186,12 @@ export function TeachingsPage() {
                       <h3 className="text-xl font-bold text-purple-900 mb-2">{item.title}</h3>
                       <p className="text-gray-700 text-lg leading-relaxed">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-              <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-200 relative group w-full">
+              </motion.div>
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-200 relative group w-full">
                 <img src="/image/page3.jpg" alt="السلطان المطلق للسيد المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-stone-100" onError={(e) => e.currentTarget.src = "/image/download (2).jpg"} />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -198,27 +201,27 @@ export function TeachingsPage() {
       <section className="py-20 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-12 text-center">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">القسم الرابع: آيات صريحة تؤكد لاهوت المسيح</h2>
               <p className="text-xl text-purple-200 mt-4 max-w-3xl mx-auto">يزخر الكتاب المقدس بآيات مباشرة لا تقبل التأويل وتعلن ألوهية المسيح صراحة:</p>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-6"></div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-12">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section4.map((item, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-colors relative">
+                  <motion.div variants={staggerItem} key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-colors relative">
                     <Quote className="absolute top-4 left-4 text-white/10" size={48} />
                     <p className="text-lg leading-relaxed mb-4 relative z-10 font-medium">{item.text}</p>
                     <div className="text-yellow-400 font-bold text-left relative z-10" dir="ltr">
                       {item.ref}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-              <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-500/30 relative group w-full">
+              </motion.div>
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-500/30 relative group w-full">
                 <img src="/image/page4.jpg" alt="آيات صريحة تؤكد لاهوت المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-purple-900" onError={(e) => e.currentTarget.src = "/image/download (3).jpg"} />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

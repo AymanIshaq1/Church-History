@@ -1,6 +1,8 @@
 import { Menu, X, Cross } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "motion/react";
+import { heroFadeScale, viewportConfig, hoverButton } from "@/lib/animations";
 
 interface HeaderProps {
   currentPage: string;
@@ -27,66 +29,120 @@ export function Header({ currentPage }: HeaderProps) {
   };
 
   return (
-    <header className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 shadow-2xl sticky top-0 z-50 border-b-4 border-yellow-600 animate-slide-down">
+    <motion.header
+      variants={heroFadeScale}
+      initial="hidden"
+      animate="show"
+      viewport={viewportConfig}
+      className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 shadow-2xl sticky top-0 z-50 border-b-4 border-yellow-600"
+    >
       <div className="container mx-auto px-4 py-3 md:py-5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 md:gap-4 cursor-pointer hover-scale" onClick={() => handleClick("home")}>
-            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-300 hover-glow shrink-0">
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-3 md:gap-4 cursor-pointer" 
+            onClick={() => handleClick("home")}
+          >
+            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-300 shrink-0">
               <Cross className="text-red-900 w-6 h-6 md:w-7 md:h-7" strokeWidth={3} />
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-bold tracking-wide">الكنيسة القبطية</h1>
               <p className="text-yellow-200 text-xs sm:text-sm">كنيسة الشهداء والقديسين</p>
             </div>
-          </div>
+          </motion.div>
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex gap-1 xl:gap-2 flex-wrap justify-end">
             {navItems.map((item, index) => (
-              <button
+              <motion.div
                 key={item.id}
-                onClick={() => handleClick(item.id)}
-                className={`px-3 xl:px-4 py-2 rounded-lg transition-all transform hover:scale-105 text-sm xl:text-base ${
-                  currentPage === item.id
-                    ? "bg-yellow-500 text-red-900 font-bold shadow-lg"
-                    : "text-white hover:bg-red-700 hover:shadow-md"
-                }`}
-                style={{ animationDelay: `${index * 30}ms` }}
+                variants={heroFadeScale}
+                initial="hidden"
+                animate="show"
+                transition={{ delay: index * 0.05 }}
+                className="inline-block"
               >
-                {item.label}
-              </button>
+                <motion.button
+                  onClick={() => handleClick(item.id)}
+                  whileHover="hover"
+                  whileTap="tap"
+                  variants={hoverButton}
+                  className={`relative px-3 xl:px-4 py-2 rounded-lg text-sm xl:text-base overflow-hidden group ${
+                    currentPage === item.id
+                      ? "bg-yellow-500 text-red-900 font-bold shadow-lg"
+                      : "text-white hover:bg-red-700 hover:shadow-md"
+                  }`}
+                >
+                  <span className="relative z-10">{item.label}</span>
+                  {currentPage !== item.id && (
+                    <motion.div 
+                      variants={{
+                        hover: { scaleX: 1, opacity: 1 }
+                      }}
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute bottom-1 left-2 right-2 h-0.5 bg-yellow-400 origin-center rounded-full"
+                    />
+                  )}
+                </motion.button>
+              </motion.div>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden text-white bg-red-700 p-2 rounded-lg hover:bg-red-600 transition-all hover-scale min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="lg:hidden text-white bg-red-700 p-2 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="lg:hidden mt-4 flex flex-col gap-2 pb-4 animate-stagger">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleClick(item.id)}
-                className={`px-4 py-3 rounded-lg transition-all text-right transform hover:translate-x-1 min-h-[44px] ${
-                  currentPage === item.id
-                    ? "bg-yellow-500 text-red-900 font-bold"
-                    : "text-white bg-red-700 hover:bg-red-600"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-        )}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.nav 
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden flex flex-col gap-2 overflow-hidden"
+            >
+              <div className="pt-4 pb-2 flex flex-col gap-2">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    variants={heroFadeScale}
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    transition={{ delay: index * 0.05, duration: 0.2 }}
+                    className="inline-block"
+                  >
+                    <motion.button
+                      onClick={() => handleClick(item.id)}
+                      whileHover="hover"
+                      whileTap="tap"
+                      variants={hoverButton}
+                      className={`px-4 py-3 rounded-lg text-right min-h-[44px] ${
+                        currentPage === item.id
+                          ? "bg-yellow-500 text-red-900 font-bold"
+                          : "text-white bg-red-700 hover:bg-red-600"
+                      }`}
+                    >
+                      {item.label}
+                    </motion.button>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }
