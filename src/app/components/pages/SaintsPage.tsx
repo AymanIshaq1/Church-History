@@ -5,129 +5,139 @@ import { PageWrapper } from "@/app/components/ui/PageWrapper";
 import { motion } from "motion/react";
 import { heroFadeScale, fadeUp, staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
+export const saintsData = [
+  {
+    id: "saint-mark",
+    name: "القديس مرقس الرسول",
+    title: "مؤسس الكنيسة القبطية",
+    period: "استشهد عام 68 م",
+    description: "كاتب الإنجيل الثاني، أحد السبعين رسولاً، أول بطريرك لكرسي الإسكندرية. وصل إلى مصر حوالي عام 42 م وأسس الكنيسة القبطية. استشهد في الإسكندرية عام 68 م.",
+    contributions: [
+      "تأسيس كنيسة الإسكندرية",
+      "كتابة الإنجيل الثاني",
+      "إنشاء مدرسة الإسكندرية",
+      "رسامة أول أسقف قبطي (أنيانوس)"
+    ],
+    imageSrc: "/image/download.jpg",
+    videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video3_ckpyqw.mp4",
+    color: "from-blue-500 to-blue-700"
+  },
+  {
+    id: "saint-antony",
+    name: "القديس أنطونيوس الكبير",
+    title: "أب الرهبان",
+    period: "251 - 356 م",
+    description: "مؤسس الرهبنة المسيحية في العالم. ترك العالم في سن العشرين وعاش في الصحراء 105 سنوات. تبعه آلاف الرهبان وانتشرت الرهبنة من مصر إلى العالم.",
+    contributions: [
+      "تأسيس الرهبنة الفردية (الوحدة)",
+      "حياة نسكية مثالية",
+      "محاربة الشياطين والتجارب",
+      "إرشاد آلاف الرهبان"
+    ],
+    imageSrc: "/image/download (1).jpg",
+    videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783029666/church_video6_rydgce.mp4",
+    color: "from-orange-500 to-orange-700"
+  },
+  {
+    id: "saint-athanasius",
+    name: "القديس أثناسيوس الرسولي",
+    title: "حامي الايمان ",
+    period: "296 - 373 م",
+    description: "البطريرك العشرون لكرسي الإسكندرية. دافع عن الإيمان الأرثوذكسي ضد الأريوسية. نُفي خمس مرات بسبب إيمانه. كتب عدة كتب لاهوتية عظيمة.",
+    contributions: [
+      "الدفاع عن ألوهية المسيح",
+      "مقاومة بدعة أريوس",
+      "كتابة حياة القديس أنطونيوس",
+      "حضور مجمع نيقية"
+    ],
+    imageSrc: "/image/download (2).jpg",
+    videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783027646/%D8%A7%D9%84%D8%A8%D8%A7%D8%A8%D8%A7_%D8%A7%D8%AB%D9%86%D8%A7%D8%B3%D9%8A%D9%88%D8%B3_lsrn1n.mp4",
+    color: "from-red-500 to-red-700"
+  },
+
+  {
+    id: "saint-cyril",
+    name: "القديس كيرلس الكبير",
+    title: "عمود الدين وكاتب الإيمان",
+    period: "378 - 444 م",
+    description: "البطريرك الرابع والعشرون، لقب بـ'ختم الآباء'. دافع عن عقيدة الطبيعة الواحدة للمسيح. رئس مجمع أفسس المسكوني الثالث عام 431 م.",
+    contributions: [
+      "رئاسة مجمع أفسس",
+      "الدفاع عن لقب 'والدة الإله' للعذراء",
+      "مقاومة بدعة نسطور",
+      "كتابة تفاسير كتابية عميقة"
+    ],
+    imageSrc: "/image/download (3).jpg",
+    videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783029098/chuch_video5_nzrucr.mp4",
+    color: "from-purple-500 to-purple-700"
+  },
+  {
+    id: "saint-pachomius",
+    name: "القديس باخوميوس",
+    title: "أب الشركة",
+    period: "292 - 348 م",
+    description: "مؤسس الرهبنة الجماعية (الشركة). وضع أول قانون رهباني في المسيحية. أنشأ تسعة أديرة وديرين للراهبات، ضمت آلاف الرهبان.",
+    contributions: [
+      "تأسيس الرهبنة الجماعية",
+      "وضع أول قانون رهباني",
+      "إنشاء 11 ديراً",
+      "تنظيم الحياة الرهبانية"
+    ],
+    imageSrc: "/image/download (4).jpg",
+    videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783031204/church_video7_a7aa5e.mp4",
+    color: "from-green-500 to-green-700"
+
+  },
+  {
+    id: "saint-john-chrysostom",
+    name: "القديس يوحنا الذهبي الفم",
+    title: "فم الذهب ومعلم الكنيسة",
+    period: "292 - 348 م",
+    description: "أحد أعظم آباء الكنيسة في القرن الرابع الميلادي، اشتهر ببلاغته الفريدة وعظاته المؤثرة حتى لُقِّب بذهبي الفم. دافع عن الحق بشجاعة، وخدم الفقراء والمحتاجين، وترك تراثًا روحيًا ولاهوتيًا ما زال يؤثر في الكنيسة حتى اليوم",
+    contributions: [
+      " أعظم واعظ في تاريخ الكنيسة ",
+      " تفسير الكتاب المقدس وتعليم الشعب ",
+      "الدفاع عن العدالة ومساندة الفقراء ",
+      " وضع القداس الإلهي المعروف باسمه"
+    ],
+    imageSrc: "/image/john_chrysostom.jpg",
+    videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
+    color: "from-green-500 to-green-700"
+
+  },
+
+
+];
+
+export const martyrsData = [
+  {
+    id: "martyr-demiana",
+    name: "الشهيدة دميانة والأربعون عذراء",
+    story: "رفضن التخلي عن إيمانهن وتزويجهن قسراً، فاستشهدن جميعاً في عهد دقلديانوس",
+    date: "13 طوبة"
+  },
+  {
+    id: "martyr-george",
+    name: "الشهيد مار جرجس الروماني",
+    story: "ضابط روماني رفيع، اعترف بإيمانه أمام الإمبراطور دقلديانوس، فعُذب وقُتل",
+    date: "23 برمودة"
+  },
+  {
+    id: "martyr-mercurius",
+    name: "الشهيد أبو سيفين (مرقوريوس)",
+    story: "جندي روماني شجاع، استشهد بسبب إيمانه بالمسيح، اشتهر بمعجزاته",
+    date: "25 هاتور"
+  },
+  {
+    id: "martyr-rebecca",
+    name: "الشهيدة رفقة وأولادها الخمسة",
+    story: "أم قديسة شجعت أبناءها على الاستشهاد من أجل المسيح، ثم استشهدت هي أيضاً",
+    date: "3 برمودة"
+  }
+];
+
 export function SaintsPage() {
   const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null);
-  const saints = [
-    {
-      name: "القديس مرقس الرسول",
-      title: "مؤسس الكنيسة القبطية",
-      period: "استشهد عام 68 م",
-      description: "كاتب الإنجيل الثاني، أحد السبعين رسولاً، أول بطريرك لكرسي الإسكندرية. وصل إلى مصر حوالي عام 42 م وأسس الكنيسة القبطية. استشهد في الإسكندرية عام 68 م.",
-      contributions: [
-        "تأسيس كنيسة الإسكندرية",
-        "كتابة الإنجيل الثاني",
-        "إنشاء مدرسة الإسكندرية",
-        "رسامة أول أسقف قبطي (أنيانوس)"
-      ],
-       imageSrc: "/image/download.jpg",
-     videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video3_ckpyqw.mp4",
-      color: "from-blue-500 to-blue-700"
-    },
-    {
-      name: "القديس أنطونيوس الكبير",
-      title: "أب الرهبان",
-      period: "251 - 356 م",
-      description: "مؤسس الرهبنة المسيحية في العالم. ترك العالم في سن العشرين وعاش في الصحراء 105 سنوات. تبعه آلاف الرهبان وانتشرت الرهبنة من مصر إلى العالم.",
-      contributions: [
-        "تأسيس الرهبنة الفردية (الوحدة)",
-        "حياة نسكية مثالية",
-        "محاربة الشياطين والتجارب",
-        "إرشاد آلاف الرهبان"
-      ],
-      imageSrc: "/image/download (1).jpg",
-      videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783029666/church_video6_rydgce.mp4",
-      color: "from-orange-500 to-orange-700"
-    },
-    {
-      name: "القديس أثناسيوس الرسولي",
-      title: "حامي الايمان ",
-      period: "296 - 373 م",
-      description: "البطريرك العشرون لكرسي الإسكندرية. دافع عن الإيمان الأرثوذكسي ضد الأريوسية. نُفي خمس مرات بسبب إيمانه. كتب عدة كتب لاهوتية عظيمة.",
-      contributions: [
-        "الدفاع عن ألوهية المسيح",
-        "مقاومة بدعة أريوس",
-        "كتابة حياة القديس أنطونيوس",
-        "حضور مجمع نيقية"
-      ],
-  imageSrc: "/image/download (2).jpg",
-  videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783027646/%D8%A7%D9%84%D8%A8%D8%A7%D8%A8%D8%A7_%D8%A7%D8%AB%D9%86%D8%A7%D8%B3%D9%8A%D9%88%D8%B3_lsrn1n.mp4",
-  color: "from-red-500 to-red-700"
-},
-    
-    {
-      name: "القديس كيرلس الكبير",
-      title: "عمود الدين وكاتب الإيمان",
-      period: "378 - 444 م",
-      description: "البطريرك الرابع والعشرون، لقب بـ'ختم الآباء'. دافع عن عقيدة الطبيعة الواحدة للمسيح. رئس مجمع أفسس المسكوني الثالث عام 431 م.",
-      contributions: [
-        "رئاسة مجمع أفسس",
-        "الدفاع عن لقب 'والدة الإله' للعذراء",
-        "مقاومة بدعة نسطور",
-        "كتابة تفاسير كتابية عميقة"
-      ],
-      imageSrc: "/image/download (3).jpg",
-       videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783029098/chuch_video5_nzrucr.mp4",
-      color: "from-purple-500 to-purple-700"
-    },
-    {
-      name: "القديس باخوميوس",
-      title: "أب الشركة",
-      period: "292 - 348 م",
-      description: "مؤسس الرهبنة الجماعية (الشركة). وضع أول قانون رهباني في المسيحية. أنشأ تسعة أديرة وديرين للراهبات، ضمت آلاف الرهبان.",
-      contributions: [
-        "تأسيس الرهبنة الجماعية",
-        "وضع أول قانون رهباني",
-        "إنشاء 11 ديراً",
-        "تنظيم الحياة الرهبانية"
-      ],
-        imageSrc: "/image/download (4).jpg",
-         videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/v1783031204/church_video7_a7aa5e.mp4",
-      color: "from-green-500 to-green-700"
-      
-    },
-    {
-      name: "القديس يوحنا الذهبي الفم",
-      title: "فم الذهب ومعلم الكنيسة",
-      period: "292 - 348 م",
-      description: "أحد أعظم آباء الكنيسة في القرن الرابع الميلادي، اشتهر ببلاغته الفريدة وعظاته المؤثرة حتى لُقِّب بذهبي الفم. دافع عن الحق بشجاعة، وخدم الفقراء والمحتاجين، وترك تراثًا روحيًا ولاهوتيًا ما زال يؤثر في الكنيسة حتى اليوم",
-      contributions: [
-        " أعظم واعظ في تاريخ الكنيسة ",
-        " تفسير الكتاب المقدس وتعليم الشعب ",
-        "الدفاع عن العدالة ومساندة الفقراء ",
-        " وضع القداس الإلهي المعروف باسمه"
-      ],
-        imageSrc: "/image/john_chrysostom.jpg",
-         videoSrc: "https://res.cloudinary.com/dqz8n4hbj/video/upload/church_video2_tmk9cd.mp4",
-      color: "from-green-500 to-green-700"
-      
-    },
-    
-      
-  ];
-
-  const martyrs = [
-    {
-      name: "الشهيدة دميانة والأربعون عذراء",
-      story: "رفضن التخلي عن إيمانهن وتزويجهن قسراً، فاستشهدن جميعاً في عهد دقلديانوس",
-      date: "13 طوبة"
-    },
-    {
-      name: "الشهيد مار جرجس الروماني",
-      story: "ضابط روماني رفيع، اعترف بإيمانه أمام الإمبراطور دقلديانوس، فعُذب وقُتل",
-      date: "23 برمودة"
-    },
-    {
-      name: "الشهيد أبو سيفين (مرقوريوس)",
-      story: "جندي روماني شجاع، استشهد بسبب إيمانه بالمسيح، اشتهر بمعجزاته",
-      date: "25 هاتور"
-    },
-    {
-      name: "الشهيدة رفقة وأولادها الخمسة",
-      story: "أم قديسة شجعت أبناءها على الاستشهاد من أجل المسيح، ثم استشهدت هي أيضاً",
-      date: "3 برمودة"
-    }
-  ];
-
   return (
     <PageWrapper className="min-h-screen">
       {/* Hero */}
@@ -158,7 +168,7 @@ export function SaintsPage() {
             أعمدة الإيمان ونجوم السماء
           </motion.p>
         </div>
-        
+
       </section>
 
       {/* Introduction */}
@@ -168,7 +178,7 @@ export function SaintsPage() {
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-6 sm:p-10 shadow-2xl">
               <h2 className="text-3xl sm:text-4xl mb-4 sm:mb-6 text-indigo-900 font-bold text-center">سحابة من الشهود</h2>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
-                الكنيسة القبطية غنية بقديسيها وشهدائها الذين سطروا تاريخاً مجيداً من الإيمان والتضحية. 
+                الكنيسة القبطية غنية بقديسيها وشهدائها الذين سطروا تاريخاً مجيداً من الإيمان والتضحية.
                 من الرسل والآباء الأوائل إلى الشهداء الذين رووا الأرض بدمائهم، كل واحد منهم نموذج للحياة المسيحية الحقيقية.
               </p>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed">
@@ -184,8 +194,8 @@ export function SaintsPage() {
         <div className="container mx-auto px-4">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-5xl mb-16 text-indigo-900 text-center font-bold">قديسون عظماء</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} className="space-y-12">
-            {saints.map((saint, index) => (
-              <motion.div variants={staggerItem} key={index} className="w-full">
+            {saintsData.map((saint, index) => (
+              <motion.div variants={staggerItem} key={index} className="w-full" id={saint.id}>
                 {fullscreenIndex === index ? (
                   // 🎬 فيديو ملء الشاشة - يأخذ مكان البطاقة كلها
                   <div className="max-w-6xl mx-auto h-140 relative bg-black rounded-3xl overflow-hidden shadow-2xl">
@@ -200,7 +210,7 @@ export function SaintsPage() {
                       onClick={() => setFullscreenIndex(null)}
                       className="absolute top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg hover:bg-black"
                     >
-                      ❌ 
+                      ❌
                     </button>
                   </div>
                 ) : (
@@ -208,8 +218,8 @@ export function SaintsPage() {
                     <div className={`w-full lg:w-1/3 flex items-center justify-center p-8 lg:p-12 bg-gradient-to-br ${saint.color}`}>
                       <div className="text-center text-white w-full">
                         {saint.imageSrc && (
-                          <ImageWithFallback 
-                            src={saint.imageSrc} 
+                          <ImageWithFallback
+                            src={saint.imageSrc}
                             alt={saint.name}
                             className="w-full max-w-[200px] sm:max-w-xs h-auto aspect-[3/4] mx-auto mb-4 md:mb-6 object-cover rounded-lg"
                           />
@@ -261,16 +271,15 @@ export function SaintsPage() {
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border-2 border-white/20 mb-8 md:mb-12">
               <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 leading-relaxed">
-                "عصر الشهداء" هو أظلم فترة في تاريخ الكنيسة القبطية. استشهد مئات الآلاف من الأقباط، خاصة في عهد الإمبراطور دقلديانوس (284-305 م). 
+                "عصر الشهداء" هو أظلم فترة في تاريخ الكنيسة القبطية. استشهد مئات الآلاف من الأقباط، خاصة في عهد الإمبراطور دقلديانوس (284-305 م).
               </p>
               <p className="text-lg sm:text-xl md:text-2xl leading-relaxed">
                 يبدأ التقويم القبطي من عام 284 م (عام الشهداء) تخليداً لذكرى هؤلاء الأبطال الذين فضّلوا الموت على إنكار إيمانهم.
               </p>
             </motion.div>
-
             <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} className="grid md:grid-cols-2 gap-8">
-              {martyrs.map((martyr, index) => (
-                <motion.div variants={staggerItem} key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20 hover:bg-white/20 transition-all">
+              {martyrsData.map((martyr, index) => (
+                <motion.div variants={staggerItem} key={index} id={martyr.id} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20 hover:bg-white/20 transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="text-5xl">👑</div>
                     <div className="flex-1">
@@ -292,7 +301,7 @@ export function SaintsPage() {
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-5xl mb-16 text-indigo-900 text-center font-bold">آباء البرية</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
             {[
-              { name: "أنبا أنطونيوس", title: "أب الرهبان", quote: "رأيت فخاخ إبليس منصوبة على الأرض كلها",  icon: "⛰️" },
+              { name: "أنبا أنطونيوس", title: "أب الرهبان", quote: "رأيت فخاخ إبليس منصوبة على الأرض كلها", icon: "⛰️" },
               { name: "أنبا بولا", title: "أول السواح", quote: "عاش 90 سنة في البرية", icon: "🦁" },
               { name: "أنبا مقاريوس", title: "أب البرية", quote: "إن لم تقل في قلبك أنا وحدي والله في الأرض، لن تستريح", icon: "🏜️" },
               { name: "أنبا بيشوي", title: "الكامل المحبة", quote: "اشتاق لغسل أقدام المسيح", icon: "❤️" },
@@ -320,7 +329,7 @@ export function SaintsPage() {
               <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-indigo-800 font-bold">البابا كيرلس السادس</h3>
               <p className="text-base sm:text-lg text-gray-600 mb-3 sm:mb-4">1902 - 1971 م</p>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                البطريرك الـ116، عُرف بحياته النسكية وصلواته القوية. شهد عصره ظهورات العذراء في الزيتون. 
+                البطريرك الـ116، عُرف بحياته النسكية وصلواته القوية. شهد عصره ظهورات العذراء في الزيتون.
                 قام بإحياء روحي كبير في الكنيسة.
               </p>
             </motion.div>
@@ -329,7 +338,7 @@ export function SaintsPage() {
               <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-indigo-800 font-bold">البابا شنودة الثالث</h3>
               <p className="text-base sm:text-lg text-gray-600 mb-3 sm:mb-4">1923 - 2012 م</p>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                البطريرك الـ117، معلم الأجيال. خدم لمدة 40 عاماً، نشر التعليم والكرازة في العالم كله. 
+                البطريرك الـ117، معلم الأجيال. خدم لمدة 40 عاماً، نشر التعليم والكرازة في العالم كله.
                 كاتب وشاعر ومعلم عظيم.
               </p>
             </motion.div>
@@ -344,7 +353,7 @@ export function SaintsPage() {
             <Heart size={64} className="mx-auto mb-8 text-yellow-400" />
             <h2 className="text-5xl mb-8 font-bold">شفاعة القديسين</h2>
             <p className="text-2xl mb-8 leading-relaxed">
-              نؤمن بشفاعة القديسين، فهم أحياء عند الله وقادرون على الصلاة من أجلنا. 
+              نؤمن بشفاعة القديسين، فهم أحياء عند الله وقادرون على الصلاة من أجلنا.
               نطلب صلواتهم كما نطلب صلوات إخوتنا على الأرض.
             </p>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20">
@@ -355,7 +364,7 @@ export function SaintsPage() {
             </div>
           </motion.div>
         </div>
-       
+
       </section>
     </PageWrapper>
   );

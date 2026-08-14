@@ -4,49 +4,53 @@ import { PageWrapper } from "@/app/components/ui/PageWrapper";
 import { motion } from "motion/react";
 import { heroFadeScale, fadeUp, staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
+export const artForms = [
+  {
+    id: "art-icons",
+    icon: <ImageIcon size={48} />,
+    title: "الأيقونات القبطية",
+    description: "فن الأيقونة القبطية يتميز بعمقه الروحي والرمزي، حيث تُرسم الأيقونات بطريقة تعكس المجد السماوي",
+    features: ["الوجوه ذات العيون الواسعة", "الألوان الغنية والذهبية", "البساطة والروحانية", "الرموز اللاهوتية"],
+    color: "from-amber-500 to-amber-700"
+  },
+  {
+    id: "art-architecture",
+    icon: <Church size={48} />,
+    title: "العمارة القبطية",
+    description: "تتميز الكنائس القبطية بتصميمها الفريد الذي يجمع بين التراث الفرعوني والبيزنطي والإسلامي",
+    features: ["القباب والأقباء", "الحجاب المقدس", "الهيكل الثلاثي", "الأعمدة والتيجان"],
+    color: "from-blue-500 to-blue-700"
+  },
+  {
+    id: "art-manuscripts",
+    icon: <BookOpen size={48} />,
+    title: "المخطوطات المزخرفة",
+    description: "المخطوطات القبطية تحفة فنية تجمع بين الخط القبطي الجميل والزخارف الملونة",
+    features: ["الحروف المزخرفة", "الزخارف النباتية", "الألوان الطبيعية", "رسوم القديسين"],
+    color: "from-green-500 to-green-700"
+  },
+  {
+    id: "art-applied",
+    icon: <Palette size={48} />,
+    title: "الفنون التطبيقية",
+    description: "تشمل النسيج والخشب والمعادن والعاج، كلها تعكس الإيمان والجمال",
+    features: ["النسيج القبطي", "الخشب المحفور", "الأواني المعدنية", "الصلبان المزخرفة"],
+    color: "from-purple-500 to-purple-700"
+  }
+];
+
+export const symbolism = [
+  { id: "sym-cross", symbol: "✝️", name: "الصليب", meaning: "رمز الفداء والخلاص" },
+  { id: "sym-dove", symbol: "🕊️", name: "الحمامة", meaning: "الروح القدس" },
+  { id: "sym-fish", symbol: "🐟", name: "السمكة", meaning: "رمز المسيح (إخثوس)" },
+  { id: "sym-anchor", symbol: "⚓", name: "المرساة", meaning: "الرجاء والثبات" },
+  { id: "sym-grapes", symbol: "🍇", name: "العنب", meaning: "دم المسيح" },
+  { id: "sym-wheat", symbol: "🌾", name: "القمح", meaning: "جسد المسيح" },
+  { id: "sym-crown", symbol: "👑", name: "التاج", meaning: "المجد الأبدي" },
+  { id: "sym-lion", symbol: "🦁", name: "الأسد", meaning: "القيامة والقوة" }
+];
+
 export function ArtPage() {
-  const artForms = [
-    {
-      icon: <ImageIcon size={48} />,
-      title: "الأيقونات القبطية",
-      description: "فن الأيقونة القبطية يتميز بعمقه الروحي والرمزي، حيث تُرسم الأيقونات بطريقة تعكس المجد السماوي",
-      features: ["الوجوه ذات العيون الواسعة", "الألوان الغنية والذهبية", "البساطة والروحانية", "الرموز اللاهوتية"],
-      color: "from-amber-500 to-amber-700"
-    },
-    {
-      icon: <Church size={48} />,
-      title: "العمارة القبطية",
-      description: "تتميز الكنائس القبطية بتصميمها الفريد الذي يجمع بين التراث الفرعوني والبيزنطي والإسلامي",
-      features: ["القباب والأقباء", "الحجاب المقدس", "الهيكل الثلاثي", "الأعمدة والتيجان"],
-      color: "from-blue-500 to-blue-700"
-    },
-    {
-      icon: <BookOpen size={48} />,
-      title: "المخطوطات المزخرفة",
-      description: "المخطوطات القبطية تحفة فنية تجمع بين الخط القبطي الجميل والزخارف الملونة",
-      features: ["الحروف المزخرفة", "الزخارف النباتية", "الألوان الطبيعية", "رسوم القديسين"],
-      color: "from-green-500 to-green-700"
-    },
-    {
-      icon: <Palette size={48} />,
-      title: "الفنون التطبيقية",
-      description: "تشمل النسيج والخشب والمعادن والعاج، كلها تعكس الإيمان والجمال",
-      features: ["النسيج القبطي", "الخشب المحفور", "الأواني المعدنية", "الصلبان المزخرفة"],
-      color: "from-purple-500 to-purple-700"
-    }
-  ];
-
-  const symbolism = [
-    { symbol: "✝️", name: "الصليب", meaning: "رمز الفداء والخلاص" },
-    { symbol: "🕊️", name: "الحمامة", meaning: "الروح القدس" },
-    { symbol: "🐟", name: "السمكة", meaning: "رمز المسيح (إخثوس)" },
-    { symbol: "⚓", name: "المرساة", meaning: "الرجاء والثبات" },
-    { symbol: "🍇", name: "العنب", meaning: "دم المسيح" },
-    { symbol: "🌾", name: "القمح", meaning: "جسد المسيح" },
-    { symbol: "👑", name: "التاج", meaning: "المجد الأبدي" },
-    { symbol: "🦁", name: "الأسد", meaning: "القيامة والقوة" }
-  ];
-
   return (
     <PageWrapper className="min-h-screen">
       {/* Hero */}
@@ -85,7 +89,7 @@ export function ArtPage() {
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-amber-900 text-center font-bold">أشكال الفن القبطي</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {artForms.map((art, index) => (
-              <motion.div variants={staggerItem} key={index} className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2">
+              <motion.div variants={staggerItem} key={index} id={art.id} className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2">
                 <div className={`h-3 bg-gradient-to-r ${art.color}`}></div>
                 <div className="p-6 sm:p-10">
                   <div className={`w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br ${art.color} rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg`}>
@@ -118,7 +122,7 @@ export function ArtPage() {
           <div className="max-w-6xl mx-auto">
             <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-8 md:mb-12">
               <motion.div variants={staggerItem} className="relative aspect-[3/4] h-auto w-full rounded-2xl overflow-hidden shadow-2xl group">
-                <ImageWithFallback 
+                <ImageWithFallback
                   src="https://images.unsplash.com/photo-1650138716474-58d5a9c339a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWxpZ2lvdXMlMjBhcnQlMjBpY29uc3xlbnwxfHx8fDE3NjkwODc5Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                   alt="أيقونة قبطية"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -128,7 +132,7 @@ export function ArtPage() {
                 </div>
               </motion.div>
               <motion.div variants={staggerItem} className="relative aspect-[3/4] h-auto w-full rounded-2xl overflow-hidden shadow-2xl group">
-                <ImageWithFallback 
+                <ImageWithFallback
                   src="https://images.unsplash.com/photo-1649774473714-15500dbc10d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFpbmVkJTIwZ2xhc3MlMjBjaHVyY2h8ZW58MXx8fHwxNzY5MDg3OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                   alt="فن الزجاج الملون"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -138,7 +142,7 @@ export function ArtPage() {
                 </div>
               </motion.div>
               <motion.div variants={staggerItem} className="relative aspect-[3/4] h-auto w-full rounded-2xl overflow-hidden shadow-2xl group">
-                <ImageWithFallback 
+                <ImageWithFallback
                   src="https://images.unsplash.com/photo-1704276864429-9ed5be4cdd25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcnRob2RveCUyMGNodXJjaCUyMGludGVyaW9yfGVufDF8fHx8MTc2OTAyMjgzMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                   alt="العمارة الداخلية"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -182,7 +186,7 @@ export function ArtPage() {
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-center font-bold">الرموز المسيحية</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {symbolism.map((item, index) => (
-              <motion.div variants={staggerItem} key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center border-2 border-white/20 hover:bg-white/20 transition-all">
+              <motion.div variants={staggerItem} key={index} id={item.id} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center border-2 border-white/20 hover:bg-white/20 transition-all">
                 <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">{item.symbol}</div>
                 <h3 className="text-xl sm:text-2xl mb-1 sm:mb-2 text-yellow-300 font-bold">{item.name}</h3>
                 <p className="text-sm sm:text-lg">{item.meaning}</p>
@@ -199,7 +203,7 @@ export function ArtPage() {
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="relative">
-                <ImageWithFallback 
+                <ImageWithFallback
                   src="https://images.unsplash.com/photo-1686109616991-1acaf4fa7199?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmNpZW50JTIwY3Jvc3N8ZW58MXx8fHwxNzY5MDg3OTM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                   alt="الصليب القبطي"
                   className="w-full aspect-[4/5] md:aspect-square object-cover rounded-3xl shadow-2xl"

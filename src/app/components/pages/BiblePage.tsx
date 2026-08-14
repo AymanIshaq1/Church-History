@@ -4,78 +4,81 @@ import { PageWrapper } from "@/app/components/ui/PageWrapper";
 import { motion } from "motion/react";
 import { heroFadeScale, fadeUp, staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
+export const oldTestament = [
+  { id: "bible-ot-gen", name: "التكوين", chapters: 50, category: "التوراة" },
+  { id: "bible-ot-ex", name: "الخروج", chapters: 40, category: "التوراة" },
+  { id: "bible-ot-lev", name: "اللاويين", chapters: 27, category: "التوراة" },
+  { id: "bible-ot-num", name: "العدد", chapters: 36, category: "التوراة" },
+  { id: "bible-ot-deut", name: "التثنية", chapters: 34, category: "التوراة" },
+  { id: "bible-ot-josh", name: "يشوع", chapters: 24, category: "التاريخ" },
+  { id: "bible-ot-ps", name: "المزامير", chapters: 150, category: "الشعر" },
+  { id: "bible-ot-prov", name: "الأمثال", chapters: 31, category: "الحكمة" },
+  { id: "bible-ot-isa", name: "إشعياء", chapters: 66, category: "الأنبياء الكبار" },
+  { id: "bible-ot-jer", name: "إرميا", chapters: 52, category: "الأنبياء الكبار" }
+];
+
+export const newTestament = [
+  { id: "bible-nt-matt", name: "متى", chapters: 28, category: "الأناجيل" },
+  { id: "bible-nt-mark", name: "مرقس", chapters: 16, category: "الأناجيل" },
+  { id: "bible-nt-luke", name: "لوقا", chapters: 24, category: "الأناجيل" },
+  { id: "bible-nt-john", name: "يوحنا", chapters: 21, category: "الأناجيل" },
+  { id: "bible-nt-acts", name: "أعمال الرسل", chapters: 28, category: "التاريخ" },
+  { id: "bible-nt-rom", name: "الرومية", chapters: 16, category: "رسائل بولس" },
+  { id: "bible-nt-1cor", name: "كورنثوس الأولى", chapters: 16, category: "رسائل بولس" },
+  { id: "bible-nt-2cor", name: "كورنثوس الثانية", chapters: 13, category: "رسائل بولس" },
+  { id: "bible-nt-heb", name: "العبرانيين", chapters: 13, category: "الرسائل" },
+  { id: "bible-nt-rev", name: "الرؤيا", chapters: 22, category: "النبوة" }
+];
+
+export const copticContributions = [
+  {
+    id: "bible-cc-translation",
+    title: "الترجمة القبطية",
+    description: "من أقدم ترجمات الكتاب المقدس، تمت في القرن الثالث الميلادي",
+    details: [
+      "ترجمة مباشرة من النصوص اليونانية الأصلية",
+      "ساعدت في حفظ النص الكتابي الأصلي",
+      "شهادة على صحة النصوص الموجودة",
+      "استخدمت اللهجات القبطية المختلفة"
+    ],
+    icon: "📜",
+    color: "from-blue-500 to-blue-700"
+  },
+  {
+    id: "bible-cc-fathers",
+    title: "التفاسير الآبائية",
+    description: "كتب الآباء القبط تفاسير عميقة للكتاب المقدس",
+    details: [
+      "تفاسير القديس كيرلس الكبير",
+      "تفاسير أوريجانوس",
+      "شروحات القديس أثناسيوس",
+      "كتابات ديديموس الضرير"
+    ],
+    icon: "✍️",
+    color: "from-green-500 to-green-700"
+  },
+  {
+    id: "bible-cc-manuscripts",
+    title: "المخطوطات",
+    description: "حفظت الكنيسة القبطية آلاف المخطوطات الثمينة",
+    details: [
+      "مخطوطات نجع حمادي",
+      "مكتبة دير سانت كاترين",
+      "مخطوطات وادي النطرون",
+      "البرديات القبطية القديمة"
+    ],
+    icon: "📖",
+    color: "from-purple-500 to-purple-700"
+  }
+];
+
+const dailyReadings = [
+  { time: "باكر", readings: "إنجيل باكر - مزمور - إنجيل" },
+  { time: "القداس", readings: "البولس - الكاثوليكون - الإبركسيس - المزمور - الإنجيل" },
+  { time: "المساء", readings: "مزامير الغروب - قراءات" }
+];
+
 export function BiblePage() {
-  const oldTestament = [
-    { name: "التكوين", chapters: 50, category: "التوراة" },
-    { name: "الخروج", chapters: 40, category: "التوراة" },
-    { name: "اللاويين", chapters: 27, category: "التوراة" },
-    { name: "العدد", chapters: 36, category: "التوراة" },
-    { name: "التثنية", chapters: 34, category: "التوراة" },
-    { name: "يشوع", chapters: 24, category: "التاريخ" },
-    { name: "المزامير", chapters: 150, category: "الشعر" },
-    { name: "الأمثال", chapters: 31, category: "الحكمة" },
-    { name: "إشعياء", chapters: 66, category: "الأنبياء الكبار" },
-    { name: "إرميا", chapters: 52, category: "الأنبياء الكبار" }
-  ];
-
-  const newTestament = [
-    { name: "متى", chapters: 28, category: "الأناجيل" },
-    { name: "مرقس", chapters: 16, category: "الأناجيل" },
-    { name: "لوقا", chapters: 24, category: "الأناجيل" },
-    { name: "يوحنا", chapters: 21, category: "الأناجيل" },
-    { name: "أعمال الرسل", chapters: 28, category: "التاريخ" },
-    { name: "الرومية", chapters: 16, category: "رسائل بولس" },
-    { name: "كورنثوس الأولى", chapters: 16, category: "رسائل بولس" },
-    { name: "كورنثوس الثانية", chapters: 13, category: "رسائل بولس" },
-    { name: "العبرانيين", chapters: 13, category: "الرسائل" },
-    { name: "الرؤيا", chapters: 22, category: "النبوة" }
-  ];
-
-  const copticContributions = [
-    {
-      title: "الترجمة القبطية",
-      description: "من أقدم ترجمات الكتاب المقدس، تمت في القرن الثالث الميلادي",
-      details: [
-        "ترجمة مباشرة من النصوص اليونانية الأصلية",
-        "ساعدت في حفظ النص الكتابي الأصلي",
-        "شهادة على صحة النصوص الموجودة",
-        "استخدمت اللهجات القبطية المختلفة"
-      ],
-      icon: "📜",
-      color: "from-blue-500 to-blue-700"
-    },
-    {
-      title: "التفاسير الآبائية",
-      description: "كتب الآباء القبط تفاسير عميقة للكتاب المقدس",
-      details: [
-        "تفاسير القديس كيرلس الكبير",
-        "تفاسير أوريجانوس",
-        "شروحات القديس أثناسيوس",
-        "كتابات ديديموس الضرير"
-      ],
-      icon: "✍️",
-      color: "from-green-500 to-green-700"
-    },
-    {
-      title: "المخطوطات",
-      description: "حفظت الكنيسة القبطية آلاف المخطوطات الثمينة",
-      details: [
-        "مخطوطات نجع حمادي",
-        "مكتبة دير سانت كاترين",
-        "مخطوطات وادي النطرون",
-        "البرديات القبطية القديمة"
-      ],
-      icon: "📖",
-      color: "from-purple-500 to-purple-700"
-    }
-  ];
-
-  const dailyReadings = [
-    { time: "باكر", readings: "إنجيل باكر - مزمور - إنجيل" },
-    { time: "القداس", readings: "البولس - الكاثوليكون - الإبركسيس - المزمور - الإنجيل" },
-    { time: "المساء", readings: "مزامير الغروب - قراءات" }
-  ];
-
   return (
     <PageWrapper className="min-h-screen">
       {/* Hero */}
@@ -115,7 +118,7 @@ export function BiblePage() {
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-6 sm:p-10 shadow-2xl mb-8 md:mb-12">
               <h2 className="text-3xl sm:text-4xl mb-4 sm:mb-6 text-emerald-900 font-bold text-center">كلام الله المكتوب</h2>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
-                الكتاب المقدس هو كلمة الله الموحى بها، كُتب بوحي من الروح القدس على مدى 1600 سنة. 
+                الكتاب المقدس هو كلمة الله الموحى بها، كُتب بوحي من الروح القدس على مدى 1600 سنة.
                 يتكون من 66 سفراً مقسمة إلى العهد القديم (39 سفراً) والعهد الجديد (27 سفراً).
               </p>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed">
@@ -149,12 +152,12 @@ export function BiblePage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-emerald-900 text-center font-bold">أسفار الكتاب المقدس</motion.h2>
-          
+
           <div className="max-w-6xl mx-auto mb-10 md:mb-16">
             <motion.h3 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 text-blue-800 font-bold text-center">أسفار العهد القديم (نماذج)</motion.h3>
             <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
               {oldTestament.map((book, index) => (
-                <motion.div variants={staggerItem} key={index} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-blue-500">
+                <motion.div variants={staggerItem} key={index} id={book.id} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-blue-500">
                   <h4 className="text-lg sm:text-xl mb-1 sm:mb-2 text-gray-800 font-bold">{book.name}</h4>
                   <p className="text-xs sm:text-sm text-blue-600 mb-1 sm:mb-2">{book.category}</p>
                   <p className="text-sm sm:text-base text-gray-600">{book.chapters} إصحاح</p>
@@ -167,7 +170,7 @@ export function BiblePage() {
             <motion.h3 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 text-green-800 font-bold text-center">أسفار العهد الجديد (نماذج)</motion.h3>
             <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
               {newTestament.map((book, index) => (
-                <motion.div variants={staggerItem} key={index} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-green-500">
+                <motion.div variants={staggerItem} key={index} id={book.id} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all text-center border-t-4 border-green-500">
                   <h4 className="text-lg sm:text-xl mb-1 sm:mb-2 text-gray-800 font-bold">{book.name}</h4>
                   <p className="text-xs sm:text-sm text-green-600 mb-1 sm:mb-2">{book.category}</p>
                   <p className="text-sm sm:text-base text-gray-600">{book.chapters} إصحاح</p>
@@ -184,7 +187,7 @@ export function BiblePage() {
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-emerald-900 text-center font-bold">إسهامات الكنيسة القبطية</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 sm:gap-8">
             {copticContributions.map((contribution, index) => (
-              <motion.div variants={staggerItem} key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden shadow-2xl">
+              <motion.div variants={staggerItem} key={index} id={contribution.id} className="bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden shadow-2xl">
                 <div className={`h-3 bg-gradient-to-r ${contribution.color}`}></div>
                 <div className="p-6 sm:p-8">
                   <div className="text-5xl sm:text-6xl mb-4 sm:mb-6 text-center">{contribution.icon}</div>
@@ -214,7 +217,7 @@ export function BiblePage() {
           <div className="max-w-5xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border-2 border-white/20 mb-8 md:mb-12">
               <p className="text-lg sm:text-xl md:text-2xl leading-relaxed text-center">
-                الكنيسة القبطية تقرأ الكتاب المقدس بشكل منتظم في كل صلواتها اليومية. 
+                الكنيسة القبطية تقرأ الكتاب المقدس بشكل منتظم في كل صلواتها اليومية.
                 كل يوم له قراءاته الخاصة من العهدين القديم والجديد.
               </p>
             </motion.div>
@@ -261,7 +264,7 @@ export function BiblePage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto">
-            <ImageWithFallback 
+            <ImageWithFallback
               src="https://images.unsplash.com/photo-1534289907116-888fe70c4806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmNpZW50JTIwYmlibGUlMjBnb3NwZWx8ZW58MXx8fHwxNzY5MDg3OTM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
               alt="الكتاب المقدس"
               className="w-full aspect-video h-auto object-cover rounded-3xl shadow-2xl mb-6 md:mb-8"

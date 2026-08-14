@@ -1,6 +1,6 @@
-import { 
-  BookOpen, Users, Crown, Wand2, HeartPulse, Clock, Globe, 
-  Search, ShieldCheck, Scale, CloudLightning, 
+import {
+  BookOpen, Users, Crown, Wand2, HeartPulse, Clock, Globe,
+  Search, ShieldCheck, Scale, CloudLightning,
   Zap, Ghost, ScrollText, Quote, Info, ChevronLeft,
   Brain, Star
 } from "lucide-react";
@@ -8,70 +8,72 @@ import { PageWrapper } from "@/app/components/ui/PageWrapper";
 import { motion } from "motion/react";
 import { heroFadeScale, fadeUp, staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
+export const section1 = [
+  {
+    id: "teach-s1-logos",
+    title: "1. اللوجوس (الكلمة)",
+    points: [
+      "دُعي السيد المسيح بـ \"الكلمة\" في مواضع هامة لتأكيد لاهوته.",
+      "كلمة \"اللوجوس\" اليونانية لا تعني مجرد لفظة، بل تعني \"عقل الله الناطق\" أو \"نطق الله العاقل\".",
+      "عقل الله لا ينفصل عن الله، وإذا كان المسيح هو عقل الله، فهو إذن أزلي وغير مخلوق.",
+      "الأقنوم الثاني (اللوجوس) هو أقنوم المعرفة والعقل في الثالوث القدوس."
+    ],
+    icon: <Brain size={32} className="text-purple-600" />
+  },
+  {
+    id: "teach-s1-son",
+    title: "2. بنوة المسيح للآب",
+    points: [
+      "البشر جميعاً دُعوا أبناء الله بالإيمان أو المحبة أو التبني، ومع ذلك يظلون مخلوقات وعبيداً لله.",
+      "بنوة المسيح للآب تختلف كلياً، فهي بنوة من جوهر الله وطبيعته.",
+      "شهد الآب لهذه البنوة الفريدة بمعجزات عظيمة في يوم العماد (الثيئوفانيا) وفي يوم التجلي.",
+      "اعتراف الناس بأن المسيح \"ابن الله\" كان يرتبط دائماً بقوة معجزية خارقة، كما حدث عند مشيه على الماء أو تفتيح عيني المولود أعمى."
+    ],
+    icon: <Users size={32} className="text-purple-600" />
+  },
+  {
+    id: "teach-s1-right",
+    title: "3. الجلوس عن يمين الآب",
+    points: [
+      "الآب غير محدود وليس له يمين أو شمال مكاني.",
+      "كلمة \"اليمين\" ترمز إلى القوة والبر والعظمة.",
+      "عبارة الجلوس عن يمين الآب تعني أن مرحلة إخلاء الذات للمسيح قد انتهت، ودخل الابن في مجده وقوته."
+    ],
+    icon: <Crown size={32} className="text-purple-600" />
+  }
+];
+
+// Data for Section 2
+export const section2 = [
+  { id: "teach-s2-creator", title: "الخالق", desc: "المسيح خلق مواد لم تكن موجودة كما في معجزة إشباع الجموع من خمس خبزات، وتحويل الماء خمراً، وخلق عينين للمولود أعمى من الطين.", icon: <Wand2 size={24} className="text-yellow-600" /> },
+  { id: "teach-s2-life", title: "معطي الحياة", desc: "أقام الموتى بمجرد الأمر، مثل إقامة ابنة يايرس، وابن أرملة نايين، ولعازر بعد موته بأربعة أيام.", icon: <HeartPulse size={24} className="text-yellow-600" /> },
+  { id: "teach-s2-eternal", title: "فوق الزمان (الأزلي)", desc: "أعلن المسيح وجوده قبل إبراهيم، وهو أصل داود، ومخارجه منذ أيام الأزل قبل كون العالم.", icon: <Clock size={24} className="text-yellow-600" /> },
+  { id: "teach-s2-omnipresent", title: "الوجود في كل مكان", desc: "وعد المؤمنين بأنه يكون في وسطهم حيثما اجتمعوا باسمه، وهو موجود في السماء وعلى الأرض وفي الفردوس في نفس الوقت.", icon: <Globe size={24} className="text-yellow-600" /> },
+  { id: "teach-s2-searcher", title: "فاحص القلوب", desc: "كان المسيح يعلم أفكار الكتبة والفريسيين وتلاميذه، ويجيب على تساؤلاتهم الداخلية قبل أن ينطقوا بها.", icon: <Search size={24} className="text-yellow-600" /> },
+  { id: "teach-s2-forgiver", title: "غافر الخطايا", desc: "مارس المسيح سلطانه في غفران الخطايا، فغفر للمفلوج وللمرأة الخاطئة وللص اليمين، والمغفرة هي حق أصيل لله وحده.", icon: <ShieldCheck size={24} className="text-yellow-600" /> },
+  { id: "teach-s2-judge", title: "الديان", desc: "سيجلس المسيح على كرسي مجده في اليوم الأخير ليدين الأحياء والأموات ويجازي كل واحد بحسب عمله.", icon: <Scale size={24} className="text-yellow-600" /> }
+];
+
+// Data for Section 3
+export const section3 = [
+  { id: "teach-s3-nature", title: "سلطانه على الطبيعة", desc: "كان المسيح يأمر الرياح والبحر فتسكت وتطيعه.", icon: <CloudLightning size={24} /> },
+  { id: "teach-s3-physics", title: "سلطانه على القوانين الفيزيائية", desc: "مشى المسيح على الماء وجعل بطرس يمشي معه بقوته الإلهية.", icon: <Zap size={24} /> },
+  { id: "teach-s3-angels", title: "سلطانه على الملائكة", desc: "الملائكة كانت تخدم المسيح، وهو الذي يرسلهم في الدينونة لجمع المختارين.", icon: <Star size={24} /> },
+  { id: "teach-s3-demons", title: "سلطانه على الشياطين", desc: "كانت الشياطين تصرخ مرعوبة منه، وتخرج من المرضى بمجرد أمره أو انتهاره لها.", icon: <Ghost size={24} /> },
+  { id: "teach-s3-law", title: "سلطانه على الشريعة", desc: "تحدث المسيح كصاحب الشريعة قائلاً: \"أما أنا فأقول لكم...\"، وأعلن أنه رب السبت أيضاً.", icon: <ScrollText size={24} /> }
+];
+
+// Data for Section 4
+export const section4 = [
+  { id: "teach-s4-rom9", text: "\"ومنهم المسيح حسب الجسد، الكائن على الكل إلهاً مباركاً إلى الأبد آمين\".", ref: "(رو 9: 5)" },
+  { id: "teach-s4-john20", text: "اعتراف توما المباشر للسيد المسيح قائلاً: \"ربي وإلهي\".", ref: "(يو 20: 28)" },
+  { id: "teach-s4-john1", text: "\"في البدء كان الكلمة، والكلمة كان عند الله، وكان الكلمة الله\".", ref: "(يو 1: 1)" },
+  { id: "teach-s4-1tim3", text: "\"عظيم هو سر التقوى الله ظهر في الجسد\".", ref: "(1 تي 3: 16)" },
+  { id: "teach-s4-isa9", text: "\"ويدعى اسمه عجيباً مشيراً إلهاً قديراً أباً أبدياً رئيس السلام\".", ref: "(أش 9: 6)" },
+  { id: "teach-s4-col2", text: "\"فإنه فيه يحل كل ملء اللاهوت جسدياً\".", ref: "(كو 2: 8، 9)" }
+];
+
 export function TeachingsPage() {
-  // Data for Section 1
-  const section1 = [
-    {
-      title: "1. اللوجوس (الكلمة)",
-      points: [
-        "دُعي السيد المسيح بـ \"الكلمة\" في مواضع هامة لتأكيد لاهوته.",
-        "كلمة \"اللوجوس\" اليونانية لا تعني مجرد لفظة، بل تعني \"عقل الله الناطق\" أو \"نطق الله العاقل\".",
-        "عقل الله لا ينفصل عن الله، وإذا كان المسيح هو عقل الله، فهو إذن أزلي وغير مخلوق.",
-        "الأقنوم الثاني (اللوجوس) هو أقنوم المعرفة والعقل في الثالوث القدوس."
-      ],
-      icon: <Brain size={32} className="text-purple-600" />
-    },
-    {
-      title: "2. بنوة المسيح للآب",
-      points: [
-        "البشر جميعاً دُعوا أبناء الله بالإيمان أو المحبة أو التبني، ومع ذلك يظلون مخلوقات وعبيداً لله.",
-        "بنوة المسيح للآب تختلف كلياً، فهي بنوة من جوهر الله وطبيعته.",
-        "شهد الآب لهذه البنوة الفريدة بمعجزات عظيمة في يوم العماد (الثيئوفانيا) وفي يوم التجلي.",
-        "اعتراف الناس بأن المسيح \"ابن الله\" كان يرتبط دائماً بقوة معجزية خارقة، كما حدث عند مشيه على الماء أو تفتيح عيني المولود أعمى."
-      ],
-      icon: <Users size={32} className="text-purple-600" />
-    },
-    {
-      title: "3. الجلوس عن يمين الآب",
-      points: [
-        "الآب غير محدود وليس له يمين أو شمال مكاني.",
-        "كلمة \"اليمين\" ترمز إلى القوة والبر والعظمة.",
-        "عبارة الجلوس عن يمين الآب تعني أن مرحلة إخلاء الذات للمسيح قد انتهت، ودخل الابن في مجده وقوته."
-      ],
-      icon: <Crown size={32} className="text-purple-600" />
-    }
-  ];
-
-  // Data for Section 2
-  const section2 = [
-    { title: "الخالق", desc: "المسيح خلق مواد لم تكن موجودة كما في معجزة إشباع الجموع من خمس خبزات، وتحويل الماء خمراً، وخلق عينين للمولود أعمى من الطين.", icon: <Wand2 size={24} className="text-yellow-600"/> },
-    { title: "معطي الحياة", desc: "أقام الموتى بمجرد الأمر، مثل إقامة ابنة يايرس، وابن أرملة نايين، ولعازر بعد موته بأربعة أيام.", icon: <HeartPulse size={24} className="text-yellow-600"/> },
-    { title: "فوق الزمان (الأزلي)", desc: "أعلن المسيح وجوده قبل إبراهيم، وهو أصل داود، ومخارجه منذ أيام الأزل قبل كون العالم.", icon: <Clock size={24} className="text-yellow-600"/> },
-    { title: "الوجود في كل مكان", desc: "وعد المؤمنين بأنه يكون في وسطهم حيثما اجتمعوا باسمه، وهو موجود في السماء وعلى الأرض وفي الفردوس في نفس الوقت.", icon: <Globe size={24} className="text-yellow-600"/> },
-    { title: "فاحص القلوب", desc: "كان المسيح يعلم أفكار الكتبة والفريسيين وتلاميذه، ويجيب على تساؤلاتهم الداخلية قبل أن ينطقوا بها.", icon: <Search size={24} className="text-yellow-600"/> },
-    { title: "غافر الخطايا", desc: "مارس المسيح سلطانه في غفران الخطايا، فغفر للمفلوج وللمرأة الخاطئة وللص اليمين، والمغفرة هي حق أصيل لله وحده.", icon: <ShieldCheck size={24} className="text-yellow-600"/> },
-    { title: "الديان", desc: "سيجلس المسيح على كرسي مجده في اليوم الأخير ليدين الأحياء والأموات ويجازي كل واحد بحسب عمله.", icon: <Scale size={24} className="text-yellow-600"/> }
-  ];
-
-  // Data for Section 3
-  const section3 = [
-    { title: "سلطانه على الطبيعة", desc: "كان المسيح يأمر الرياح والبحر فتسكت وتطيعه.", icon: <CloudLightning size={24} /> },
-    { title: "سلطانه على القوانين الفيزيائية", desc: "مشى المسيح على الماء وجعل بطرس يمشي معه بقوته الإلهية.", icon: <Zap size={24} /> },
-    { title: "سلطانه على الملائكة", desc: "الملائكة كانت تخدم المسيح، وهو الذي يرسلهم في الدينونة لجمع المختارين.", icon: <Star size={24} /> },
-    { title: "سلطانه على الشياطين", desc: "كانت الشياطين تصرخ مرعوبة منه، وتخرج من المرضى بمجرد أمره أو انتهاره لها.", icon: <Ghost size={24} /> },
-    { title: "سلطانه على الشريعة", desc: "تحدث المسيح كصاحب الشريعة قائلاً: \"أما أنا فأقول لكم...\"، وأعلن أنه رب السبت أيضاً.", icon: <ScrollText size={24} /> }
-  ];
-
-  // Data for Section 4
-  const section4 = [
-    { text: "\"ومنهم المسيح حسب الجسد، الكائن على الكل إلهاً مباركاً إلى الأبد آمين\".", ref: "(رو 9: 5)" },
-    { text: "اعتراف توما المباشر للسيد المسيح قائلاً: \"ربي وإلهي\".", ref: "(يو 20: 28)" },
-    { text: "\"في البدء كان الكلمة، والكلمة كان عند الله، وكان الكلمة الله\".", ref: "(يو 1: 1)" },
-    { text: "\"عظيم هو سر التقوى الله ظهر في الجسد\".", ref: "(1 تي 3: 16)" },
-    { text: "\"ويدعى اسمه عجيباً مشيراً إلهاً قديراً أباً أبدياً رئيس السلام\".", ref: "(أش 9: 6)" },
-    { text: "\"فإنه فيه يحل كل ملء اللاهوت جسدياً\".", ref: "(كو 2: 8، 9)" }
-  ];
-
   return (
     <div className="min-h-screen bg-stone-50" dir="rtl">
       {/* Hero Section */}
@@ -107,7 +109,7 @@ export function TeachingsPage() {
             <div className="flex flex-col gap-12 mb-16">
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section1.map((item, index) => (
-                  <motion.div variants={staggerItem} key={index} className="bg-purple-50 rounded-2xl p-6 shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+                  <motion.div variants={staggerItem} key={index} id={item.id} className="bg-purple-50 rounded-2xl p-6 shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="bg-white p-3 rounded-xl shadow-sm">
                         {item.icon}
@@ -146,7 +148,7 @@ export function TeachingsPage() {
             <div className="flex flex-col gap-12 mb-16">
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 gap-6">
                 {section2.map((item, index) => (
-                  <motion.div variants={staggerItem} key={index} className={`bg-white rounded-2xl p-6 shadow-md border-b-4 border-indigo-500 hover:-translate-y-1 transition-transform ${item.title === "الديان" ? "sm:col-span-2" : ""}`}>
+                  <motion.div variants={staggerItem} key={index} id={item.id} className={`bg-white rounded-2xl p-6 shadow-md border-b-4 border-indigo-500 hover:-translate-y-1 transition-transform ${item.title === "الديان" ? "sm:col-span-2" : ""}`}>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="bg-indigo-50 p-2 rounded-lg">
                         {item.icon}
@@ -178,7 +180,7 @@ export function TeachingsPage() {
             <div className="flex flex-col gap-12 mb-16">
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 gap-6">
                 {section3.map((item, index) => (
-                  <motion.div variants={staggerItem} key={index} className={`flex gap-4 p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:bg-stone-100 transition-colors ${item.title === "سلطانه على الشريعة" ? "sm:col-span-2" : ""}`}>
+                  <motion.div variants={staggerItem} key={index} id={item.id} className={`flex gap-4 p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:bg-stone-100 transition-colors ${item.title === "سلطانه على الشريعة" ? "sm:col-span-2" : ""}`}>
                     <div className="bg-purple-100 text-purple-700 p-3 rounded-xl h-fit">
                       {item.icon}
                     </div>
@@ -210,7 +212,7 @@ export function TeachingsPage() {
             <div className="flex flex-col gap-12">
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section4.map((item, index) => (
-                  <motion.div variants={staggerItem} key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-colors relative">
+                  <motion.div variants={staggerItem} key={index} id={item.id} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-colors relative">
                     <Quote className="absolute top-4 left-4 text-white/10" size={48} />
                     <p className="text-lg leading-relaxed mb-4 relative z-10 font-medium">{item.text}</p>
                     <div className="text-yellow-400 font-bold text-left relative z-10" dir="ltr">

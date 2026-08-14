@@ -1,8 +1,10 @@
-import { Menu, X, Cross } from "lucide-react";
+import { Menu, X, Cross, Search } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { heroFadeScale, viewportConfig, hoverButton } from "@/lib/animations";
+import { useSearchContext } from "@/lib/search/SearchContext";
+
 
 interface HeaderProps {
   currentPage: string;
@@ -11,6 +13,7 @@ interface HeaderProps {
 export function Header({ currentPage }: HeaderProps) {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { openSearch } = useSearchContext();
 
   const navItems = [
     { id: "home", label: "الرئيسية" },
@@ -19,7 +22,8 @@ export function Header({ currentPage }: HeaderProps) {
     { id: "liturgy", label: "الطقس الكنسي" },
     { id: "art", label: "الفن القبطي" },
     { id: "saints", label: "القديسون" },
-    { id: "bible", label: "الكتاب المقدس" }
+    { id: "bible", label: "الكتاب المقدس" },
+    { id: "references", label: "المراجع" }
   ];
 
   const handleClick = (page: string) => {
@@ -88,18 +92,42 @@ export function Header({ currentPage }: HeaderProps) {
                 </motion.button>
               </motion.div>
             ))}
+            
+            {/* Search Button (Desktop) */}
+            <motion.button
+              onClick={openSearch}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="ml-2 flex items-center justify-center p-2 rounded-lg bg-red-800 text-yellow-300 hover:bg-red-700 hover:text-white transition-colors"
+              title="بحث (Ctrl+K)"
+            >
+              <Search size={20} />
+            </motion.button>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="lg:hidden text-white bg-red-700 p-2 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </motion.button>
+          <div className="flex items-center gap-2 lg:hidden">
+            {/* Search Button (Mobile) */}
+            <motion.button
+              onClick={openSearch}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-yellow-300 bg-red-800 hover:bg-red-700 hover:text-white p-2 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0 transition-colors"
+              aria-label="Search"
+            >
+              <Search size={24} />
+            </motion.button>
+            
+            {/* Mobile Menu Button */}
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-white bg-red-700 p-2 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

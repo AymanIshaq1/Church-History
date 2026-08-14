@@ -13,6 +13,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  assetsInclude: ['**/*.mpeg'],
   resolve: {
     alias: {
       // Alias @ to the src directory

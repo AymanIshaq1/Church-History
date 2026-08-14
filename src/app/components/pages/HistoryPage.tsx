@@ -16,7 +16,7 @@ import modernImg from "../../../image/history-modern.jpeg";
 
 
 
-type Era = {
+export type Era = {
   id: string;
   title: string;
   dates: string;
@@ -35,7 +35,7 @@ type Era = {
   icon: ReactNode;
 };
 
-const eras: Era[] = [
+export const eras: Era[] = [
   {
     id: "apostolic", title: "نشأة الكنيسة وتاريخ الآباء الرسل: العصر الرسولي", dates: "34 - 100 م",
     intro: "يُعد العصر الرسولي حجر الأساس الذي بُنيت عليه الكنيسة المسيحية في العالم، حيث انطلقت شرارة الإيمان الأولى من أورشليم لتضيء أرجاء المسكونة. إنه عصر التأسيس، والروحانية الصافية، وتدوين الكتاب المقدس، والذي بفضله امتدت الكرازة رغم كل الصعوبات.",
@@ -241,19 +241,19 @@ const eras: Era[] = [
   },
 ];
 
-const globalTimeline = [
-  { year: "34 م", event: "تأسيس الكنيسة يوم العنصرة", color: "#3b82f6" },
-  { year: "60 م", event: "القديس مارمرقس يؤسس كنيسة الإسكندرية", color: "#10b981" },
-  { year: "67 م", event: "استشهاد القديس بطرس والقديس بولس في روما", color: "#ef4444" },
-  { year: "284 م", event: "اضطهاد دقلديانوس وبداية التقويم القبطي", color: "#dc2626" },
-  { year: "313 م", event: "مرسوم ميلاو ونهاية عصور الاضطهاد", color: "#eab308" },
-  { year: "325 م", event: "المجمع المسكوني الأول في نيقية", color: "#8b5cf6" },
-  { year: "381 م", event: "مجمع القسطنطينية يكمل قانون الإيمان", color: "#7c3aed" },
-  { year: "431 م", event: "مجمع أفسس برئاسة البابا كيرلس الكبير", color: "#6d28d9" },
-  { year: "451 م", event: "مجمع خلكيدونية والانشقاق الكنسي الأول", color: "#f97316" },
-  { year: "641 م", event: "دخول العرب مصر وبداية الحقبة الإسلامية", color: "#14b8a6" },
-  { year: "1095 م", event: "بداية الحروب الصليبية وأثرها على مسيحيي الشرق", color: "#a8a29e" },
-  { year: "1805 م", event: "محمد علي باشا وبداية العصر الحديث للأقباط", color: "#10b981" },
+export const globalTimeline = [
+  { id: "hist-tl-34", year: "34 م", event: "تأسيس الكنيسة يوم العنصرة", color: "#3b82f6" },
+  { id: "hist-tl-60", year: "60 م", event: "القديس مارمرقس يؤسس كنيسة الإسكندرية", color: "#10b981" },
+  { id: "hist-tl-67", year: "67 م", event: "استشهاد القديس بطرس والقديس بولس في روما", color: "#ef4444" },
+  { id: "hist-tl-284", year: "284 م", event: "اضطهاد دقلديانوس وبداية التقويم القبطي", color: "#dc2626" },
+  { id: "hist-tl-313", year: "313 م", event: "مرسوم ميلاو ونهاية عصور الاضطهاد", color: "#eab308" },
+  { id: "hist-tl-325", year: "325 م", event: "المجمع المسكوني الأول في نيقية", color: "#8b5cf6" },
+  { id: "hist-tl-381", year: "381 م", event: "مجمع القسطنطينية يكمل قانون الإيمان", color: "#7c3aed" },
+  { id: "hist-tl-431", year: "431 م", event: "مجمع أفسس برئاسة البابا كيرلس الكبير", color: "#6d28d9" },
+  { id: "hist-tl-451", year: "451 م", event: "مجمع خلكيدونية والانشقاق الكنسي الأول", color: "#f97316" },
+  { id: "hist-tl-641", year: "641 م", event: "دخول العرب مصر وبداية الحقبة الإسلامية", color: "#14b8a6" },
+  { id: "hist-tl-1095", year: "1095 م", event: "بداية الحروب الصليبية وأثرها على مسيحيي الشرق", color: "#a8a29e" },
+  { id: "hist-tl-1805", year: "1805 م", event: "محمد علي باشا وبداية العصر الحديث للأقباط", color: "#10b981" },
 ];
 
 const facts = [
@@ -381,6 +381,7 @@ export function HistoryPage() {
             <div className="hidden sm:block absolute right-28 top-0 bottom-0 w-px bg-gradient-to-b from-red-900/0 via-red-800/30 to-orange-900/0" />
             {globalTimeline.map((item, idx) => (
               <motion.div
+                id={item.id}
                 key={`${item.year}-${item.event}`}
                 variants={staggerItem}
                 className="hp-tl-item flex items-start gap-3 sm:gap-4 mb-6 transition-all"
