@@ -20,7 +20,7 @@ export function Header({ currentPage }: HeaderProps) {
     { id: "history", label: "التاريخ" },
     { id: "teachings", label: "اللاهوت" },
     { id: "liturgy", label: "الطقس الكنسي" },
-    { id: "art", label: "الفن القبطي" },
+    { id: "art", label: "الهوية القبطية" },
     { id: "saints", label: "القديسون" },
     { id: "bible", label: "الكتاب المقدس" },
     { id: "references", label: "المراجع" }
