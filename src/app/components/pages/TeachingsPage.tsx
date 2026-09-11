@@ -4,8 +4,9 @@ import {
   Zap, Ghost, ScrollText, Quote, Info, ChevronLeft,
   Brain, Star
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { PageWrapper } from "@/app/components/ui/PageWrapper";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { heroFadeScale, fadeUp, staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
 export const section1 = [
@@ -18,7 +19,7 @@ export const section1 = [
       "عقل الله لا ينفصل عن الله، وإذا كان المسيح هو عقل الله، فهو إذن أزلي وغير مخلوق.",
       "الأقنوم الثاني (اللوجوس) هو أقنوم المعرفة والعقل في الثالوث القدوس."
     ],
-    icon: <Brain size={32} className="text-purple-600" />
+    icon: <Brain size={32} className="text-red-700" />
   },
   {
     id: "teach-s1-son",
@@ -29,7 +30,7 @@ export const section1 = [
       "شهد الآب لهذه البنوة الفريدة بمعجزات عظيمة في يوم العماد (الثيئوفانيا) وفي يوم التجلي.",
       "اعتراف الناس بأن المسيح \"ابن الله\" كان يرتبط دائماً بقوة معجزية خارقة، كما حدث عند مشيه على الماء أو تفتيح عيني المولود أعمى."
     ],
-    icon: <Users size={32} className="text-purple-600" />
+    icon: <Users size={32} className="text-red-700" />
   },
   {
     id: "teach-s1-right",
@@ -39,7 +40,7 @@ export const section1 = [
       "كلمة \"اليمين\" ترمز إلى القوة والبر والعظمة.",
       "عبارة الجلوس عن يمين الآب تعني أن مرحلة إخلاء الذات للمسيح قد انتهت، ودخل الابن في مجده وقوته."
     ],
-    icon: <Crown size={32} className="text-purple-600" />
+    icon: <Crown size={32} className="text-red-700" />
   }
 ];
 
@@ -74,18 +75,53 @@ export const section4 = [
 ];
 
 export function TeachingsPage() {
+  const [fullscreenImage, setFullscreenImage] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    if (!fullscreenImage) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setFullscreenImage(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [fullscreenImage]);
+
   return (
     <div className="min-h-screen bg-stone-50" dir="rtl">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 py-24 text-white sm:py-32">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/image/ChatGPT Image Sep 11, 2026, 02_29_58 AM.png')" }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-red-950/60 via-red-950/45 to-orange-950/75" />
+        <div className="container relative z-20 mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">لاهوت المسيح</h1>
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-right leading-relaxed text-lg sm:text-xl">
-              <h2 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
-                <Info size={28} />
-                مقدمة عامة
-              </h2>
+            <motion.p
+              variants={heroFadeScale}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.4 }}
+              className="mx-auto max-w-4xl text-xl text-yellow-200 sm:text-2xl md:text-3xl"
+            >
+              إيمانٌ راسخ… ومجدٌ إلهي أُعلن في المسيح
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container mx-auto px-4">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mx-auto max-w-5xl rounded-3xl border border-red-100 bg-gradient-to-br from-red-50 to-orange-50 p-6 shadow-2xl sm:p-10">
+            <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold text-red-900 sm:text-3xl">
+              <Info size={28} />
+              مقدمة عامة
+            </h2>
+            <div className="text-right text-lg leading-relaxed text-gray-700 sm:text-xl">
               <p className="mb-4">
                 يعتبر لاهوت المسيح من أهم الموضوعات الحيوية في العقيدة المسيحية. على مر العصور، قامت هرطقات عديدة ضد هذه العقيدة، وتصدت لها الكنيسة بحزم. من أخطر هذه البدع "البدعة الأريوسية" في القرن الرابع الميلادي، والتي بسببها انعقد مجمع نيقية عام 325م.
               </p>
@@ -93,7 +129,7 @@ export function TeachingsPage() {
                 في العصر الحديث، ظهرت بدعة "شهود يهوه" التي تأسست في بنسلفانيا عام 1872، وأصدرت كتباً تهاجم لاهوت المسيح. هذا المحتوى يقدم إثباتات إيجابية واضحة من نصوص الكتاب المقدس لتأكيد ألوهية السيد المسيح.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -102,19 +138,19 @@ export function TeachingsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-purple-900 mb-4">القسم الأول: مركز المسيح في الثالوث القدوس</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-red-900 mb-4">القسم الأول: مركز المسيح في الثالوث القدوس</h2>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full"></div>
             </motion.div>
 
             <div className="flex flex-col gap-12 mb-16">
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section1.map((item, index) => (
-                  <motion.div variants={staggerItem} key={index} id={item.id} className="bg-purple-50 rounded-2xl p-6 shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+                  <motion.div variants={staggerItem} key={index} id={item.id} className="bg-red-50 rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="bg-white p-3 rounded-xl shadow-sm">
                         {item.icon}
                       </div>
-                      <h3 className="text-2xl font-bold text-purple-900">{item.title}</h3>
+                      <h3 className="text-2xl font-bold text-red-900">{item.title}</h3>
                     </div>
                     <ul className="space-y-3">
                       {item.points.map((point, idx) => (
@@ -127,8 +163,10 @@ export function TeachingsPage() {
                   </motion.div>
                 ))}
               </motion.div>
-              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-100 relative group w-full">
-                <img src="/image/page1.jpg" alt="مركز المسيح في الثالوث القدوس" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-purple-100" onError={(e) => e.currentTarget.src = "/image/download.jpg"} />
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-red-100 relative group w-full">
+                <button type="button" aria-label="تكبير صورة مركز المسيح في الثالوث القدوس" onClick={() => setFullscreenImage({ src: "/image/page1.jpg", alt: "مركز المسيح في الثالوث القدوس" })} className="block w-full cursor-zoom-in text-right">
+                  <img src="/image/page1.jpg" alt="مركز المسيح في الثالوث القدوس" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-red-100" onError={(e) => e.currentTarget.src = "/image/download.jpg"} />
+                </button>
               </motion.div>
             </div>
           </div>
@@ -136,11 +174,11 @@ export function TeachingsPage() {
       </section>
 
       {/* Section 2 */}
-      <section className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-purple-900 mb-4">القسم الثاني: الصفات الإلهية للسيد المسيح</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-red-900 mb-4">القسم الثاني: الصفات الإلهية للسيد المسيح</h2>
               <p className="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">يقدم الكتاب المقدس دلائل قاطعة على أن المسيح يحمل صفات لا تخص سوى الله وحده.</p>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-6"></div>
             </motion.div>
@@ -148,19 +186,21 @@ export function TeachingsPage() {
             <div className="flex flex-col gap-12 mb-16">
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 gap-6">
                 {section2.map((item, index) => (
-                  <motion.div variants={staggerItem} key={index} id={item.id} className={`bg-white rounded-2xl p-6 shadow-md border-b-4 border-indigo-500 hover:-translate-y-1 transition-transform ${item.title === "الديان" ? "sm:col-span-2" : ""}`}>
+                  <motion.div variants={staggerItem} key={index} id={item.id} className={`bg-white rounded-2xl p-6 shadow-md border-b-4 border-red-700 hover:-translate-y-1 transition-transform ${item.title === "الديان" ? "sm:col-span-2" : ""}`}>
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="bg-indigo-50 p-2 rounded-lg">
+                      <div className="bg-red-50 p-2 rounded-lg">
                         {item.icon}
                       </div>
-                      <h3 className="text-xl font-bold text-indigo-900">{item.title}</h3>
+                      <h3 className="text-xl font-bold text-red-900">{item.title}</h3>
                     </div>
                     <p className="text-gray-700 leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>
-              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-indigo-100 relative group w-full">
-                <img src="/image/page2.jpg" alt="الصفات الإلهية للسيد المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-indigo-100" onError={(e) => e.currentTarget.src = "/image/download (1).jpg"} />
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-red-100 relative group w-full">
+                <button type="button" aria-label="تكبير صورة الصفات الإلهية للسيد المسيح" onClick={() => setFullscreenImage({ src: "/image/page2.jpg", alt: "الصفات الإلهية للسيد المسيح" })} className="block w-full cursor-zoom-in text-right">
+                  <img src="/image/page2.jpg" alt="الصفات الإلهية للسيد المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-red-100" onError={(e) => e.currentTarget.src = "/image/download (1).jpg"} />
+                </button>
               </motion.div>
             </div>
           </div>
@@ -172,7 +212,7 @@ export function TeachingsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-purple-900 mb-4">القسم الثالث: السلطان المطلق للسيد المسيح</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-red-900 mb-4">القسم الثالث: السلطان المطلق للسيد المسيح</h2>
               <p className="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">تمتع السيد المسيح بسلطان مطلق يدل على لاهوته بوضوح تام، ويشمل هذا السلطان مجالات متعددة:</p>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-6"></div>
             </motion.div>
@@ -181,18 +221,20 @@ export function TeachingsPage() {
               <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid sm:grid-cols-2 gap-6">
                 {section3.map((item, index) => (
                   <motion.div variants={staggerItem} key={index} id={item.id} className={`flex gap-4 p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:bg-stone-100 transition-colors ${item.title === "سلطانه على الشريعة" ? "sm:col-span-2" : ""}`}>
-                    <div className="bg-purple-100 text-purple-700 p-3 rounded-xl h-fit">
+                    <div className="bg-red-100 text-red-700 p-3 rounded-xl h-fit">
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-purple-900 mb-2">{item.title}</h3>
+                      <h3 className="text-xl font-bold text-red-900 mb-2">{item.title}</h3>
                       <p className="text-gray-700 text-lg leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
               </motion.div>
               <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-200 relative group w-full">
-                <img src="/image/page3.jpg" alt="السلطان المطلق للسيد المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-stone-100" onError={(e) => e.currentTarget.src = "/image/download (2).jpg"} />
+                <button type="button" aria-label="تكبير صورة السلطان المطلق للسيد المسيح" onClick={() => setFullscreenImage({ src: "/image/page3.jpg", alt: "السلطان المطلق للسيد المسيح" })} className="block w-full cursor-zoom-in text-right">
+                  <img src="/image/page3.jpg" alt="السلطان المطلق للسيد المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-stone-100" onError={(e) => e.currentTarget.src = "/image/download (2).jpg"} />
+                </button>
               </motion.div>
             </div>
           </div>
@@ -200,12 +242,12 @@ export function TeachingsPage() {
       </section>
 
       {/* Section 4 */}
-      <section className="py-20 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 text-white">
+      <section className="py-20 bg-gradient-to-br from-red-900 via-red-800 to-orange-900 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="mb-12 text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">القسم الرابع: آيات صريحة تؤكد لاهوت المسيح</h2>
-              <p className="text-xl text-purple-200 mt-4 max-w-3xl mx-auto">يزخر الكتاب المقدس بآيات مباشرة لا تقبل التأويل وتعلن ألوهية المسيح صراحة:</p>
+              <p className="text-xl text-orange-100 mt-4 max-w-3xl mx-auto">يزخر الكتاب المقدس بآيات مباشرة لا تقبل التأويل وتعلن ألوهية المسيح صراحة:</p>
               <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full mt-6"></div>
             </motion.div>
 
@@ -221,13 +263,43 @@ export function TeachingsPage() {
                   </motion.div>
                 ))}
               </motion.div>
-              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-500/30 relative group w-full">
-                <img src="/image/page4.jpg" alt="آيات صريحة تؤكد لاهوت المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-purple-900" onError={(e) => e.currentTarget.src = "/image/download (3).jpg"} />
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="rounded-3xl overflow-hidden shadow-2xl border-4 border-orange-300/30 relative group w-full">
+                <button type="button" aria-label="تكبير صورة آيات صريحة تؤكد لاهوت المسيح" onClick={() => setFullscreenImage({ src: "/image/page4.jpg", alt: "آيات صريحة تؤكد لاهوت المسيح" })} className="block w-full cursor-zoom-in text-right">
+                  <img src="/image/page4.jpg" alt="آيات صريحة تؤكد لاهوت المسيح" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 bg-red-900" onError={(e) => e.currentTarget.src = "/image/download (3).jpg"} />
+                </button>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
+
+      <AnimatePresence>
+        {fullscreenImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setFullscreenImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label="عرض الصورة بملء الشاشة"
+          >
+            <button type="button" aria-label="إغلاق الصورة" onClick={() => setFullscreenImage(null)} className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-3xl text-white transition-colors hover:bg-white/30">
+              ×
+            </button>
+            <motion.img
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              src={fullscreenImage.src}
+              alt={fullscreenImage.alt}
+              className="max-h-full max-w-full cursor-zoom-out object-contain"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

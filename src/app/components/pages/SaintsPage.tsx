@@ -141,8 +141,22 @@ export function SaintsPage() {
   return (
     <PageWrapper className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-32 bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900">
-        <div className="container mx-auto px-4 text-center text-white">
+      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 py-32">
+        <motion.div
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <ImageWithFallback
+            src="/image/ChatGPT Image Sep 11, 2026, 01_57_19 AM.png"
+            alt="مشهد القديسين والكنيسة القبطية"
+            className="h-full w-full object-cover"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-br from-red-950/75 via-red-900/35 to-orange-950/50" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-red-950/80 to-transparent" />
+        <div className="container relative z-10 mx-auto px-4 text-center text-white">
           <motion.div
             variants={heroFadeScale}
             initial="hidden"
@@ -175,8 +189,8 @@ export function SaintsPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-6 sm:p-10 shadow-2xl">
-              <h2 className="text-3xl sm:text-4xl mb-4 sm:mb-6 text-indigo-900 font-bold text-center">سحابة من الشهود</h2>
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-6 sm:p-10 shadow-2xl">
+              <h2 className="text-3xl sm:text-4xl mb-4 sm:mb-6 text-red-900 font-bold text-center">سحابة من الشهود</h2>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                 الكنيسة القبطية غنية بقديسيها وشهدائها الذين سطروا تاريخاً مجيداً من الإيمان والتضحية.
                 من الرسل والآباء الأوائل إلى الشهداء الذين رووا الأرض بدمائهم، كل واحد منهم نموذج للحياة المسيحية الحقيقية.
@@ -192,7 +206,7 @@ export function SaintsPage() {
       {/* Major Saints */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-5xl mb-16 text-indigo-900 text-center font-bold">قديسون عظماء</motion.h2>
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-5xl mb-16 text-red-900 text-center font-bold">قديسون عظماء</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} className="space-y-12">
             {saintsData.map((saint, index) => (
               <motion.div variants={staggerItem} key={index} className="w-full" id={saint.id}>
@@ -232,14 +246,14 @@ export function SaintsPage() {
                       <p className={`text-xl sm:text-2xl mb-4 sm:mb-6 bg-gradient-to-r ${saint.color} bg-clip-text text-transparent font-bold`}>{saint.title}</p>
                       <p className="text-lg sm:text-xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">{saint.description}</p>
                       <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6">
-                        <h4 className="text-2xl mb-4 text-indigo-800 font-bold flex items-center gap-2">
+                        <h4 className="text-2xl mb-4 text-red-800 font-bold flex items-center gap-2">
                           <Star size={24} />
                           إسهاماته:
                         </h4>
                         <ul className="space-y-2">
                           {saint.contributions.map((contribution, idx) => (
                             <li key={idx} className="text-lg text-gray-700 flex items-center gap-3">
-                              <span className="text-indigo-600 text-2xl">✦</span>
+                              <span className="text-red-700 text-2xl">✦</span>
                               {contribution}
                             </li>
                           ))}
@@ -249,7 +263,7 @@ export function SaintsPage() {
                       {saint.videoSrc && (
                         <button
                           onClick={() => setFullscreenIndex(index)}
-                          className="mx-auto mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2"
+                          className="mx-auto mt-6 flex items-center gap-2 rounded-lg bg-red-700 px-6 py-3 text-white transition-colors hover:bg-orange-700"
                         >
                           <Play size={20} />
                           عرض الفيديو
@@ -298,7 +312,7 @@ export function SaintsPage() {
       {/* Desert Fathers */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-5xl mb-16 text-indigo-900 text-center font-bold">آباء البرية</motion.h2>
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-5xl mb-16 text-red-900 text-center font-bold">آباء البرية</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
             {[
               { name: "أنبا أنطونيوس", title: "أب الرهبان", quote: "رأيت فخاخ إبليس منصوبة على الأرض كلها", icon: "⛰️" },
@@ -308,10 +322,10 @@ export function SaintsPage() {
               { name: "أنبا شنودة", title: "رئيس المتوحدين", quote: "دافع عن الإيمان الأرثوذكسي", icon: "📜" },
               { name: "أنبا موسى", title: "الأسود القوي", quote: "تاب من حياة اللصوصية", icon: "⚡" }
             ].map((father, index) => (
-              <motion.div variants={staggerItem} key={index} className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all">
+              <motion.div variants={staggerItem} key={index} className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all">
                 <div className="text-6xl mb-4 text-center">{father.icon}</div>
-                <h3 className="text-2xl mb-2 text-indigo-900 font-bold text-center">{father.name}</h3>
-                <p className="text-lg text-indigo-600 mb-4 text-center font-semibold">{father.title}</p>
+                <h3 className="text-2xl mb-2 text-red-900 font-bold text-center">{father.name}</h3>
+                <p className="text-lg text-red-700 mb-4 text-center font-semibold">{father.title}</p>
                 <p className="text-base text-gray-600 italic text-center">"{father.quote}"</p>
               </motion.div>
             ))}
@@ -322,11 +336,11 @@ export function SaintsPage() {
       {/* Modern Saints */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-indigo-900 text-center font-bold">قديسون معاصرون</motion.h2>
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-16 text-red-900 text-center font-bold">قديسون معاصرون</motion.h2>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 sm:gap-8">
             <motion.div variants={staggerItem} className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl">
               <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (5).jpg" alt="البابا كيرلس السادس" className="w-full h-auto aspect-[3/4] max-w-[250px] mx-auto mb-4 md:mb-6 object-cover rounded-lg" /></div>
-              <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-indigo-800 font-bold">البابا كيرلس السادس</h3>
+              <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-red-800 font-bold">البابا كيرلس السادس</h3>
               <p className="text-base sm:text-lg text-gray-600 mb-3 sm:mb-4">1902 - 1971 م</p>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                 البطريرك الـ116، عُرف بحياته النسكية وصلواته القوية. شهد عصره ظهورات العذراء في الزيتون.
@@ -335,7 +349,7 @@ export function SaintsPage() {
             </motion.div>
             <motion.div variants={staggerItem} className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl">
               <div className="text-5xl mb-4"><ImageWithFallback src="/image/download (6).jpg" alt="البابا شنودة الثالث" className="w-full h-auto aspect-[3/4] max-w-[250px] mx-auto mb-4 md:mb-6 object-cover rounded-lg" /></div>
-              <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-indigo-800 font-bold">البابا شنودة الثالث</h3>
+              <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-red-800 font-bold">البابا شنودة الثالث</h3>
               <p className="text-base sm:text-lg text-gray-600 mb-3 sm:mb-4">1923 - 2012 م</p>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                 البطريرك الـ117، معلم الأجيال. خدم لمدة 40 عاماً، نشر التعليم والكرازة في العالم كله.
@@ -347,7 +361,7 @@ export function SaintsPage() {
       </section>
 
       {/* Intercession */}
-      <section className="py-20 bg-gradient-to-r from-indigo-800 to-purple-800 text-white">
+      <section className="py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white">
         <div className="container mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-4xl mx-auto text-center">
             <Heart size={64} className="mx-auto mb-8 text-yellow-400" />

@@ -22,7 +22,7 @@ type ChapterImageProps = {
 function ChapterImage({ src, alt }: ChapterImageProps) {
   return (
     <div className="max-w-6xl mx-auto mt-12">
-      <div className="bg-white rounded-2xl p-4 shadow-2xl border-2 border-indigo-100">
+      <div className="bg-white rounded-2xl p-4 shadow-2xl border-2 border-red-100">
         <img
           src={src}
           alt={alt}
@@ -38,7 +38,7 @@ function BulletList({ items, className = "text-gray-700" }: { items: string[]; c
     <ul className={`space-y-3 text-base sm:text-lg md:text-xl leading-relaxed ${className}`}>
       {items.map((item, index) => (
         <li key={index} className="flex gap-3">
-          <span className="text-indigo-600">•</span>
+          <span className="text-red-700">•</span>
           <span>{item}</span>
         </li>
       ))}
@@ -181,8 +181,14 @@ export const sacraments: (ContentCard & { id: string })[] = [
 export function LiturgyPage() {
   return (
     <PageWrapper className="min-h-screen" dir="rtl">
-      <section className="relative py-32 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-        <div className="container mx-auto px-4 text-center text-white">
+      <section className="relative isolate overflow-hidden py-32 bg-gradient-to-br from-red-900 via-red-800 to-orange-900">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/image/ChatGPT Image Sep 11, 2026, 01_16_32 AM.png')" }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-red-950/70 via-red-950/45 to-orange-950/80" />
+        <div className="container relative z-20 mx-auto px-4 text-center text-white">
           <motion.div
             variants={heroFadeScale}
             initial="hidden"
@@ -198,7 +204,7 @@ export function LiturgyPage() {
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold"
           >
-            الفصل الاول: مقدمة عن الكنيسة
+            الطقس الكنسي
           </motion.h1>
           <motion.p
             variants={heroFadeScale}
@@ -207,7 +213,7 @@ export function LiturgyPage() {
             transition={{ delay: 0.4 }}
             className="text-xl sm:text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto"
           >
-            معنى الكنيسة، ألقاب الكنيسة، رموز الكنيسة، نشأة كنيسة العهد الجديد، الأساس الإيماني، القصد الإلهي من الكنيسة، علامات الكنيسة.
+             إيمانٌ نعيشه… وصلواتٌ تحفظ هويتنا    
           </motion.p>
         </div>
       </section>
@@ -221,8 +227,8 @@ export function LiturgyPage() {
             viewport={viewportConfig}
             className="max-w-5xl mx-auto mb-10 md:mb-12 text-center"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-indigo-900 font-bold">الفصل الاول: مقدمة عن الكنيسة</h2>
-            <div className="h-4 bg-gradient-to-r from-blue-500 to-blue-700 rounded-2xl shadow-md"></div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-red-900 font-bold">الفصل الاول: مقدمة عن الكنيسة</h2>
+            <div className="h-4 bg-gradient-to-r from-red-700 to-orange-600 rounded-2xl shadow-md"></div>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -233,7 +239,7 @@ export function LiturgyPage() {
           >
             {chapterOne.slice(0, 3).map((item, index) => (
               <motion.div key={index} id={item.id} variants={staggerItem} className="bg-white rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2">
-                <div className={`h-4 bg-gradient-to-r ${index === 0 ? "from-blue-500 to-blue-700" : index === 1 ? "from-purple-500 to-purple-700" : "from-green-500 to-green-700"}`}></div>
+                <div className={`h-4 bg-gradient-to-r ${index === 0 ? "from-red-700 to-red-900" : index === 1 ? "from-orange-500 to-orange-700" : "from-green-500 to-green-700"}`}></div>
                 <div className="p-6 sm:p-8">
                   <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">{item.text}</p>
                 </div>
@@ -245,11 +251,11 @@ export function LiturgyPage() {
             initial="hidden"
             whileInView="show"
             viewport={viewportConfig}
-            className="max-w-5xl mx-auto bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 sm:p-8 shadow-xl"
+            className="max-w-5xl mx-auto bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 sm:p-8 shadow-xl"
           >
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               {chapterOne.slice(3).map((item, index) => (
-                <motion.div key={index} id={item.id} variants={staggerItem} className="bg-white rounded-xl p-4 sm:p-6 shadow-md border-2 border-indigo-100">
+                <motion.div key={index} id={item.id} variants={staggerItem} className="bg-white rounded-xl p-4 sm:p-6 shadow-md border-2 border-red-100">
                   <BulletList items={[item.text]} />
                 </motion.div>
               ))}
@@ -264,14 +270,14 @@ export function LiturgyPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto mb-10 md:mb-12 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-indigo-900 font-bold">الفصل الثاني: مقدمة عن طقوس الكنيسة</h2>
-            <div className="h-4 bg-gradient-to-r from-purple-500 to-purple-700 rounded-2xl shadow-md"></div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-red-900 font-bold">الفصل الثاني: مقدمة عن طقوس الكنيسة</h2>
+            <div className="h-4 bg-gradient-to-r from-orange-500 to-orange-700 rounded-2xl shadow-md"></div>
           </motion.div>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4 sm:gap-6">
             {chapterTwo.map((item, index) => (
-              <motion.div variants={staggerItem} key={index} id={item.id} className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all border-2 border-indigo-100">
+              <motion.div variants={staggerItem} key={index} id={item.id} className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all border-2 border-red-100">
                 <div className="flex items-start gap-4 sm:gap-6">
-                  <div className="text-4xl sm:text-5xl md:text-6xl text-indigo-600">{index + 1}</div>
+                  <div className="text-4xl sm:text-5xl md:text-6xl text-red-700">{index + 1}</div>
                   <div className="flex-1">
                     <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">{item.text}</p>
                   </div>
@@ -288,13 +294,13 @@ export function LiturgyPage() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-stone-100">
         <div className="container mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto mb-10 md:mb-12 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-indigo-900 font-bold">الفصل الثالث: المبنى الكنسي ومحتوياته</h2>
-            <div className="h-4 bg-gradient-to-r from-green-500 to-green-700 rounded-2xl shadow-md"></div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-red-900 font-bold">الفصل الثالث: المبنى الكنسي ومحتوياته</h2>
+            <div className="h-4 bg-gradient-to-r from-red-700 to-orange-600 rounded-2xl shadow-md"></div>
           </motion.div>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {buildingSections.map((section, index) => (
-              <motion.div variants={staggerItem} key={index} id={section.id} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all border-r-4 border-indigo-500">
-                <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-indigo-800 font-bold">{section.title}</h3>
+              <motion.div variants={staggerItem} key={index} id={section.id} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all border-r-4 border-red-700">
+                <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-red-800 font-bold">{section.title}</h3>
                 <BulletList items={section.items} />
               </motion.div>
             ))}
@@ -305,11 +311,11 @@ export function LiturgyPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-indigo-800 to-purple-800 text-white">
+      <section className="py-20 bg-gradient-to-r from-red-800 to-orange-800 text-white">
         <div className="container mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto mb-10 md:mb-12 text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-bold">الفصل الرابع : عقائد وطقوس تتعلق بالمبنى</h2>
-            <div className="h-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-md"></div>
+            <div className="h-4 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl shadow-md"></div>
           </motion.div>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 sm:gap-8">
             {chapterFour.map((item, index) => (
@@ -333,13 +339,13 @@ export function LiturgyPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-5xl mx-auto mb-10 md:mb-12 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-indigo-900 font-bold">الفصل الخامس: أسرار الكنيسة السبعة</h2>
-            <div className="h-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-md"></div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 text-red-900 font-bold">الفصل الخامس: أسرار الكنيسة السبعة</h2>
+            <div className="h-4 bg-gradient-to-r from-red-700 to-orange-600 rounded-2xl shadow-md"></div>
           </motion.div>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={viewportConfig} className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 sm:gap-8">
             {sacraments.map((sacrament, index) => (
-              <motion.div variants={staggerItem} key={index} id={sacrament.id} className={`bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all border-2 border-indigo-100 ${index === sacraments.length - 1 ? "md:col-span-2" : ""}`}>
-                <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-indigo-800 font-bold">{sacrament.title}</h3>
+              <motion.div variants={staggerItem} key={index} id={sacrament.id} className={`bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all border-2 border-red-100 ${index === sacraments.length - 1 ? "md:col-span-2" : ""}`}>
+                <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-red-800 font-bold">{sacrament.title}</h3>
                 <BulletList items={sacrament.items} />
               </motion.div>
             ))}

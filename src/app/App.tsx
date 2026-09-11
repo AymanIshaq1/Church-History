@@ -11,8 +11,6 @@ import { SaintsPage } from "@/app/components/pages/SaintsPage";
 import { BiblePage } from "@/app/components/pages/BiblePage";
 import { ReferencesPage } from "@/app/components/pages/ReferencesPage";
 import { Footer } from "@/app/components/Footer";
-import { AmbientAudioProvider } from "@/lib/audio/AmbientAudioContext";
-import { AmbientSoundToggle } from "@/app/components/ui/AmbientSoundToggle";
 import { SearchProvider } from "@/lib/search/SearchContext";
 import { GlobalSearchModal } from "@/app/components/search/GlobalSearchModal";
 
@@ -63,23 +61,25 @@ function AppContent() {
   }, [location.hash, location.pathname, location.key]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 overflow-x-hidden flex flex-col" dir="rtl" lang="ar">
-      <Header currentPage={currentPage} />
-      <div className="flex-grow">
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Hero />} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/teachings" element={<TeachingsPage />} />
-            <Route path="/liturgy" element={<LiturgyPage />} />
-            <Route path="/art" element={<ArtPage />} />
-            <Route path="/saints" element={<SaintsPage />} />
-            <Route path="/bible" element={<BiblePage />} />
-            <Route path="/references" element={<ReferencesPage />} />
-          </Routes>
-        </AnimatePresence>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 overflow-x-hidden relative isolate" dir="rtl" lang="ar">
+      <div className="relative z-10 min-h-screen flex flex-col">
+        <Header currentPage={currentPage} />
+        <div className="flex-grow">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Hero />} />
+              <Route path="/history" element={<HistoryPage />} />
+              <Route path="/teachings" element={<TeachingsPage />} />
+              <Route path="/liturgy" element={<LiturgyPage />} />
+              <Route path="/art" element={<ArtPage />} />
+              <Route path="/saints" element={<SaintsPage />} />
+              <Route path="/bible" element={<BiblePage />} />
+              <Route path="/references" element={<ReferencesPage />} />
+            </Routes>
+          </AnimatePresence>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }
@@ -87,13 +87,10 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-      <AmbientAudioProvider>
-        <SearchProvider>
-          <AppContent />
-          <GlobalSearchModal />
-          <AmbientSoundToggle />
-        </SearchProvider>
-      </AmbientAudioProvider>
+      <SearchProvider>
+        <AppContent />
+        <GlobalSearchModal />
+      </SearchProvider>
     </Router>
   );
 }

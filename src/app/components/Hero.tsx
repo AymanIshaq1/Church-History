@@ -64,13 +64,13 @@ export function Hero() {
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
-            className="w-full h-full"
+            className="w-full h-full bg-slate-950"
           >
-            <ImageWithFallback 
-              src="https://images.unsplash.com/photo-1597212560167-6cf12ea77252?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3B0aWMlMjBjaHVyY2h8ZW58MXx8fHwxNzY5MDg3NzA3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="الكنيسة القبطية"
-              className="w-full h-full object-cover"
-            />
+          <ImageWithFallback
+  src="https://images.unsplash.com/photo-1597212560167-6cf12ea77252?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&w=1920"
+  alt="الكنيسة القبطية"
+  className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
+/>
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 to-orange-900/30"></div>

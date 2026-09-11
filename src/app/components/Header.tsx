@@ -1,7 +1,8 @@
-import { Menu, X, Cross, Search } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import ichthysLogo from "@/image/ichthys-svgrepo-com.svg";
 import { heroFadeScale, viewportConfig, hoverButton } from "@/lib/animations";
 import { useSearchContext } from "@/lib/search/SearchContext";
 
@@ -47,12 +48,18 @@ export function Header({ currentPage }: HeaderProps) {
             className="flex items-center gap-3 md:gap-4 cursor-pointer" 
             onClick={() => handleClick("home")}
           >
-            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-300 shrink-0">
-              <Cross className="text-red-900 w-6 h-6 md:w-7 md:h-7" strokeWidth={3} />
+            <div className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center shrink-0">
+              <img
+                src={ichthysLogo}
+                alt="شعار السمكة المسيحية"
+                className="h-full w-full object-contain drop-shadow-lg"
+              />
             </div>
             <div>
-              <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-bold tracking-wide">الكنيسة القبطية</h1>
-              <p className="text-yellow-200 text-xs sm:text-sm">كنيسة الشهداء والقديسين</p>
+              <h1 className="text-xl sm:text-2xl md:text-3xl text-amber-400 font-serif font-semibold tracking-[0.2em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+  ΙΧΘΥΣ
+</h1>
+              <p className="text-yellow-200 text-xs sm:text-sm">يسوع المسيح ابن الله المخلص</p>
             </div>
           </motion.div>
           

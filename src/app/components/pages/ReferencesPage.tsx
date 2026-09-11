@@ -91,22 +91,28 @@ export function ReferencesPage() {
   return (
     <PageWrapper>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="relative isolate flex min-h-[72vh] items-center overflow-hidden bg-gradient-to-b from-stone-950 via-orange-950 to-amber-900 py-20">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/image/ChatGPT Image Sep 11, 2026, 03_31_11 AM.png')" }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-stone-950/70 via-stone-950/35 to-orange-950/75" />
+        <div className="absolute inset-0 z-10 opacity-25 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.18),transparent_50%)]" />
+        <div className="container relative z-20 mx-auto px-4">
           <motion.div
             variants={heroFadeScale}
             initial="hidden"
             animate="show"
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-blue-400/30">
-              <Library className="text-blue-300 w-10 h-10" />
+            <div className="w-20 h-20 bg-amber-400/15 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-amber-300/40">
+              <Library className="text-amber-200 w-10 h-10" />
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               المكتبة والمراجع
             </h1>
-            <p className="text-lg md:text-xl text-blue-100/90 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-amber-100/90 leading-relaxed max-w-2xl mx-auto">
               مجموعة منتقاة من الكتب والمراجع لدراسة تاريخ الكنيسة واللاهوت والطقوس.
             </p>
           </motion.div>
@@ -114,7 +120,7 @@ export function ReferencesPage() {
       </section>
 
       {/* Main Content */}
-      <section className="py-12 bg-slate-50 min-h-screen">
+      <section className="py-12 bg-gradient-to-br from-slate-50 to-stone-100 min-h-screen">
         <div className="container mx-auto px-4">
           
           {/* Admin Toggle & Controls */}
@@ -122,7 +128,7 @@ export function ReferencesPage() {
             <div className="flex items-center gap-3 w-full md:w-auto">
               <button 
                 onClick={() => setIsAdmin(!isAdmin)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${isAdmin ? 'bg-amber-100 text-amber-700 hover:bg-amber-200' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${isAdmin ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' : 'bg-stone-100 text-stone-600 hover:bg-stone-200'}`}
               >
                 {isAdmin ? <ShieldCheck size={18} /> : <ShieldAlert size={18} />}
                 <span>إدارة المراجع</span>
@@ -139,14 +145,14 @@ export function ReferencesPage() {
               >
                 <button
                   onClick={handleAddClick}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors whitespace-nowrap shrink-0 shadow-sm"
+                  className="flex items-center gap-2 px-4 py-2 bg-red-800 hover:bg-orange-700 text-white rounded-xl text-sm font-medium transition-colors whitespace-nowrap shrink-0 shadow-sm"
                 >
                   <Plus size={18} />
                   <span>إضافة مرجع</span>
                 </button>
                 <button
                   onClick={handleRestoreDefaults}
-                  className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded-xl text-sm font-medium transition-colors whitespace-nowrap shrink-0"
+                  className="flex items-center gap-2 px-4 py-2 bg-white border border-stone-300 hover:bg-orange-50 text-stone-700 rounded-xl text-sm font-medium transition-colors whitespace-nowrap shrink-0"
                 >
                   <RotateCcw size={18} />
                   <span>استعادة المراجع الافتراضية</span>
@@ -166,7 +172,7 @@ export function ReferencesPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="ابحث عن كتاب، مؤلف، أو موضوع..."
-                className="w-full pr-12 pl-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all text-slate-700 text-lg bg-white shadow-sm"
+                className="w-full pr-12 pl-4 py-4 rounded-2xl border-2 border-stone-200 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all text-stone-700 text-lg bg-white shadow-sm"
               />
             </div>
             
@@ -177,8 +183,8 @@ export function ReferencesPage() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-5 py-3 rounded-2xl text-sm md:text-base font-semibold whitespace-nowrap transition-all flex-shrink-0 ${
                     selectedCategory === cat
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                      : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+                      ? "bg-red-800 text-white shadow-md shadow-red-800/20"
+                      : "bg-white text-stone-600 hover:bg-orange-50 border border-stone-200"
                   }`}
                 >
                   {cat}
@@ -211,13 +217,13 @@ export function ReferencesPage() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-20 bg-white rounded-3xl border border-slate-200 shadow-sm"
+              className="text-center py-20 bg-white rounded-3xl border border-stone-200 shadow-sm"
             >
-              <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Library className="text-slate-400 w-10 h-10" />
+              <div className="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Library className="text-orange-500 w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-2">لا توجد مراجع</h3>
-              <p className="text-slate-500">جرب البحث بكلمات مختلفة أو تغيير التصنيف.</p>
+              <h3 className="text-2xl font-bold text-stone-800 mb-2">لا توجد مراجع</h3>
+              <p className="text-stone-500">جرب البحث بكلمات مختلفة أو تغيير التصنيف.</p>
             </motion.div>
           )}
 

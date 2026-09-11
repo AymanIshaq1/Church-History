@@ -138,9 +138,9 @@ export function Footer() {
           className="border-t border-yellow-600/30 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-yellow-100 text-base sm:text-lg text-center md:text-right">
-              © 2026 تاريخ الكنيسة القبطية الأرثوذكسية. جميع الحقوق محفوظة.
-            </p>
+           <p className="text-yellow-100 text-base sm:text-lg text-center md:text-right">
+  © 2026 تحت إشراف إعداد خدام بكنيسة الشهيد مار جرجس والبابا ديسقورس
+</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <motion.button 
                 whileHover="hover"

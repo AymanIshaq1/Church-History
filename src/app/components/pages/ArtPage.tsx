@@ -654,8 +654,14 @@ export function ArtPage() {
     <PageWrapper className="min-h-screen" dir="rtl">
 
       {/* ── Hero ── */}
-      <section className="relative py-32 bg-gradient-to-br from-amber-900 via-orange-900 to-red-900">
-        <div className="container mx-auto px-4 text-center text-white">
+      <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-gradient-to-br from-amber-900 via-orange-900 to-red-900 py-24 sm:py-32">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/image/IMG_4395.PNG')" }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-amber-950/55 via-red-950/45 to-red-950/80" />
+        <div className="container relative z-20 mx-auto px-4 text-center text-white">
           <motion.div
             variants={heroFadeScale}
             initial="hidden"
@@ -671,7 +677,7 @@ export function ArtPage() {
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold"
           >
-            موسوعة الهوية القبطية الشاملة
+            الهوية القبطية    
           </motion.h1>
           <motion.p
             variants={heroFadeScale}
@@ -680,7 +686,7 @@ export function ArtPage() {
             transition={{ delay: 0.4 }}
             className="text-xl sm:text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto"
           >
-            المرجع الأكاديمي واللاهوتي والطقسي للهوية والفنون القبطية
+            جذورٌ راسخة… وهويةٌ عبر الأجيال
           </motion.p>
         </div>
       </section>

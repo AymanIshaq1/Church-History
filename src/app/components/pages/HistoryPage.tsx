@@ -266,7 +266,7 @@ export function HistoryPage() {
 
   return (
     <PageWrapper className="min-h-screen bg-white overflow-hidden" dir="rtl">
-      <section className="hp-hero relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900">
+      <section className="hp-hero relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-stone-950 via-orange-950 to-amber-900">
         <div className="hp-hero-bg absolute inset-0">
           <motion.div
             initial={{ opacity: 0, scale: 1.05 }}
@@ -275,14 +275,14 @@ export function HistoryPage() {
             className="w-full h-full"
           >
             <ImageWithFallback
-              src={apostlesImg}
+              src="/image/ChatGPT Image Sep 11, 2026, 02_51_56 AM.png"
               alt="Hero"
-              className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+              className="w-full h-full object-cover opacity-60"
             />
           </motion.div>
           <div className="hp-depth-soft absolute -top-24 -left-24 w-72 h-72 rounded-full bg-white/10 blur-3xl" />
           <div className="hp-depth-strong absolute bottom-0 right-0 w-96 h-96 rounded-full bg-yellow-200/10 blur-3xl" />
-          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-red-900/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-stone-950/65 to-transparent" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 text-center text-white">
@@ -338,7 +338,7 @@ export function HistoryPage() {
             viewport={viewportConfig}
             className="hp-era-overview-track grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
           >
-            {eras.map((era, idx) => (
+            {eras.map((era) => (
               <motion.a
                 key={era.id}
                 href={`#${era.id}`}
@@ -379,7 +379,7 @@ export function HistoryPage() {
             className="hp-global-timeline max-w-4xl mx-auto relative"
           >
             <div className="hidden sm:block absolute right-28 top-0 bottom-0 w-px bg-gradient-to-b from-red-900/0 via-red-800/30 to-orange-900/0" />
-            {globalTimeline.map((item, idx) => (
+            {globalTimeline.map((item) => (
               <motion.div
                 id={item.id}
                 key={`${item.year}-${item.event}`}
@@ -557,7 +557,7 @@ export function HistoryPage() {
             viewport={viewportConfig}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {facts.map((fact, idx) => (
+            {facts.map((fact) => (
               <motion.div
                 key={fact.stat}
                 variants={staggerItem}
