@@ -7,6 +7,7 @@ import { heroFadeScale, viewportConfig, hoverButton } from "@/lib/animations";
 import { useSearchContext } from "@/lib/search/SearchContext";
 
 
+
 interface HeaderProps {
   currentPage: string;
 }

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from "motion/react";
 import { Header } from "@/app/components/Header";
 import { Hero } from "@/app/components/Hero";
@@ -13,11 +13,12 @@ import { ReferencesPage } from "@/app/components/pages/ReferencesPage";
 import { Footer } from "@/app/components/Footer";
 import { SearchProvider } from "@/lib/search/SearchContext";
 import { GlobalSearchModal } from "@/app/components/search/GlobalSearchModal";
+import copticCrossBg from "@/image/1024px-Coptic_cross.svg.png";
+
 
 function AppContent() {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState("home");
-
   useEffect(() => {
     const path = location.pathname.slice(1) || "home";
     setCurrentPage(path);
@@ -62,6 +63,18 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 overflow-x-hidden relative isolate" dir="rtl" lang="ar">
+      {/* Fixed Coptic Cross Background Watermark - Persistent across all pages & during scroll */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[15] flex items-center justify-center overflow-hidden select-none"
+        aria-hidden="true"
+      >
+        <img
+          src={copticCrossBg}
+          alt="Coptic Cross Watermark"
+          className="w-[min(80vw,580px)] max-h-[80vh] object-contain opacity-[0.035] sm:opacity-[0.04] pointer-events-none select-none mix-blend-multiply filter contrast-75 brightness-110 transition-all duration-300"
+        />
+      </div>
+
       <div className="relative z-10 min-h-screen flex flex-col">
         <Header currentPage={currentPage} />
         <div className="flex-grow">
