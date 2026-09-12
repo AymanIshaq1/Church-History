@@ -181,13 +181,13 @@ export const sacraments: (ContentCard & { id: string })[] = [
 export function LiturgyPage() {
   return (
     <PageWrapper className="min-h-screen" dir="rtl">
-      <section className="relative isolate overflow-hidden py-32 bg-gradient-to-br from-red-900 via-red-800 to-orange-900">
+      <section className="relative isolate flex min-h-[55vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[88vh] items-center justify-center overflow-hidden py-16 sm:py-24 md:py-32 bg-gradient-to-br from-red-900 via-red-800 to-orange-900">
         <div
           aria-hidden="true"
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/image/ChatGPT Image Sep 11, 2026, 01_16_32 AM.png')" }}
         />
-        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-red-950/70 via-red-950/45 to-orange-950/80" />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-red-950/55 via-red-950/35 to-orange-950/70" />
         <div className="container relative z-20 mx-auto px-4 text-center text-white">
           <motion.div
             variants={heroFadeScale}
@@ -202,7 +202,7 @@ export function LiturgyPage() {
             initial="hidden"
             animate="show"
             transition={{ delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold"
+            className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 font-bold drop-shadow-lg"
           >
             الطقس الكنسي
           </motion.h1>
@@ -211,7 +211,7 @@ export function LiturgyPage() {
             initial="hidden"
             animate="show"
             transition={{ delay: 0.4 }}
-            className="text-xl sm:text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto"
+            className="text-xl sm:text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto drop-shadow-md"
           >
              إيمانٌ نعيشه… وصلواتٌ تحفظ هويتنا    
           </motion.p>

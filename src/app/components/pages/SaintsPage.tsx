@@ -141,9 +141,9 @@ export function SaintsPage() {
   return (
     <PageWrapper className="min-h-screen">
       {/* Hero */}
-      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 py-32">
+      <section className="relative flex min-h-[55vh] sm:min-h-[70vh] md:min-h-[78vh] items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 py-16 sm:py-24 md:py-32">
         <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
+          initial={{ opacity: 0, scale: 1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0"
@@ -151,11 +151,11 @@ export function SaintsPage() {
           <ImageWithFallback
             src="/image/ChatGPT Image Sep 11, 2026, 01_57_19 AM.png"
             alt="مشهد القديسين والكنيسة القبطية"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-br from-red-950/75 via-red-900/35 to-orange-950/50" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-red-950/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-950/50 via-red-900/25 to-orange-950/40" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-red-950/70 to-transparent" />
         <div className="container relative z-10 mx-auto px-4 text-center text-white">
           <motion.div
             variants={heroFadeScale}

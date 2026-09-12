@@ -266,10 +266,10 @@ export function HistoryPage() {
 
   return (
     <PageWrapper className="min-h-screen bg-white overflow-hidden" dir="rtl">
-      <section className="hp-hero relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-stone-950 via-orange-950 to-amber-900">
+      <section className="hp-hero relative min-h-[55vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[92vh] py-16 sm:py-24 flex items-center overflow-hidden bg-gradient-to-br from-stone-950 via-orange-950 to-amber-900">
         <div className="hp-hero-bg absolute inset-0">
           <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
             className="w-full h-full"
@@ -277,7 +277,7 @@ export function HistoryPage() {
             <ImageWithFallback
               src="/image/ChatGPT Image Sep 11, 2026, 02_51_56 AM.png"
               alt="Hero"
-              className="w-full h-full object-cover opacity-60"
+              className="w-full h-full object-cover object-center opacity-80"
             />
           </motion.div>
           <div className="hp-depth-soft absolute -top-24 -left-24 w-72 h-72 rounded-full bg-white/10 blur-3xl" />

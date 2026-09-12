@@ -91,13 +91,13 @@ export function ReferencesPage() {
   return (
     <PageWrapper>
       {/* Hero Section */}
-      <section className="relative isolate flex min-h-[72vh] items-center overflow-hidden bg-gradient-to-b from-stone-950 via-orange-950 to-amber-900 py-20">
+      <section className="relative isolate flex min-h-[50vh] sm:min-h-[60vh] md:min-h-[72vh] items-center overflow-hidden bg-gradient-to-b from-stone-950 via-orange-950 to-amber-900 py-14 sm:py-16 md:py-20">
         <div
           aria-hidden="true"
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/image/ChatGPT Image Sep 11, 2026, 03_31_11 AM.png')" }}
         />
-        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-stone-950/70 via-stone-950/35 to-orange-950/75" />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-stone-950/50 via-stone-950/20 to-orange-950/65" />
         <div className="absolute inset-0 z-10 opacity-25 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.18),transparent_50%)]" />
         <div className="container relative z-20 mx-auto px-4">
           <motion.div
@@ -109,7 +109,7 @@ export function ReferencesPage() {
             <div className="w-20 h-20 bg-amber-400/15 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-amber-300/40">
               <Library className="text-amber-200 w-10 h-10" />
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
               المكتبة والمراجع
             </h1>
             <p className="text-lg md:text-xl text-amber-100/90 leading-relaxed max-w-2xl mx-auto">

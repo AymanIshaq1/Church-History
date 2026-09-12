@@ -664,16 +664,16 @@ export function BiblePage() {
     <PageWrapper className="min-h-screen bg-white overflow-hidden text-gray-800" dir="rtl">
       
       {/* 🌟 HERO SECTION (نفس هيرو صفحة History بالضبط) 🌟 */}
-      <section className="hp-hero relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-stone-950 via-orange-950 to-amber-900">
+      <section className="hp-hero relative min-h-[55vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] py-16 sm:py-24 flex items-center overflow-hidden bg-gradient-to-br from-stone-950 via-orange-950 to-amber-900">
         <div className="hp-hero-bg absolute inset-0">
           <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
             className="w-full h-full"
           >
             <div 
-              className="w-full h-full bg-cover bg-center opacity-50 mix-blend-luminosity"
+              className="w-full h-full bg-cover bg-center opacity-75 sm:opacity-80"
               style={{ backgroundImage: "url('/image/ChatGPT Image Sep 10, 2026, 07_12_16 PM.png')" }}
             />
           </motion.div>

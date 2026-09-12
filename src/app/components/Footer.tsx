@@ -139,7 +139,7 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
            <p className="text-yellow-100 text-base sm:text-lg text-center md:text-right">
-  © 2026 تحت إشراف إعداد خدام بكنيسة الشهيد مار جرجس والبابا ديسقورس
+  © 2026  تحت إشراف إعداد خدام بكنيسة الشهيد مار جرجس والبابا ديسقورس بالخصوص
 </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <motion.button 

@@ -91,22 +91,22 @@ export function TeachingsPage() {
   return (
     <div className="min-h-screen bg-stone-50" dir="rtl">
       {/* Hero Section */}
-      <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 py-24 text-white sm:py-32">
+      <section className="relative isolate flex min-h-[55vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[88vh] items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-orange-900 py-16 sm:py-24 md:py-32 text-white">
         <div
           aria-hidden="true"
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/image/ChatGPT Image Sep 11, 2026, 02_29_58 AM.png')" }}
         />
-        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-red-950/60 via-red-950/45 to-orange-950/75" />
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-b from-red-950/50 via-red-950/30 to-orange-950/65" />
         <div className="container relative z-20 mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">لاهوت المسيح</h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 drop-shadow-lg">لاهوت المسيح</h1>
             <motion.p
               variants={heroFadeScale}
               initial="hidden"
               animate="show"
               transition={{ delay: 0.4 }}
-              className="mx-auto max-w-4xl text-xl text-yellow-200 sm:text-2xl md:text-3xl"
+              className="mx-auto max-w-4xl text-xl text-yellow-200 sm:text-2xl md:text-3xl drop-shadow-md"
             >
               إيمانٌ راسخ… ومجدٌ إلهي أُعلن في المسيح
             </motion.p>
